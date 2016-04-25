@@ -2,11 +2,43 @@
 
 namespace CnabParser\Model;
 
-class Remessa
+use CnabParser\Parser\Layout;
+
+class Remessa extends IntercambioBancarioAbstract
 {
-	protected $versao;
+	public function __construct(Layout $layout)
+	{
+		parent::__construct($layout);
 
-	private $data;
+		$remessaLayout = $this->layout->getRemessaLayout();
 
-	private $layout;
+		$this->header_arquivo = new \stdClass;
+		$this->trailer_arquivo = new \stdClass;
+		$this->header_lote = new \stdClass;
+		$this->trailer_lote = new \stdClass;
+		
+		if (isset($remessaLayout['header_arquivo'])) {
+			foreach ($remessaLayout['header_arquivo'] as $field => $definition) {
+				$this->header_arquivo->$field = (isset($definition['default'])) ? $definition['default'] : '';
+			}
+		}
+
+		if (isset($remessaLayout['trailer_arquivo'])) {
+			foreach ($remessaLayout['trailer_arquivo'] as $field => $definition) {
+				$this->trailer_arquivo->$field = (isset($definition['default'])) ? $definition['default'] : '';
+			}
+		}
+
+		if (isset($remessaLayout['header_lote'])) {
+			foreach ($remessaLayout['header_lote'] as $field => $definition) {
+				$this->header_lote->$field = (isset($definition['default'])) ? $definition['default'] : '';
+			}
+		}
+
+		if (isset($remessaLayout['trailer_lote'])) {
+			foreach ($remessaLayout['trailer_lote'] as $field => $definition) {
+				$this->trailer_lote->$field = (isset($definition['default'])) ? $definition['default'] : '';
+			}
+		}
+	}
 }

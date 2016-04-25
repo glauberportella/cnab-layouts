@@ -60,7 +60,7 @@ class Picture
                 }
 
                 if (!is_numeric($value)) {
-                    throw new \Exception("value '$value' dont is a number, need format $format");
+                    throw new \Exception("value '$value' isn't a number, need format $format");
                 }
 
                 $value = self::parseNumber($value);
