@@ -19,12 +19,12 @@ class RemessaFile extends IntercambioBancarioFileAbstract
 		$trailerArquivo = $this->encodeTrailerArquivo();
 		
 		// segmentos (detalhes)
-		$segmentos = "";
+		$detalhes = $this->encodeDetalhes();
 
 		$data = array(
 			$headerArquivo,
 			$headerLote,
-			$segmentos,
+			$detalhes,
 			$trailerLote,
 			$trailerArquivo,
 		);
@@ -70,5 +70,24 @@ class RemessaFile extends IntercambioBancarioFileAbstract
 		$layout = $this->model->getLayout();
 		$layoutRemessa = $layout->getRemessaLayout();
 		return $this->encode($layoutRemessa['trailer_arquivo'], $this->model->trailer_arquivo);
+	}
+
+	protected function encodeDetalhes()
+	{
+		if (!isset($this->model->detalhes))
+			return;
+
+		$layout = $this->model->getLayout();
+		$layoutRemessa = $layout->getRemessaLayout();
+
+		$encoded = '';
+
+		foreach ($this->model->detalhes as $segmento => $obj) {
+			$segmentoEncoded = $this->encode($layoutRemessa['detalhes'][$segmento], $this->model->detalhes->$segmento);
+			$segmentoEncoded .= "\n";
+			$encoded .= $segmentoEncoded;
+		}
+
+		return $encoded;
 	}
 }

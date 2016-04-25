@@ -16,6 +16,7 @@ class Remessa extends IntercambioBancarioAbstract
 		$this->trailer_arquivo = new \stdClass;
 		$this->header_lote = new \stdClass;
 		$this->trailer_lote = new \stdClass;
+		$this->detalhes = new \stdClass;
 		
 		if (isset($remessaLayout['header_arquivo'])) {
 			foreach ($remessaLayout['header_arquivo'] as $field => $definition) {
@@ -38,6 +39,15 @@ class Remessa extends IntercambioBancarioAbstract
 		if (isset($remessaLayout['trailer_lote'])) {
 			foreach ($remessaLayout['trailer_lote'] as $field => $definition) {
 				$this->trailer_lote->$field = (isset($definition['default'])) ? $definition['default'] : '';
+			}
+		}
+
+		if (isset($remessaLayout['detalhes'])) {
+			foreach ($remessaLayout['detalhes'] as $segmento => $segmentoDefinitions) {
+				$this->detalhes->$segmento = new \stdClass;
+				foreach ($segmentoDefinitions as $field => $definition) {
+					$this->detalhes->$segmento->$field = (isset($definition['default'])) ? $definition['default'] : '';
+				}
 			}
 		}
 	}
