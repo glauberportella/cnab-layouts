@@ -1,0 +1,7 @@
+.phpintel
+*.sublime-project
+*.sublime-workspace
+parser/vendor/
+parser/composer.lock
+parser/tests/in/*
+parser/tests/out/*
