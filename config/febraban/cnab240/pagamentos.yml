@@ -608,12 +608,45 @@ remessa:
         pos: [14,14]
         picture: 'X(1)'
         default: 'A'
+      #
+      # Campo: tipo_movimento
+      # Código adotado pela FEBRABAN, para identificar o tipo de movimentação enviada no arquivo.
+      # Domínio:
+      # '0' = Indica INCLUSÃO
+      # ‘1’ = Indica CONSULTA
+      # ‘2’ = Indica SUSPENSÃO
+      # '3' = Indica ESTORNO (somente para retorno)
+      # ‘4’ = Indica REATIVAÇÃO
+      # '5' = Indica ALTERAÇÃO
+      # ‘7` = Indica LIQUIDAÇAO
+      # '9' = Indica EXCLUSÃO
+      #
       tipo_movimento:
         pos: [15,15]
         picture: '9(1)'
+      #
+      # Campo: codigo_instrucao_movimento
+      # Código adotado pela FEBRABAN, para identificar a ação a ser realizada com o lançamento enviado no arquivo.
+      # Domínio:
+      # '00' = Inclusão de Registro Detalhe Liberado
+      # '09' = Inclusão do Registro Detalhe Bloqueado
+      # '10' = Alteração do Pagamento Liberado para Bloqueado (Bloqueio)
+      #
       codigo_instrucao_movimento:
         pos: [16,17]
         picture: '9(2)'
+      #
+      # Campo: codigo_camara_centralizadora
+      # Código adotado pela FEBRABAN, para identificar qual Câmara de Centralizadora será responsável pelo processamento dos pagamentos.
+      # Preencher com o código da Câmara Centralizadora para envio do DOC.
+      # Domínio:
+      # '018' = TED (STR,CIP)
+      # '700' = DOC (COMPE)
+      # “888”- TED (STR/CIP) – Utilizado quando for necessário o envio de TED utilizando o
+      # código ISPB da Instituição Financeira Destinatária. Neste caso é obrigatório o
+      # preenchimento do campo “Código ISPB” – Campo 26.3B, do Segmento de Pagamento,
+      # conforme descrito na Nota P015.
+      #
       codigo_camara_centralizadora:
         pos: [18,20]
         picture: '9(3)'
@@ -638,12 +671,39 @@ remessa:
       nome_favorecido:
         pos: [44,73]
         picture: 'X(30)'
+      #
+      # Campo: numero_documento_atribuido_empresa
+      # Número atribuído pela Empresa (Pagador) para identificar o documento de Pagamento (Nota Fiscal, Nota Promissória, etc.).
+      #
       numero_documento_atribuido_empresa:
         pos: [74,93]
         picture: 'X(20)'
       data_pagamento:
         pos: [94,101]
         picture: '9(8)'
+      #
+      # Campo: tipo_moeda
+      # Código adotado pela FEBRABAN para identificar a moeda utilizada para expressar o valor do documento.
+      # Baseada em tabela padrão S.W.I.F.T., acrescida dos principais índices nacionais.
+      # Domínio:
+      # 'BTN' = Bônus do Tesouro Nacional + TR
+      # 'BRL' = Real
+      # 'USD' = Dólar Americano
+      # 'PTE' = Escudo Português
+      # 'FRF' = Franco Francês
+      # 'CHF' = Franco Suíço
+      # 'JPY' = Ien Japonês
+      # 'IGP' = Índice Geral de Preços
+      # 'IGM' = Índice Geral de Preços de Mercado
+      # 'GBP' = Libra Esterlina
+      # 'ITL' = Lira Italiana
+      # 'DEM' = Marco Alemão
+      # 'TRD' = Taxa Referencial Diária
+      # 'UPC' = Unidade Padrão de Capital
+      # 'UPF' = Unidade Padrão de Financiamento
+      # 'UFR' = Unidade Fiscal de Referência
+      # 'XEU' = Unidade Monetária Européia
+      #
       tipo_moeda:
         pos: [102,104]
         picture: 'X(3)'
@@ -653,6 +713,10 @@ remessa:
       valor_pagamento:
         pos: [120,134]
         picture: '9(13)V(2)'
+      #
+      # Campo: numero_documento_atribuido_banco
+      # Número atribuído pelo Banco para identificar o lançamento, que será utilizado nas manutenções do mesmo.
+      #
       numero_documento_atribuido_banco:
         pos: [135,154]
         picture: 'X(20)'
@@ -665,12 +729,45 @@ remessa:
       outras_informacoes:
         pos: [178,217]
         picture: 'X(40)'
+      #
+      # Campo: complemento_tipo_servico
+      # Código adotado pela FEBRABAN para identificação da finalidade do DOC (Documento de Ordem de Crédito).
+      # Domínio:
+      # '01' = Crédito em Conta
+      # '02' = Pagamento de Aluguel/Condomínio
+      # '03' = Pagamento de Duplicata/Títulos
+      # '04' = Pagamento de Dividendos
+      # '05' = Pagamento de Mensalidade Escolar
+      # '06' = Pagamento de Salários
+      # '07' = Pagamento a Fornecedores
+      # '08' = Operações de Câmbios/Fundos/Bolsa de Valores
+      # '09' = Repasse de Arrecadação/Pagamento de Tributos
+      # '10' = Transferência Internacional em Real
+      # '11' = DOC para Poupança
+      # '12' = DOC para Depósito Judicial
+      # '13' = Outros
+      # ‘16’ = Pagamento de bolsa auxílio
+      # ‘17’ = Remuneração à cooperado
+      # ‘18’ = Pagamento de honorários
+      # ‘19’ = Pagamento de prebenda (Remuneração a padres e sacerdotes)
+      #
       complemento_tipo_servico:
         pos: [218,219]
         picture: 'X(2)'
+      #
+      # Campo: codigo_finalidade_ted
+      # Codigo adotado pelo Banco Central para identificar a finalidade da TED. Utitilizar os
+      # códigos de finalidade cliente, disponíveis no site do Banco Central do Brasil
+      # (www.bcb.gov.br), Sistema de Pagamentos Brasileiro, Transferência de Arquivos,
+      # Dicionários de Domínios para o SPB.
+      #
       codigo_finalidade_ted:
         pos: [220,224]
         picture: 'X(5)'
+      #
+      # Campo: complemento_finalidade_pagamento
+      # Código adotado para complemento da finalidade pagamento. A forma de utilização deverá ser acordada entre banco e cliente.
+      #
       complemento_finalidade_pagamento:
         pos: [225,226]
         picture: 'X(2)'
