@@ -4,7 +4,7 @@ use CnabParser\Parser\Layout;
 use CnabParser\Model\Remessa;
 use CnabParser\Output\RemessaFile;
 
-class ParserPagamentoTest extends \PHPUnit_Framework_TestCase
+class ParserFebrabanPagamentoTest extends \PHPUnit_Framework_TestCase
 {
 	public function testDeveInstanciarLayout()
 	{
