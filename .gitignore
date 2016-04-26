@@ -1,4 +1,7 @@
 .phpintel
+.settings
+.buildpath
+.project
 *.sublime-project
 *.sublime-workspace
 parser/vendor/
