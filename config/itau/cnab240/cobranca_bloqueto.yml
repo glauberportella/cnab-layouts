@@ -360,6 +360,7 @@ remessa:
       agencia_cobradora:
         pos: [101,105]
         picture: '9(5)'
+        default: '00000'
       dac_agencia_cobradora:
         pos: [106,106]
         picture: '9(1)'
@@ -503,8 +504,178 @@ remessa:
         picture: 'X(28)'
         default: ''
 
-    # opcional
+    ## opcional
+    ## O registro R é opcional, deve ser utilizado quando o cliente beneficiário tiver interesse em registrar ou
+    ## alterar o valor ou percentual de desconto e/ou multa diferente para cada título. Válido somente para
+    ## carteiras de Cobrança com registro, pode ser utilizado a qualquer momento sem necessidade de
+    ## cadastro prévio junto ao Itaú.
+    ## O arquivo remessa poderá conter esse registro opcional quando apresentar ocorrência “01 – Entrada”
+    ## ou “49 – Alteração de dados extras” para multa.
+    ## Só poderá ser enviado um tipo de registro do Segmento R, quando o tipo de segmento P anterior, tiver ocorrência 01
+    ## (Entrada) ou ocorrência 31 (Alteração de Outros Dados).
+    ## Qualquer outra ocorrência diferente de 01 e 31 informada no registro com segmento tipo P, será considerada erro
+    ## com envio de mensagem de erro - Registro inválido
     #segmento_r:
+    #  codigo_banco:
+    #    pos: [1,3]
+    #    picture: '9(3)'
+    #    defalut: 341
+    #  lote_servico:
+    #    pos: [4,7]
+    #    picture: '9(4)'
+    #  tipo_registro:
+    #    pos: [8,8]
+    #    picture: '9(1)'
+    #    defalut: 3
+    #  nummero_sequencial_registro_lote:
+    #    pos: [9,13]
+    #    picture: '9(5)'
+    #  segmento:
+    #    pos: [14,14]
+    #    picture: 'X(1)'
+    #    defalut: 'R'
+    #  brancos_01:
+    #    pos: [15,15]
+    #    picture: 'X(1)'
+    #    defalut: ''
+    #  codigo_ocorrencia:
+    #    pos: [16,17]
+    #    picture: '9(2)'
+    #  zeros_01:
+    #    pos: [18,18]
+    #    picture: '9(1)'
+    #    defalut: '0'
+    #  data_2o_desconto:
+    #    pos: [19,26]
+    #    picture: '9(8)'
+    #    default: '00000000'
+    #  valor_2o_desconto:
+    #    pos: [27,41]
+    #    picture: '9(13)V(2)'
+    #    defalut: 0
+    #  zeros_02:
+    #    pos: [42,42]
+    #    picture: '9(1)'
+    #    defalut: '0'
+    #  data_3o_desconto:
+    #    pos: [43,50]
+    #    picture: '9(8)'
+    #    defalut: '00000000'
+    #  valor_3o_desconto:
+    #    pos: [51,65]
+    #    picture: '9(13)V(2)'
+    #    defalut: 0
+    #  codigo_multa:
+    #    pos: [66,66]
+    #    picture: '9(1)'
+    #  data_multa:
+    #    pos: [67,74]
+    #    picture: 'X(8)'
+    #    defalut: ''
+    #  multa:
+    #    pos: [75,89]
+    #    picture: 'X(13)'
+    #    defalut: ''
+    #  brancos_02:
+    #    pos: [90,99]
+    #    picture: 'X(10)'
+    #    defalut: ''
+    #  informacoes_pagador:
+    #    pos: [100,139]
+    #    picture: 'X(40)'
+    #    defalut: ''
+    #  brancos_03:
+    #    pos: [140,199]
+    #    picture: 'X(60)'
+    #    defalut: ''
+    #  codigo_ocorrencia_pagador:
+    #    pos: [200,207]
+    #    picture: '9(8)'
+    #  zeros_03:
+    #    pos: [208,215]
+    #    picture: '9(8)'
+    #    defalut: '00000000'
+    #  brancos_04:
+    #    pos: [216,216]
+    #    picture: 'X(1)'
+    #    defalut: ''
+    #  zeros_04:
+    #    pos: [217,228]
+    #    picture: '9(12)'
+    #    defalut: '000000000000'
+    #  brancos_05:
+    #    pos: [229,230]
+    #    picture: 'X(2)'
+    #    defalut: ''
+    #  zeros_05:
+    #    pos: [231,231]
+    #    picture: '9(1)'
+    #    defalut: '0'
+    #  brancos_06:
+    #    pos: [232,240]
+    #    picture: 'X(9)'
+    #    defalut: ''
+
+    # opcional
+    # Dados sobre o BENEFICIÁRIO original do título de cobrança.
+    #segmento_y:
+    #  codigo_banco:
+    #    pos: [1,3]
+    #    picture: '9(3)'
+    #    default: 341
+    #  lote_servico:
+    #    pos: [4,7]
+    #    picture: '9(4)'
+    #  tipo_registro:
+    #    pos: [8,8]
+    #    picture: '9(1)'
+    #    default: 3
+    #  nummero_sequencial_registro_lote:
+    #    pos: [9,13]
+    #    picture: '9(5)'
+    #  segmento:
+    #    pos: [14,14]
+    #    picture: 'X(1)'
+    #    default: 'Y'
+    #  brancos_01:
+    #    pos: [15,15]
+    #    picture: 'X(1)'
+    #    default: ''
+    #  codigo_ocorrencia:
+    #    pos: [16,17]
+    #    picture: '9(2)'
+    #    default: ''
+    #  codigo_registro_opcional:
+    #    pos: [18,19]
+    #    picture: '9(2)'
+    #    default: '01'
+    #  tipo_inscricao:
+    #    pos: [20,20]
+    #    picture: '9(1)'
+    #  inscricao_numero:
+    #    pos: [21,35]
+    #    picture: '9(15)'
+    #  nome_sacador:
+    #    pos: [36,75]
+    #    picture: 'X(40)'
+    #  endereco_sacador:
+    #    pos: [76,115]
+    #    picture: 'X(40)'
+    #  bairro_sacador:
+    #    pos: [116,130]
+    #    picture: 'X(15)'
+    #  cep_sacador:
+    #    pos: [131,138]
+    #    picture: '9(8)'
+    #  cidade_sacador:
+    #    pos: [139,153]
+    #    picture: 'X(15)'
+    #  uf_sacador:
+    #    pos: [154,155]
+    #    picture: 'X(2)'
+    #  brancos_02:
+    #    pos: [156,240]
+    #    picture: 'X(85)'
+    #    default: ''
 
 retorno:
-  

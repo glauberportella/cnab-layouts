@@ -31,8 +31,8 @@ class ParserFebrabanPagamentoTest extends \PHPUnit_Framework_TestCase
 		$remessa->header_arquivo->numero_conta_corrente = '24992';
 		$remessa->header_arquivo->digito_verificador_conta = '9';
 		$remessa->header_arquivo->digito_verificador_agencia_conta = '';
-		$remessa->header_arquivo->nome_empresa = 'MacWeb Solutions Ltda';
-		$remessa->header_arquivo->nome_banco = 'Banco Itaú';
+		$remessa->header_arquivo->nome_empresa = 'MACWEB SOLUTIONS LTDA';
+		$remessa->header_arquivo->nome_banco = 'BANCO ITAU SA';
 		$remessa->header_arquivo->exclusivo_febraban_02 = '';
 		$remessa->header_arquivo->codigo_remessa_retorno = '1';
 		$remessa->header_arquivo->data_geracao_arquivo = date('dmY');
@@ -61,12 +61,12 @@ class ParserFebrabanPagamentoTest extends \PHPUnit_Framework_TestCase
 		$remessa->header_lote->numero_conta_corrente = '24992';
 		$remessa->header_lote->digito_verificador_conta = '9';
 		$remessa->header_lote->digito_verificador_agencia_conta = '';
-		$remessa->header_lote->nome_empresa = 'MacWeb Solutions Ltda';
+		$remessa->header_lote->nome_empresa = 'MACWEB SOLUTIONS LTDA';
 		$remessa->header_lote->mensagem = '';
-		$remessa->header_lote->logradouro = 'Rua Guajajaras';
+		$remessa->header_lote->logradouro = 'RUA GUAJAJARAS';
 		$remessa->header_lote->numero = '910';
-		$remessa->header_lote->complemento = 'sala 1203';
-		$remessa->header_lote->cidade = 'Belo Horizonte';
+		$remessa->header_lote->complemento = 'SALA 1203';
+		$remessa->header_lote->cidade = 'BELO HORIZONTE';
 		$remessa->header_lote->cep = '30180';
 		$remessa->header_lote->complemento_cep = '100';
 		$remessa->header_lote->estado = 'MG';
@@ -113,7 +113,7 @@ class ParserFebrabanPagamentoTest extends \PHPUnit_Framework_TestCase
 		$detalhe->segmento_a->numero_conta_corrente = 38094;
 		$detalhe->segmento_a->digito_verificador_conta = 3;
 		$detalhe->segmento_a->digito_verificador_agencia_conta = '';
-		$detalhe->segmento_a->nome_favorecido = 'Glauber Portella';
+		$detalhe->segmento_a->nome_favorecido = 'GLAUBER PORTELLA';
 		$detalhe->segmento_a->numero_documento_atribuido_empresa = '12345';
 		$detalhe->segmento_a->data_pagamento = date('dmY');
 		$detalhe->segmento_a->tipo_moeda = 'BRL';
@@ -139,11 +139,11 @@ class ParserFebrabanPagamentoTest extends \PHPUnit_Framework_TestCase
 		$detalhe->segmento_b->exclusivo_febraban_01 = '';
 		$detalhe->segmento_b->tipo_inscricao_favorecido = 1;
 		$detalhe->segmento_b->numero_inscricao_favorecido = '05771095613';
-		$detalhe->segmento_b->logradouro = 'Rua Alvarenga';
+		$detalhe->segmento_b->logradouro = 'RUA ALVARENGA';
 		$detalhe->segmento_b->numero = 40;
 		$detalhe->segmento_b->complemento = '';
-		$detalhe->segmento_b->bairro = 'Guarani';
-		$detalhe->segmento_b->cidade = 'Belo Horizonte';
+		$detalhe->segmento_b->bairro = 'GUARANI';
+		$detalhe->segmento_b->cidade = 'BELO HORIZONTE';
 		$detalhe->segmento_b->cep = '31814';
 		$detalhe->segmento_b->complemento_cep = '500';
 		$detalhe->segmento_b->estado = 'MG';
@@ -182,7 +182,7 @@ class ParserFebrabanPagamentoTest extends \PHPUnit_Framework_TestCase
 		// gera arquivo
 		$remessaFile = new RemessaFile($remessa);
 		$this->assertInstanceOf('CnabParser\Output\RemessaFile', $remessaFile);
-		$remessaFile->generate(__DIR__.'/out/remessa-pagamento.rem');
+		$remessaFile->generate(__DIR__.'/out/febraban-pagamento-cnab240.rem');
 	}
 
 	/*
