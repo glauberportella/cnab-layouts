@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/glauberportella/cnab-layouts.svg?branch=master)](https://travis-ci.org/ [![Code Climate](https://codeclimate.com/github/glauberportella/cnab-layouts/badges/gpa.svg)](https://codeclimate.com/github/glauberportella/cnab-layouts)
+
+glauberportella/cnab-layouts)
+
 # CNAB LAYOUTS
 
 Layouts de arquivos de intercâmbio bancário em formato YAML.
