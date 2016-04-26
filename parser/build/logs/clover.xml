@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1461697906">
-  <project timestamp="1461697906">
+<coverage generated="1461703441">
+  <project timestamp="1461703441">
     <package name="CnabParser\Exception">
       <file name="G:\wamp\www\cnab-layouts\parser\src\CnabParser/Exception/LayoutException.php">
         <class name="LayoutException" namespace="CnabParser\Exception">
