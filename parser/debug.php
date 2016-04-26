@@ -1,84 +1,4 @@
-# CNAB LAYOUTS
-
-Layouts de arquivos de intercâmbio bancário em formato YAML.
-
-## O que eu preciso saber
-
-* Utilizamos nomes simples para o campo, por exemplo para "Código do banco" utilize o "codigo_banco" (com underline e sem o "do")
-* Para definir o tipo do campo utilizamos uma Picture
-
-## O que é uma Picture
-
-Essa Picture foi baseada na documentação do itaú, disponível em http://download.itau.com.br/bankline/layout_cobranca_400bytes_cnab_itau_mensagem.pdf
-
-Cada registro é formado por campos que são apresentados em dois formatos:
-
-* Alfanumérico (picture X): alinhados à esquerda com brancos à direita. Preferencialmente, todos os caracteres devem ser maiúsculos. Aconselhase a não utilização de caracteres especiais (ex.: “Ç”, “?”,, etc) e acentuação gráfica (ex.: “Á”, “É”, “Ê”, etc) e os campos não utiliza dos deverão ser preenchidos com brancos.
-
-* Numérico (picture 9): alinhado à direita com zeros à esquerda e os campos não utilizados deverão ser preenchidos com zeros. - Vírgula assumida (picture V): indica a posição da vírgula dentro de um campo numérico. E xemplo: num campo com picture “9(5)V9(2)”, o número “876,54” será representado por “0087654”
-
-# Como criar um layout
-
-Arquivos de layout definem o modelo de dados. Os arquivos de layout são arquivos YAML e devem ser salvos com a seguinte nomenclatura `/config/<banco>/cnab[240|400]/nome_servico.yml`. Isso é uma convenção para manter a organizacao, você pode salvar em qualquer local e com o nome que desejar.
-
-Para criar um layout obtenha o manual junto ao Banco e siga o padrão de formato do YAML:
-
-```yaml
-# FORMATO: <INFORME SOBRE O FORMATO DO ARQUIVO CNAB240 ou CNAB400
-# OBJETIVO DO ARQUIVO: <INFORME O OBJETIVO DO LAYOUT DO ARQUIVO, PAGAMENTO, COBRANÇA, ETC.
-#
-# <INFORME DEMAIS DADOS IMPORTANTES SOBRE O LAYOUT
-# 
-
-# Serviço/produto fornecido pelo layout
-servico: 'pagamentos'
-
-# Versão do layout
-versao: '09.1'
-
-# definição do layout de arquivos de remessa
-remessa:
-	header_arquivo:
-		...
-	trailer_arquivo:
-		...
-	header_lote:
-		...
-	trailer_lote:
-		...
-	detalhes:
-		segmento_a:
-			...
-		segmento_b:
-			...
-		...
-		segmento_z:
-			...
-# definição do layout de arquivos de retorno
-retorno:
-	detalhes:
-		segmento_a:
-			...
-		segmento_b:
-			...
-		...
-		segmento_z:
-			...
-```
-
-# Usando o Parser
-
-Na pasta `/parser` existe a implementação do parser dos layouts criados, segue abaixo exemplo de utilização.
-
-**Obs.:** Entre na pasta `/parser` e execute `composer install` para instalar as dependências.
-
-Conforme informado acima, em **Como criar um Layout**, o arquivo de layout define o modelo de dados, ou seja, a classe Remessa e Retorno possuem atributos com o nome das chaves existentes no arquivo YAML do layout.
-
-## Exemplo de uso
-
-Gerando um arquivo Remessa de pagamentos via DOC, TED, crédito em conta, etc. formato FEBRABAN CNAB240:
-
-```php
+<?php
 require_once __DIR__.'/vendor/autoload.php';
 
 use CnabParser\Parser\Layout;
@@ -90,8 +10,8 @@ $remessa = new Remessa($remessaLayout);
 
 // preenche campos
 $remessa->header_arquivo->codigo_banco = 341;
-$remessa->header_arquivo->lote_servico = 0;
-$remessa->header_arquivo->tipo_registro = 0;
+//$remessa->header_arquivo->lote_servico = 0;
+//$remessa->header_arquivo->tipo_registro = 0;
 $remessa->header_arquivo->exclusivo_febraban_01 = '';
 $remessa->header_arquivo->tipo_inscricao_empresa = 2;
 $remessa->header_arquivo->numero_inscricao_empresa = '05346078000186';
@@ -108,7 +28,7 @@ $remessa->header_arquivo->codigo_remessa_retorno = '1';
 $remessa->header_arquivo->data_geracao_arquivo = date('dmY');
 $remessa->header_arquivo->hora_geracao_arquivo = date('His');
 $remessa->header_arquivo->numero_sequencial_arquivo = '1';
-$remessa->header_arquivo->versao_layout_arquivo = '091';
+//$remessa->header_arquivo->versao_layout_arquivo = '091';
 $remessa->header_arquivo->densidade_gravacao_arquivo = '1600';
 $remessa->header_arquivo->reservado_banco_01 = '';
 $remessa->header_arquivo->reservado_empresa_01 = '';
@@ -117,11 +37,11 @@ $remessa->header_arquivo->exclusivo_febraban_03 = '';
 // header lote
 $remessa->header_lote->codigo_banco = 341;
 $remessa->header_lote->lote_servico = 1;
-$remessa->header_lote->tipo_registro = 1;
-$remessa->header_lote->tipo_operacao = 'C';
+//$remessa->header_lote->tipo_registro = 1;
+//$remessa->header_lote->tipo_operacao = 'C';
 $remessa->header_lote->tipo_servico = 30;
 $remessa->header_lote->forma_lancamento = '02';
-$remessa->header_lote->versao_layout_lote = '045';
+//$remessa->header_lote->versao_layout_lote = '045';
 $remessa->header_lote->exclusivo_febraban_01 = '';
 $remessa->header_lote->tipo_inscricao_empresa = 2;
 $remessa->header_lote->numero_inscricao_empresa = '05346078000186';
@@ -147,7 +67,7 @@ $remessa->header_lote->codigos_ocorrencias_retorno = '';
 // trailer lote
 $remessa->trailer_lote->codigo_banco = 341;
 $remessa->trailer_lote->lote_servico = 1;
-$remessa->trailer_lote->tipo_registro = 5;
+// $remessa->trailer_lote->tipo_registro = 5;
 $remessa->trailer_lote->exclusivo_febraban_01 = '';
 $remessa->trailer_lote->quantidade_registros_lote = 1;
 $remessa->trailer_lote->somatoria_valores = '10000';
@@ -251,32 +171,4 @@ $remessa->inserirDetalhe($detalhe);
 	
 // gera arquivo
 $remessaFile = new RemessaFile($remessa);
-$remessaFile->generate(__DIR__.'/out/remessa-pagamento.rem');
-```
-
-# Referências
-
-Baseado em projeto CNAB YAML de https://github.com/andersondanilo/cnab_yaml
-
-# Licensa
-
-The MIT License (MIT)
-
-Copyright (c) 2016 Glauber Portella <glauberportella@gmail.com>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+$remessaFile->generate(__DIR__.'/tests/out/remessa-pagamento.rem');

@@ -601,6 +601,12 @@ remessa:
         pos: [8,8]
         picture: '9(1)'
         default: '3'
+      #
+      # Campo: numero_sequencial_registro_lote
+      # Número adotado e controlado pelo responsável pela geração magnética dos dados
+      # contidos no arquivo, para identificar a seqüência de registros encaminhados no lote.
+      # Deve ser inicializado sempre em '1', em cada novo lote.
+      #
       numero_sequencial_registro_lote:
         pos: [9,13]
         picture: '9(5)'
@@ -804,6 +810,21 @@ remessa:
         pos: [15,17]
         picture: 'X(3)'
         default: ''
+      #
+      # Campo: tipo_inscricao_favorecido
+      # Código que identifica o tipo de inscrição da Empresa ou Pessoa Física perante uma
+      # Instituição governamental.Domínio:
+      # '0' = Isento / Não Informado
+      # '1' = CPF
+      # '2' = CGC / CNPJ
+      # '3' = PIS / PASEP
+      # '9' = Outros
+      # - Preenchimento deste campo é obrigatório para DOC e TED (Forma de Lançamento = 03, 41, 43).
+      # - Para pagamento para o SIAPE com crédito em conta, o CPF deverá ser do 1º titular.
+      # - Para o Produto/Serviço Cobrança considerar como obrigatório, a partir de
+      # 01.06.2015, somente o CPF (código 1) ou o CNPJ (código 2). Os demais códigos não
+      # deverão ser utilizados.
+      #
       tipo_inscricao_favorecido:
         pos: [18,18]
         picture: '9(1)'
@@ -852,6 +873,11 @@ remessa:
       valor_multa:
         pos: [196,210]
         picture: '9(13)V(2)'
+      #
+      # Campo: codigo_documento_favorecido
+      # Número ou Código de documento para identificar o Favorecido.
+      # O conteúdo deste campo não sofrerá nenhum tratamento por parte do Banco.
+      #
       codigo_documento_favorecido:
         pos: [211,225]
         picture: 'X(15)'
@@ -1332,12 +1358,37 @@ retorno:
       codigo_documento_favorecido:
         pos: [211,225]
         picture: 'X(15)'
+      #
+      # Campo: aviso_favorecido
+      # Código adotado pela FEBRABAN para identificar a necessidade de emissão de aviso de
+      # pagamento ao Favorecido.
+      # Domínio:
+      # '0' = Não Emite Aviso
+      # '2' = Emite Aviso Somente para o Remetente
+      # '5' = Emite Aviso Somente para o Favorecido
+      # '6' = Emite Aviso para o Remetente e Favorecido
+      # '7' = Emite Aviso para o Favorecido e 2 Vias para o Remetente
+      # 
       aviso_favorecido:
         pos: [226,226]
         picture: '9(1)'
+      #
+      # Campo: exclusivo_siape_01
+      # Uso exclusivo para Pagamentos de Salários dos servidores, pelo SIAPE
+      #
       exclusivo_siape_01:
         pos: [227,232]
         picture: '9(6)'
+      #
+      # Campo: codigo_ispb
+      # Código Adotado pelo Banco Central para identificação das instituições financeiras no
+      # Sistema de Pagamentos Brasileiro.
+      # A informação do Código ISPB é obrigatória quando for necessário o envio de TED para
+      # instituição financeira que não possui código COMPE.
+      # A informação do código ISPB pode ser obtida por meio do seguinte site:
+      # www.bacen.gov.br - Início - Sistema de Pagamentos Brasileiro - STR - Sistema de
+      # Transferência de Reservas - Relação de participantes do STR
+      #
       codigo_ispb:
         pos: [233,240]
         picture: '9(8)'

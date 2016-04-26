@@ -6,6 +6,8 @@ use CnabParser\Parser\Layout;
 
 class Remessa extends IntercambioBancarioAbstract
 {
+	public $detalhes;
+
 	public function __construct(Layout $layout)
 	{
 		parent::__construct($layout);
@@ -16,7 +18,7 @@ class Remessa extends IntercambioBancarioAbstract
 		$this->trailer_arquivo = new \stdClass;
 		$this->header_lote = new \stdClass;
 		$this->trailer_lote = new \stdClass;
-		$this->detalhes = new \stdClass;
+		$this->detalhes = array();
 		
 		if (isset($remessaLayout['header_arquivo'])) {
 			foreach ($remessaLayout['header_arquivo'] as $field => $definition) {
@@ -41,14 +43,37 @@ class Remessa extends IntercambioBancarioAbstract
 				$this->trailer_lote->$field = (isset($definition['default'])) ? $definition['default'] : '';
 			}
 		}
+	}
 
+	public function novoDetalhe()
+	{
+		$remessaLayout = $this->layout->getRemessaLayout();
+		$detalhe = new \stdClass;
 		if (isset($remessaLayout['detalhes'])) {
 			foreach ($remessaLayout['detalhes'] as $segmento => $segmentoDefinitions) {
-				$this->detalhes->$segmento = new \stdClass;
+				$detalhe->$segmento = new \stdClass;
 				foreach ($segmentoDefinitions as $field => $definition) {
-					$this->detalhes->$segmento->$field = (isset($definition['default'])) ? $definition['default'] : '';
+					$detalhe->$segmento->$field = (isset($definition['default'])) ? $definition['default'] : '';
 				}
 			}
 		}
+		return $detalhe;
+	}
+
+	public function inserirDetalhe(\stdClass $detalhe)
+	{
+		$this->detalhes[] = $detalhe;
+		return $this;
+	}
+
+	public function countDetalhes()
+	{
+		return count($this->detalhes);
+	}
+
+	public function limpaDetalhes()
+	{
+		$this->detalhes = array();
+		return $this;
 	}
 }

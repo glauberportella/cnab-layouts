@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildpath>
+	<buildpathentry kind="src" path="parser/src/CnabParser/Exception"/>
+	<buildpathentry kind="src" path="parser/src/CnabParser/Format"/>
+	<buildpathentry kind="src" path="parser/src/CnabParser/Model"/>
+	<buildpathentry kind="src" path="parser/src/CnabParser/Output"/>
+	<buildpathentry kind="src" path="parser/src/CnabParser/Parser"/>
+	<buildpathentry kind="src" path="parser/tests"/>
+	<buildpathentry kind="src" path="parser/vendor"/>
+	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
+</buildpath>

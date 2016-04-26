@@ -80,14 +80,15 @@ class RemessaFile extends IntercambioBancarioFileAbstract
 		$layout = $this->model->getLayout();
 		$layoutRemessa = $layout->getRemessaLayout();
 
-		$encoded = '';
+		$encoded = array();
 
-		foreach ($this->model->detalhes as $segmento => $obj) {
-			$segmentoEncoded = $this->encode($layoutRemessa['detalhes'][$segmento], $this->model->detalhes->$segmento);
-			$segmentoEncoded .= "\n";
-			$encoded .= $segmentoEncoded;
+		foreach ($this->model->detalhes as $detalhe) {
+			foreach ($detalhe as $segmento => $obj) {
+				$segmentoEncoded = $this->encode($layoutRemessa['detalhes'][$segmento], $detalhe->$segmento);
+				$encoded[] = $segmentoEncoded;
+			}
 		}
 
-		return $encoded;
+		return implode("\n", $encoded);
 	}
 }
