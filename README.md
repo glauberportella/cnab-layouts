@@ -58,6 +58,14 @@ remessa:
 			...
 # definição do layout de arquivos de retorno
 retorno:
+	header_arquivo:
+		...
+	trailer_arquivo:
+		...
+	header_lote:
+		...
+	trailer_lote:
+		...
 	detalhes:
 		segmento_a:
 			...
@@ -255,6 +263,12 @@ $remessa->inserirDetalhe($detalhe);
 $remessaFile = new RemessaFile($remessa);
 $remessaFile->generate(__DIR__.'/out/remessa-pagamento.rem');
 ```
+
+# A Fazer
+
+1. Criar parser de arquivo de Retorno
+2. Criar layouts padrões para todos os serviços conforme manual FEBRABAN CNAB240
+3. Criar layouts dos principais bancos: Banco do Brasil, Caixa, Itaú, Santander, Bradesco, HSBC, etc.
 
 # Referências
 
