@@ -6,5 +6,7 @@
 *.sublime-workspace
 parser/vendor/
 parser/composer.lock
-parser/tests/in/*
-parser/tests/out/*
+parser/tests/in/*.rem
+parser/tests/out/*.rem
+parser/tests/in/*.ret
+parser/tests/out/*.ret
