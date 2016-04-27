@@ -21,7 +21,7 @@ Cada registro é formado por campos que são apresentados em dois formatos:
 
 # Como criar um layout
 
-Arquivos de layout definem o modelo de dados. Os arquivos de layout são arquivos YAML e devem ser salvos com a seguinte nomenclatura `/config/<banco>/cnab[240|400]/nome_servico.yml`. Isso é uma convenção para manter a organizacao, você pode salvar em qualquer local e com o nome que desejar.
+Arquivos de layout definem o modelo de dados. Os arquivos de layout são arquivos YAML e devem ser salvos com a seguinte nomenclatura `/config/<banco>/cnab[240|400]/nome_servico.yml`. Isso é uma convenção para manter a organização, você pode salvar em qualquer local e com o nome que desejar.
 
 Para criar um layout obtenha o manual junto ao Banco e siga o padrão de formato do YAML:
 
@@ -274,7 +274,7 @@ $remessaFile->generate(__DIR__.'/out/remessa-pagamento.rem');
 
 Baseado em projeto CNAB YAML de https://github.com/andersondanilo/cnab_yaml
 
-# Licensa
+# Licença
 
 The MIT License (MIT)
 
