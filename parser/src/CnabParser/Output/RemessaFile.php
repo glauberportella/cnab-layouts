@@ -29,7 +29,7 @@ class RemessaFile extends IntercambioBancarioFileAbstract
 			$trailerArquivo,
 		);
 
-		file_put_contents($path, implode("\n", $data));
+		file_put_contents($path, implode("\r\n", $data));
 	}
 
 	protected function encodeHeaderArquivo()
