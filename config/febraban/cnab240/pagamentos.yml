@@ -715,10 +715,10 @@ remessa:
         picture: 'X(3)'
       quantidade_moeda:
         pos: [105,119]
-        picture: '9(10)V(5)'
+        picture: '9(10)V9(5)'
       valor_pagamento:
         pos: [120,134]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       #
       # Campo: numero_documento_atribuido_banco
       # Número atribuído pelo Banco para identificar o lançamento, que será utilizado nas manutenções do mesmo.
@@ -731,7 +731,7 @@ remessa:
         picture: '9(8)'
       valor_real_efetivacao_pagamento:
         pos: [163,177]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       outras_informacoes:
         pos: [178,217]
         picture: 'X(40)'
@@ -860,19 +860,19 @@ remessa:
         picture: '9(8)'
       valor_documento_nominal:
         pos: [136,150]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       valor_abatimento:
         pos: [151,165]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       valor_desconto:
         pos: [166,180]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       valor_mora:
         pos: [181,195]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       valor_multa:
         pos: [196,210]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       #
       # Campo: codigo_documento_favorecido
       # Número ou Código de documento para identificar o Favorecido.
@@ -916,19 +916,19 @@ remessa:
         default: ''
       valor_ir:
         pos: [18,32]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       valor_iss:
         pos: [33,47]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       valor_iof:
         pos: [48,62]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       valor_outras_deducoes:
         pos: [63,77]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       valor_outros_acrescimos:
         pos: [78,92]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       agencia_favorecido:
         pos: [93,97]
         picture: '9(5)'
@@ -946,7 +946,7 @@ remessa:
         picture: 'X(1)'
       valor_inss:
         pos: [113,127]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       exclusivo_febraban_02:
         pos: [128,240]
         picture: 'X(113)'
@@ -1174,10 +1174,10 @@ retorno:
       picture: '9(6)'
     somatoria_valores:
       pos: [24,41]
-      picture: '9(16)V(2)'
+      picture: '9(16)V9(2)'
     somatoria_quantidade_moedas:
       pos: [42,59]
-      picture: '9(13)V(5)'
+      picture: '9(13)V9(5)'
     numero_aviso_debito:
       pos: [60,65]
       picture: '9(6)'
@@ -1249,10 +1249,10 @@ retorno:
         picture: 'X(3)'
       quantidade_moeda:
         pos: [105,119]
-        picture: '9(10)V(5)'
+        picture: '9(10)V9(5)'
       valor_pagamento:
         pos: [120,134]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       numero_documento_atribuido_banco:
         pos: [135,154]
         picture: 'X(20)'
@@ -1261,7 +1261,7 @@ retorno:
         picture: '9(8)'
       valor_real_efetivacao_pagamento:
         pos: [163,177]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       outras_informacoes:
         pos: [178,217]
         picture: 'X(40)'
@@ -1342,19 +1342,19 @@ retorno:
         picture: '9(8)'
       valor_documento_nominal:
         pos: [136,150]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       valor_abatimento:
         pos: [151,165]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       valor_desconto:
         pos: [166,180]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       valor_mora:
         pos: [181,195]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       valor_multa:
         pos: [196,210]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       codigo_documento_favorecido:
         pos: [211,225]
         picture: 'X(15)'
@@ -1418,19 +1418,19 @@ retorno:
         default: ''
       valor_ir:
         pos: [18,32]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       valor_iss:
         pos: [33,47]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       valor_iof:
         pos: [48,62]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       valor_outras_deducoes:
         pos: [63,77]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       valor_outros_acrescimos:
         pos: [78,92]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       agencia_favorecido:
         pos: [93,97]
         picture: '9(5)'
@@ -1448,7 +1448,7 @@ retorno:
         picture: 'X(1)'
       valor_inss:
         pos: [113,127]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       exclusivo_febraban_02:
         pos: [128,240]
         picture: 'X(113)'
