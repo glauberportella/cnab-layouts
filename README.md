@@ -272,7 +272,32 @@ $remessaFile->generate(__DIR__.'/out/remessa-pagamento.rem');
 
 # Correções e Testes
 
-1. Arquivo CNAB 240 Para itaú: Tamanho do Registro 1 inválido
+## ITAU Cnab240
+
+1. Registro: header_lote
+
+Linha: 2
+Posição 034 - Campo: Complemento de Registro - Conteúdo deve estar em branco. (00000000000000000000)
+Layout: CNAB 240 - Cobrança Detalhe P
+
+2. Registro: detalhe
+
+Linha: 3
+Posição 101 - Campo: Agência onde o Título será Cobrado - Conteúdo não é igual a zeros. (02932)
+Layout: CNAB 240 - Cobrança Detalhe Q
+
+Linha: 4
+Posição 009 - Campo: Nº Sequencial Registro no Lote - Número sequencial não confere. (00001)
+Registro: trailer_lote
+
+Linha: 5
+Posição 018 - Campo: Quantidade de Registros do Lote - Quantidade de registros não confere. (000001)
+Posição 116 - Campo: Referência do Aviso Bancário - Conteúdo não é igual a zeros. (em branco)
+Registro: trailer
+
+Linha: 6
+Posição 024 - Campo: Quantidade de Registros do Arquivo - Quantidade de registros não confere. (000001)
+
 
 # Referências
 
