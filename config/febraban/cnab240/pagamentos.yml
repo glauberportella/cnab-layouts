@@ -566,14 +566,14 @@ remessa:
     #
     somatoria_valores:
       pos: [24,41]
-      picture: '9(16)V(2)'
+      picture: '9(16)V9(2)'
     #
     # Campo: somatoria_quantidade_moedas
     # Valor obtido pela somatória das quantidades de moeda dos registros de detalhe (Registro = '3' / Código de Segmento = {'A' / 'J'}).
     #
     somatoria_quantidade_moedas:
       pos: [42,59]
-      picture: '9(13)V(5)'
+      picture: '9(13)V9(5)'
     #
     # Campo: numero_aviso_debito
     # Número atribuído pelo Banco para identificar um Débito efetuado na Conta Corrente a partir do(s) pagamento(s) efetivado(s), visando facilitar a Conciliação Bancária.

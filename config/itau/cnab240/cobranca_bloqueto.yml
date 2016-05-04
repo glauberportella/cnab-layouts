@@ -150,8 +150,8 @@ remessa:
       picture: '9(15)'
     brancos_02:
       pos: [34,53]
-      picture: 'X(20)'
-      default: ''
+      picture: '9(20)'
+      default: 0
     zeros_02:
       pos: [54,54]
       picture: '9(1)'
@@ -166,7 +166,7 @@ remessa:
     zeros_03:
       pos: [60,66]
       picture: '9(7)'
-      default: '0000000'
+      default: 0
     conta:
       pos: [67,71]
       picture: '9(5)'
@@ -222,13 +222,13 @@ remessa:
       picture: '9(6)'
     valor_total_cobranca_simples:
       pos: [30,46]
-      picture: '9(15)V(2)'
+      picture: '9(15)V9(2)'
     quantidade_cobranca_vinculada:
       pos: [47,52]
       picture: '9(6)'
     valor_total_cobranca_vinculada:
       pos: [53,69]
-      picture: '9(15)V(2)'
+      picture: '9(15)V9(2)'
     zeros_01:
       pos: [70,115]
       picture: '9(46)'
@@ -356,7 +356,7 @@ remessa:
         picture: '9(8)'
       valor_titulo:
         pos: [86,100]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       agencia_cobradora:
         pos: [101,105]
         picture: '9(5)'
@@ -383,7 +383,7 @@ remessa:
         picture: '9(8)'
       juros_1_dia:
         pos: [127,141]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       zeros_05:
         pos: [142,142]
         picture: '9(1)'
@@ -393,13 +393,13 @@ remessa:
         picture: '9(8)'
       valor_1o_desconto:
         pos: [151,165]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       valor_iof:
         pos: [166,180]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       valor_abatimento:
         pos: [181,195]
-        picture: '9(13)V(2)'
+        picture: '9(13)V9(2)'
       identificacao_titulo_empresa:
         pos: [196,220]
         picture: 'X(25)'
@@ -551,7 +551,7 @@ remessa:
     #    default: '00000000'
     #  valor_2o_desconto:
     #    pos: [27,41]
-    #    picture: '9(13)V(2)'
+    #    picture: '9(13)V9(2)'
     #    defalut: 0
     #  zeros_02:
     #    pos: [42,42]
@@ -563,7 +563,7 @@ remessa:
     #    defalut: '00000000'
     #  valor_3o_desconto:
     #    pos: [51,65]
-    #    picture: '9(13)V(2)'
+    #    picture: '9(13)V9(2)'
     #    defalut: 0
     #  codigo_multa:
     #    pos: [66,66]

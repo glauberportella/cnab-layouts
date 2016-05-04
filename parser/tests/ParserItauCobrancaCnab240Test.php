@@ -30,16 +30,30 @@ class ParserItauCobrancaCnab240Test extends \PHPUnit_Framework_TestCase
 		$remessa->header_arquivo->hora_geracao = date('His');
 		$remessa->header_arquivo->numero_sequencial_arquivo_retorno = 1;
 		
+		$remessa->header_lote->codigo_banco = 341;
 		$remessa->header_lote->lote_servico = 1;
+		$remessa->header_lote->tipo_registro = 1;
+		$remessa->header_lote->tipo_operacao = 'R';
+		$remessa->header_lote->tipo_servico = '01';
+		$remessa->header_lote->zeros_01 = 0;
+		$remessa->header_lote->versao_layout_lote = '030';
+		$remessa->header_lote->brancos_01 = '';
 		$remessa->header_lote->tipo_inscricao = 2;
 		$remessa->header_lote->inscricao_empresa = '05346078000186';
+		$remessa->header_lote->brancos_02 = 0;
+		$remessa->header_lote->zeros_02 = 0;
 		$remessa->header_lote->agencia = 2932;
-		$remessa->header_lote->conta = 24992;
+		$remessa->header_lote->brancos_03 = '';
+		$remessa->header_lote->zeros_03 = 0;
+		$remessa->header_lote->conta = '24992';
+		$remessa->header_lote->brancos_04 = '';
 		$remessa->header_lote->dac = 9;
 		$remessa->header_lote->nome_empresa = 'MACWEB SOLUTIONS LTDA';
+		$remessa->header_lote->brancos_05 = '';
 		$remessa->header_lote->numero_sequencial_arquivo_retorno = 1;
 		$remessa->header_lote->data_gravacao = date('dmY');
 		$remessa->header_lote->data_credito = date('dmY');
+		$remessa->header_lote->brancos_06 = '';
 
 		$remessa->trailer_lote->lote_servico = 1;
 		$remessa->trailer_lote->quantidade_registros_lote = 1;
@@ -106,6 +120,6 @@ class ParserItauCobrancaCnab240Test extends \PHPUnit_Framework_TestCase
 		// gera arquivo
 		$remessaFile = new RemessaFile($remessa);
 		$this->assertInstanceOf('CnabParser\Output\RemessaFile', $remessaFile);
-		$remessaFile->generate(__DIR__.'/out/itau-cobanca-cnab240.rem');
+		$remessaFile->generate(__DIR__.'/out/itau-cobranca240.rem');
 	}
 }

@@ -270,6 +270,10 @@ $remessaFile->generate(__DIR__.'/out/remessa-pagamento.rem');
 2. Criar layouts padrões para todos os serviços conforme manual FEBRABAN CNAB240
 3. Criar layouts dos principais bancos: Banco do Brasil, Caixa, Itaú, Santander, Bradesco, HSBC, etc.
 
+# Correções e Testes
+
+1. Arquivo CNAB 240 Para itaú: Tamanho do Registro 1 inválido
+
 # Referências
 
 Baseado em projeto CNAB YAML de https://github.com/andersondanilo/cnab_yaml
