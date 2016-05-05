@@ -1,0 +1,712 @@
+# FORMATO: ITAU - CNAB240
+# OBJETIVO DO ARQUIVO: PAGAMENTOS Cheque, OP, DOC, TED ou crédito em conta - SISPAG ITAÚ
+#
+# TAMANHO DO REGISTRO
+# O Tamanho do Registro é de 240 bytes.
+#
+# ALINHAMENTO DE CAMPOS
+# - Campos Numéricos (9) = Sempre à direita e preenchidos com zeros à esquerda.
+# - Campos Alfanuméricos (X) = Sempre à esquerda e preenchidos com brancos à direita. 
+# Pagamento através de Cheque, OP, DOC, TED, ou crédito em conta corrente:
+#
+# - Segmento A - (Obrigatório)
+# - Segmento B - (Opcional, quando for necessária emissão de aviso ao favorecido ou quando contratado o envio de Demonstrativo de Pagamentos via e-mail)
+# - Segmento C – (Opcional. Necessário quando contratado o serviço de Demonstrativo de Pagamentos via web / e-mail)
+# - Segmento D, E e F – (Opcionais. Necessário quando contratado o serviço de Holerite – Demonstrativo de Pagamentos / Informe de Rendimentos via Itaú 30 horas / Auto Atendimento)
+# - Segmento Z – (Opcional – Informado somente no arquivo retorno, quando contratado junto ao Banco a opção de Autenticação Eletrônica de Pagamentos por arquivo)
+#
+
+servico: pagamento_cheque_op_doc_ted_credito_cc
+
+versao: 'itau_sispag_fev2014'
+
+remessa:
+
+  header_arquivo:
+    codigo_banco:
+      pos: [1,3]
+      picture: '9(3)'
+      default: 341
+    codigo_lote:
+      pos: [4,7]
+      picture: '9(4)'
+      default: '0000'
+    tipo_registro:
+      pos: [8,8]
+      picture: '9(1)'
+      default: ''
+    brancos_01:
+      pos: [9,14]
+      picture: 'X(6)'
+      default: ''
+    layout_arquivo:
+      pos: [15,17]
+      picture: '9(3)'
+      default: '081'
+    tipo_inscricao:
+      pos: [18,18]
+      picture: '9(1)'
+    inscricao_numero:
+      pos: [19,32]
+      picture: '9(14)'
+    brancos_02:
+      pos: [33,52]
+      picture: 'X(20)'
+      default: ''
+    agencia_debito:
+      pos: [53,57]
+      picture: '9(5)'
+    brancos_03:
+      pos: [58,58]
+      picture: 'X(1)'
+      default: ''
+    conta_debito:
+      pos: [59,70]
+      picture: '9(12)'
+    brancos_04:
+      pos: [71,71]
+      picture: 'X(1)'
+      default: ''
+    dac_debito:
+      pos: [72,72]
+      picture: '9(1)'
+    nome_empresa:
+      pos: [73,102]
+      picture: 'X(30)'
+    nome_banco:
+      pos: [103,142]
+      picture: 'X(30)'
+    brancos_05:
+      pos: [133,142]
+      picture: 'X(10)'
+      default: ''
+    arquivo_codigo:
+      pos: [143,143]
+      picture: '9(1)'
+      default: 1
+    data_geracao:
+      pos: [144,151]
+      picture: '9(8)'
+    hora_geracao:
+      pos: [152,157]
+      picture: '9(6)'
+    zeros_01:
+      pos: [158,166]
+      picture: '9(9)'
+      default: 0
+    densidade_gravacao:
+      pos: [167,171]
+      picture: '9(5)'
+      default: 0
+    brancos_06:
+      pos: [172,240]
+      picture: 'X(69)'
+      default: ''
+
+  header_lote:
+    codigo_banco:
+      pos: [1,3]
+      picture: '9(3)'
+      default: 341
+    codigo_lote:
+      pos: [4,7]
+      picture: '9(4)'
+    tipo_registro:
+      pos: [8,8]
+      picture: '9(1)'
+      default: 1
+    tipo_operacao:
+      pos: [9,9]
+      picture: 'X(1)'
+      default: 'C'
+    tipo_pagamento:
+      pos: [10,11]
+      picture: '9(2)'
+    forma_pagamento:
+      pos: [12,13]
+      picture: '9(2)'
+    layout_lote:
+      pos: [14,16]
+      picture: '9(3)'
+      default: '040'
+    brancos_01:
+      pos: [17,17]
+      picture: 'X(1)'
+      default: ''
+    tipo_inscricao_debito:
+      pos: [18,18]
+      picture: '9(1)'
+    inscricao_numero:
+      pos: [19,32]
+      picture: '9(14)'
+    identificacao_lancamento:
+      pos: [33,36]
+      picture: 'X(4)'
+    brancos_02:
+      pos: [37,52]
+      picture: 'X(16)'
+      default: ''
+    agencia_debito:
+      pos: [53,57]
+      picture: '9(5)'
+    brancos_03:
+      pos: [58,58]
+      picture: 'X(1)'
+      default: ''
+    conta_debito:
+      pos: [59,70]
+      picture: '9(12)'
+    brancos_04:
+      pos: [71,71]
+      picture: 'X(1)'
+      default: ''
+    dac_debito:
+      pos: [72,72]
+      picture: '9(1)'
+    nome_empresa:
+      pos: [73,102]
+      picture: 'X(30)'
+    finalidade_lote:
+      pos: [103,132]
+      picture: 'X(30)'
+    historico_cc_debito:
+      pos: [133,142]
+      picture: 'X(10)'
+    endereco_empresa:
+      pos: [143,172]
+      picture: 'X(30)'
+    numero:
+      pos: [173,177]
+      picture: '9(5)'
+    complemento:
+      pos: [178,192]
+      picture: 'X(15)'
+      default: 'CASA'
+    cidade:
+      pos: [193,212]
+      picture: 'X(20)'
+    cep:
+      pos: [213,220]
+      picture: '9(8)'
+    estado:
+      pos: [221,222]
+      picture: 'X(2)'
+    brancos_05:
+      pos: [223,230]
+      picture: 'X(8)'
+      default: ''
+    codigo_ocorrencias:
+      pos: [231,240]
+      picture: 'X(10)'
+
+  trailer_lote:
+    codigo_banco:
+      pos: [1,3]
+      picture: '9(3)'
+      default: 341
+    codigo_lote:
+      pos: [4,7]
+      picture: '9(4)'
+    tipo_registro:
+      pos: [8,8]
+      picture: '9(1)'
+      default: 5
+    brancos_01:
+      pos: [9,17]
+      picture: 'X(9)'
+      default: ''
+    total_registros_lote:
+      pos: [18,23]
+      picture: '9(6)'
+    total_valor_pagtos:
+      pos: [24,41]
+      picture: '9(16)V0(2)'
+    zeros_01:
+      pos: [42,59]
+      picture: '9(18)'
+      default: 0
+    brancos_02:
+      pos: [60,230]
+      picture: 'X(171)'
+      default: ''
+    codigos_ocorrencias:
+      pos: [231,240]
+      picture: 'X(10)'
+
+  trailer_arquivo:
+    codigo_banco:
+      pos: [1,3]
+      picture: '9(3)'
+      default: 341
+    codigo_lote:
+      pos: [4,7]
+      picture: '9(4)'
+      default: 9999
+    tipo_registro:
+      pos: [8,8]
+      picture: '9(1)'
+      default: 9
+    brancos_01:
+      pos: [9,17]
+      picture: 'X(9)'
+      default: ''
+    total_lotes_arquivo:
+      pos: [18,23]
+      picture: '9(6)'
+    total_registros:
+      pos: [24,29]
+      picture: '9(6)'
+    brancos_02:
+      pos: [30,240]
+      picture: 'X(211)'
+      default: ''
+
+  detalhes:
+    # segmentos
+    # - Segmento A - (Obrigatório)
+    # - Segmento B - (Opcional, quando for necessária emissão de aviso ao favorecido ou quando contratado o envio de Demonstrativo de Pagamentos via e-mail)
+    # - Segmento C – (Opcional. Necessário quando contratado o serviço de Demonstrativo de Pagamentos via web / e-mail)
+    # - Segmento D, E e F – (Opcionais. Necessário quando contratado o serviço de Holerite – Demonstrativo de Pagamentos / Informe de Rendimentos via Itaú 30 horas / Auto Atendimento)
+    # - Segmento Z – (Opcional – Informado somente no arquivo retorno, quando contratado junto ao Banco a opção de Autenticação Eletrônica de Pagamentos por arquivo)
+    #
+    segmento_a:
+      codigo_banco:
+        pos: [1,3]
+        picture: '9(3)'
+        default: 341
+      codigo_lote:
+        pos: [4,7]
+        picture: '9(4)'
+      tipo_registro:
+        pos: [8,8]
+        picture: '9(1)'
+        default: 3
+      numero_registro:
+        pos: [9,13]
+        picture: '9(5)'
+      segmento_codigo:
+        pos: [14,14]
+        picture: 'X(1)'
+        default: 'A'
+      tipo_movimento:
+        pos: [15,17]
+        picture: '9(3)'
+      codigo_camara_centralizadora:
+        pos: [18,20]
+        picture: '9(3)'
+      codigo_banco_favorecido:
+        pos: [21,23]
+        picture: '9(3)'
+      agencia_favorecido:
+        pos: [24,43]
+        picture: 'X(20)'
+      nome_favorecido:
+        pos: [44,73]
+        picture: 'X(30)'
+      numero_doc:
+        pos: [74,93]
+        picture: 'X(20)'
+      data_pagto:
+        pos: [94,101]
+        picture: '9(8)'
+      moeda:
+        pos: [102,104]
+        picture: 'X(3)'
+        default: 'REA'
+      codigo_ispb:
+        pos: [105,112]
+        picture: '9(8)'
+      zeros_01:
+        pos: [113,119]
+        picture: '9(7)'
+        default: 0
+      valor_pagto:
+        pos: [120,134]
+        picture: '9(13)V9(2)'
+      nosso_numero:
+        pos: [135,149]
+        picture: 'X(15)'
+      brancos_01:
+        pos: [150,154]
+        picture: 'X(5)'
+        default: ''
+      data_efetiva:
+        pos: [155,162]
+        picture: '9(8)'
+      valor_efetivo:
+        pos: [163,177]
+        picture: '9(13)V9(2)'
+      finalidade:
+        pos: [178,195]
+        picture: 'X(18)'
+      brancos_02:
+        pos: [196,197]
+        picture: 'X(2)'
+        default: ''
+      num_documento:
+        pos: [198,203]
+        picture: '9(6)'
+      num_inscricao_favorecido:
+        pos: [204,217]
+        picture: '9(14)'
+      finalidade_doc_status_funcionario:
+        pos: [218,219]
+        picture: 'X(2)'
+      finalidade_ted:
+        pos: [220,224]
+        picture: 'X(5)'
+      brancos_03:
+        pos: [225,229]
+        picture: 'X(5)'
+        default: ''
+      aviso:
+        pos: [230,230]
+        picture: 'X(1)'
+      codigo_ocorrencias:
+        pos: [231,240]
+        picture: 'X(10)'
+
+    segmento_b:
+      codigo_banco:
+        pos: [1,3]
+        picture: '9(3)'
+        default: 341
+      codigo_lote:
+        pos: [4,7]
+        picture: '9(4)'
+      tipo_registro:
+        pos: [8,8]
+        picture: '9(1)'
+        default: 3
+      numero_registro:
+        pos: [9,13]
+        picture: '9(5)'
+      codigo_segmento:
+        pos: [14,14]
+        picture: 'X(1)'
+        default: 'B'
+      brancos_01:
+        pos: [15,17]
+        picture: 'X(3)'
+        default: ''
+      tipo_inscricao_favorecido:
+        pos: [18,18]
+        picture: '9(1)'
+      inscricao_favorecido:
+        pos: [19,32]
+        picture: '9(14)'
+      endereco:
+        pos: [33,62]
+        picture: 'X(30)'
+      numero:
+        pos: [63,67]
+        picture: '9(5)'
+      complemento:
+        pos: [68,82]
+        picture: 'X(15)'
+        default: 'CASA'
+      bairro:
+        pos: [83,97]
+        picture: 'X(15)'
+      cidade:
+        pos: [98,117]
+        picture: 'X(20)'
+      cep:
+        pos: [118,125]
+        picture: '9(8)'
+      estado:
+        pos: [126,127]
+        picture: 'X(2)'
+      email:
+        pos: [128,227]
+        picture: 'X(100)'
+      brancos_02:
+        pos: [228,230]
+        picture: 'X(3)'
+        default: ''
+      codigo_ocorrencias:
+        pos: [231,240]
+        picture: 'X(10)'
+
+    segmento_c:
+      codigo_banco:
+        pos: [1,3]
+        picture: '9(3)'
+        default: 341
+      codigo_lote:
+        pos: [4,7]
+        picture: '9(4)'
+      tipo_registro:
+        pos: [8,8]
+        picture: '9(1)'
+        default: 3
+      numero_registro:
+        pos: [9,13]
+        picture: '9(5)'
+      codigo_segmento:
+        pos: [14,14]
+        picture: 'X(1)'
+        default: 'C'
+      valor_contrib_lucro_liquido:
+        pos: [15,29]
+        picture: '9(13)V9(2)'
+      brancos_01:
+        pos: [30,37]
+        picture: 'X(8)'
+        default: ''
+      vencimento:
+        pos: [38,45]
+        picture: 'X(8)'
+      valor_documento:
+        pos: [46,60]
+        picture: '9(13)V9(2)'
+      valor_pis:
+        pos: [61,75]
+        picture: '9(13)V9(2)'
+      valor_ir:
+        pos: [76,90]
+        picture: '9(13)V9(2)'
+      valor_iss:
+        pos: [91,105]
+        picture: '9(13)V9(2)'
+      valor_cofins:
+        pos: [106,120]
+        picture: '9(13)V9(2)'
+      desconto:
+        pos: [121,135]
+        picture: '9(13)V9(2)'
+      abatimento:
+        pos: [136,150]
+        picture: '9(13)V9(2)'
+      outras_deducoes:
+        pos: [151,165]
+        picture: '9(13)V9(2)'
+      mora:
+        pos: [166,180]
+        picture: '9(13)V9(2)'
+      multa:
+        pos: [181,195]
+        picture: '9(13)V9(2)'
+      outros_acrescimos:
+        pos: [196,210]
+        picture: '9(13)V9(2)'
+      numero_fatura_documento:
+        pos: [211,230]
+        picture: 'X(20)'
+      brancos_02:
+        pos: [231,240]
+        picture: 'X(10)'
+        default: ''
+
+    # Segmento D (opcional): Pagamentos de Salários através de crédito em conta corrente (Holerite)
+    segmento_d:
+      codigo_banco:
+        pos: [1,3]
+        picture: '9(3)'
+        default: 341
+      codigo_lote:
+        pos: [4,7]
+        picture: '9(4)'
+      tipo_registro:
+        pos: [8,8]
+        picture: '9(1)'
+        default: 3
+      numero_registro:
+        pos: [9,13]
+        picture: '9(5)'
+      codigo_segmento:
+        pos: [14,14]
+        picture: 'X(1)'
+        default: 'D'
+      brancos_01:
+        pos: [15,17]
+        picture: 'X(3)'
+        default: ''
+      mes_ano_pagamento:
+        pos: [18,23]
+        picture: '9(6)'
+      centro_custo:
+        pos: [24,38]
+        picture: 'X(15)'
+      codigo_funcionario:
+        pos: [39,53]
+        picture: 'X(15)'
+      cargo:
+        pos: [54,83]
+        picture: 'X(30)'
+      ferias_de:
+        pos: [84,91]
+        picture: '9(8)'
+      ferias_ate:
+        pos: [92,99]
+        picture: '9(8)'
+      dependentes_ir:
+        pos: [100,101]
+        picture: '9(2)'
+      dependentes_sf:
+        pos: [102,103]
+        picture: '9(2)'
+      horas_semanais:
+        pos: [104,105]
+        picture: '9(2)'
+      salario_contribuicao:
+        pos: [106,120]
+        picture: '9(13)V9(2)'
+      fgts:
+        pos: [121,135]
+        picture: '9(13)V9(2)'
+      valor_creditos:
+        pos: [136,150]
+        picture: '9(13)V9(2)'
+      valor_debito:
+        pos: [151,165]
+        picture: '9(13)V9(2)'
+      valor_liquido:
+        pos: [166,180]
+        picture: '9(13)V9(2)'
+      valor_fixo_base:
+        pos: [181,195]
+        picture: '9(13)V9(2)'
+      base_calculo_irrf:
+        pos: [196,210]
+        picture: '9(13)V9(2)'
+      base_calculo_fgts:
+        pos: [211,225]
+        picture: '9(13)V9(2)'
+      disponibilizacao:
+        pos: [226,227]
+        picture: 'X(2)'
+      brancos_02:
+        pos: [228,230]
+        picture: 'X(3)'
+        default: ''
+      codigo_ocorrencia:
+        pos: [231,240]
+        picture: 'X(10)'
+
+    # Segmento E (opcional): Pagamentos de Salários através de crédito em conta corrente (Holerite)
+    segmento_e:
+      codigo_banco:
+        pos: [1,3]
+        picture: '9(3)'
+        default: 341
+      codigo_lote:
+        pos: [4,7]
+        picture: '9(4)'
+      tipo_registro:
+        pos: [8,8]
+        picture: '9(1)'
+        default: 3
+      numero_registro:
+        pos: [9,13]
+        picture: '9(5)'
+      codigo_segmento:
+        pos: [14,14]
+        picture: 'X(1)'
+        default: 'E'
+      brancos_01:
+        pos: [15,17]
+        picture: 'X(3)'
+        default: ''
+      tipo_movimento:
+        pos: [18,18]
+        picture: 'X(1)'
+      informacoes_complementares:
+        pos: [19,218]
+        picture: 'X(200)'
+      brancos_02:
+        pos: [219,230]
+        picture: 'X(12)'
+        default: ''
+      codigo_ocorrencia:
+        pos: [231,240]
+        picture: 'X(10)'
+
+    # Segmento F (opcional): Pagamentos de Salários através de crédito em conta corrente (Holerite)
+    segmento_f:
+      codigo_banco:
+        pos: [1,3]
+        picture: '9(3)'
+        default: 341
+      codigo_lote:
+        pos: [4,7]
+        picture: '9(4)'
+      tipo_registro:
+        pos: [8,8]
+        picture: '9(1)'
+        default: 3
+      numero_registro:
+        pos: [9,13]
+        picture: '9(5)'
+      codigo_segmento:
+        pos: [14,14]
+        picture: 'X(1)'
+        default: 'F'
+      brancos_01:
+        pos: [15,17]
+        picture: 'X(3)'
+        default: ''
+      mensagem:
+        pos: [18,161]
+        picture: 'X(144)'
+      brancos_02:
+        pos: [162,230]
+        picture: 'X(69)'
+        default: ''
+      codigo_ocorrencia:
+        pos: [231,240]
+        picture: 'X(10)'
+
+    segmento_z:
+      codigo_banco:
+        pos: [1,3]
+        picture: '9(3)'
+        default: 341
+      codigo_lote:
+        pos: [4,7]
+        picture: '9(4)'
+      tipo_registro:
+        pos: [8,8]
+        picture: '9(1)'
+        default: 3
+      numero_registro:
+        pos: [9,13]
+        picture: '9(5)'
+      codigo_segmento:
+        pos: [14,14]
+        picture: 'X(1)'
+        default: 'Z'
+      autenticacao:
+        pos: [15,78]
+        picture: 'X(64)'
+      numero_doc:
+        pos: [79,98]
+        picture: 'X(20)'
+      brancos_01:
+        pos: [99,103]
+        picture: 'X(5)'
+        default: ''
+      nosso_numero:
+        pos: [104,118]
+        picture: 'X(15)'
+      brancos_02:
+        pos: [119,240]
+        picture: 'X(122)'
+        default: ''
+
+retorno:
+  detalhes:
+    # segmentos
+    # - Segmento A - (Obrigatório)
+    # - Segmento B - (Opcional, quando for necessária emissão de aviso ao favorecido ou quando contratado o envio de Demonstrativo de Pagamentos via e-mail)
+    # - Segmento C – (Opcional. Necessário quando contratado o serviço de Demonstrativo de Pagamentos via web / e-mail)
+    # - Segmento D, E e F – (Opcionais. Necessário quando contratado o serviço de Holerite – Demonstrativo de Pagamentos / Informe de Rendimentos via Itaú 30 horas / Auto Atendimento)
+    # - Segmento Z – (Opcional – Informado somente no arquivo retorno, quando contratado junto ao Banco a opção de Autenticação Eletrônica de Pagamentos por arquivo)
+    #
+    segmento_a:
+    segmento_b:
+    segmento_c:
+    segmento_d:
+    segmento_e:
+    segmento_f:
+    segmento_z:

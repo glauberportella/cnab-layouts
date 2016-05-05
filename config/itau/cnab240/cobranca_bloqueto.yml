@@ -233,6 +233,10 @@ remessa:
       pos: [70,115]
       picture: '9(46)'
       default: '0'
+    #
+    # Campo: aviso_bancario
+    # Refere-se ao código do extrato de Movimentação de Títulos (MT) associado a esse movimento
+    #
     aviso_bancario:
       pos: [116,123]
       picture: 'X(8)'

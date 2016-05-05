@@ -40,7 +40,7 @@ class ParserItauCobrancaCnab240Test extends \PHPUnit_Framework_TestCase
 		$remessa->header_lote->brancos_01 = '';
 		$remessa->header_lote->tipo_inscricao = 2;
 		$remessa->header_lote->inscricao_empresa = '05346078000186';
-		$remessa->header_lote->brancos_02 = 0;
+		$remessa->header_lote->brancos_02 = '0';
 		$remessa->header_lote->zeros_02 = 0;
 		$remessa->header_lote->agencia = 2932;
 		$remessa->header_lote->brancos_03 = '';
@@ -56,14 +56,15 @@ class ParserItauCobrancaCnab240Test extends \PHPUnit_Framework_TestCase
 		$remessa->header_lote->brancos_06 = '';
 
 		$remessa->trailer_lote->lote_servico = 1;
-		$remessa->trailer_lote->quantidade_registros_lote = 1;
+		$remessa->trailer_lote->quantidade_registros_lote = 4; // quantidade de Registros do Lote correspondente à soma da quantidade dos registros tipo 1 (header_lote), 3(detalhes) e 5(trailer_lote)
 		$remessa->trailer_lote->quantidade_cobranca_simples = 1;
 		$remessa->trailer_lote->valor_total_cobranca_simples = 10000;
 		$remessa->trailer_lote->quantidade_cobranca_vinculada = 0;
 		$remessa->trailer_lote->valor_total_cobranca_vinculada = 0;
+		$remessa->trailer_lote->aviso_bancario = '00000000';
 
-		$remessa->trailer_arquivo->total_lotes = 1;
-		$remessa->trailer_arquivo->total_registros = 1;
+		$remessa->trailer_arquivo->total_lotes = 1; // quantidade de Lotes do arquivo correspondente à soma da quantidade dos registros tipo 1 (header_lote).
+		$remessa->trailer_arquivo->total_registros = 6; //total da quantidade de Registros no arquivo correspondente à soma da quantidade dos registros tipo 0(header_arquivo), 1(header_lote), 3(detalhes), 5(trailer_lote) e 9(trailer_arquivo).
 
 		$detalhe = $remessa->novoDetalhe();
 		// segmento p
@@ -79,7 +80,7 @@ class ParserItauCobrancaCnab240Test extends \PHPUnit_Framework_TestCase
 		$detalhe->segmento_p->numero_documento = 1;
 		$detalhe->segmento_p->vencimento = '10052016';
 		$detalhe->segmento_p->valor_titulo = 1000;
-		$detalhe->segmento_p->agencia_cobradora = 2932;
+		$detalhe->segmento_p->agencia_cobradora = 0;
 		$detalhe->segmento_p->dac_agencia_cobradora = 0;
 		$detalhe->segmento_p->especie = '05';
 		$detalhe->segmento_p->aceite = 'N';
@@ -97,7 +98,7 @@ class ParserItauCobrancaCnab240Test extends \PHPUnit_Framework_TestCase
 		$detalhe->segmento_p->prazo_baixa = 0;
 		// segmento q
 		$detalhe->segmento_q->lote_servico = 1;
-		$detalhe->segmento_q->nummero_sequencial_registro_lote = 1;
+		$detalhe->segmento_q->nummero_sequencial_registro_lote = 2;
 		$detalhe->segmento_q->codigo_ocorrencia = '01';
 		$detalhe->segmento_q->tipo_inscricao = 2;
 		$detalhe->segmento_q->inscricao_numero = '05346078000186';
