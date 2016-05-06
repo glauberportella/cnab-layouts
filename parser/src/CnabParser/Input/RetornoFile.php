@@ -40,7 +40,6 @@ class RetornoFile extends IntercambioBancarioRetornoFileAbstract
 	protected function decodeLotes()
 	{
 		$lotes = $this->getLinhasLotes();
-		print_r($lotes);
 	}
 
 
