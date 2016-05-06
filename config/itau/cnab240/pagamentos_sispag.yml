@@ -20,6 +20,8 @@ servico: pagamento_cheque_op_doc_ted_credito_cc
 
 versao: 'itau_sispag_fev2014'
 
+layout: 'cnab240'
+
 remessa:
 
   header_arquivo:

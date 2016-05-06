@@ -15,49 +15,51 @@ class RetornoFile extends IntercambioBancarioRetornoFileAbstract
 	 */
 	public function generate($path = null)
 	{
-		$this->generateHeaderArquivo();
-		$this->generateTrailerArquivo();
+		$this->decodeHeaderArquivo();
+		$this->decodeTrailerArquivo();
+		$this->decodeLotes();
 		return $this->model;
 	}
 
 	/**
 	 * Processa header_arquivo
 	 */
-	protected function generateHeaderArquivo()
+	protected function decodeHeaderArquivo()
 	{
-		$retornoLayout = $this->layout->getRetornoLayout();
-		$definicoes = $retornoLayout['header_arquivo'];
-		
-		// linha referente ao registro de header de arquivo (indice 0)
-		$linhaTxt = $this->linhas[0];
-
-		foreach ($definicoes as $campo => $definicao) {
-			$valor = $this->obterValorCampoDaLinha($linhaTxt, $definicao);
-			$this->model->header_arquivo->{$campo} = $valor;
-		}
+		$this->decode('header_arquivo', 0);
 	}
 
 	/**
 	 * Processa trailer_arquivo
 	 */
-	protected function generateTrailerArquivo()
+	protected function decodeTrailerArquivo()
 	{
-
+		$this->decode('trailer_arquivo', count($this->linhas) - 1);
 	}
 
-	protected function obterValorCampoDaLinha($linha, array $definicao)
+	protected function decodeLotes()
 	{
-		if (1 !== preg_match(Picture::REGEX_VALID_FORMAT, $definicao['picture'], $tipo)) {
-			throw new RetornoException('Erro ao obter valor de linha de registro do arquivo de retorno.');
+		$lotes = $this->getLinhasLotes();
+		print_r($lotes);
+	}
+
+
+	/**
+	 * [decode description]
+	 * @param  string $registro Registro a ser decodificado: header_arquivo, trailer_arquivo
+	 * @return [type]           [description]
+	 */
+	protected function decode($registro = 'header_arquivo', $indiceLinha = 0)
+	{
+		$retornoLayout = $this->layout->getRetornoLayout();
+		$definicoes = $retornoLayout[$registro];
+		
+		// linha referente ao registro
+		$linhaTxt = $this->linhas[$indiceLinha];
+
+		foreach ($definicoes as $campo => $definicao) {
+			$valor = $this->obterValorCampoDaLinha($linhaTxt, $definicao);
+			$this->model->{$registro}->{$campo} = $valor;
 		}
-
-		$inicio = $definicao['pos'][0] - 1;
-		$tamanho1 = !empty($tipo['tamanho1']) ? (int)$tipo['tamanho1'] : 0;
-		$tamanho2 = !empty($tipo['tamanho2']) ? (int)$tipo['tamanho2'] : 0;
-		$tamanho = $tamanho1 + $tamanho2;
-		$formato = $definicao['picture'];
-		$opcoes = array();
-
-		return Picture::decode(substr($linha, $inicio, $tamanho), $formato, $opcoes);
 	}
 }

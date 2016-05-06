@@ -12,6 +12,8 @@ servico: 'cobranca_bloqueto'
 
 versao: 'fev2016'
 
+layout: 'cnab240'
+
 remessa:
   header_arquivo:
     codigo_banco:

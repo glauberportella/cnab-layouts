@@ -49,4 +49,11 @@ class Layout
 			? null
 			: $this->config['servico'];
 	}
+
+	public function getLayout()
+	{
+		return !isset($this->config['layout']) 
+			? null
+			: $this->config['layout'];
+	}
 }

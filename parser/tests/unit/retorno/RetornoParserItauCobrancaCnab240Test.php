@@ -20,11 +20,14 @@ class RetornoParserItauCobrancaCnab240Test extends \PHPUnit_Framework_TestCase
 		$layout = new Layout(__DIR__.'/../../../../config/itau/cnab240/cobranca_bloqueto.yml');
 		$retornoFile = new RetornoFile($layout, __DIR__.'/../../data/cobranca-itau-cnab240.ret');
 
+		$this->assertEquals(1, $retornoFile->getTotalLotes());
+
 		$retorno = $retornoFile->generate();
 		$this->assertInstanceOf('CnabParser\Model\Retorno', $retorno);
 
 		$this->assertInstanceOf('StdClass', $retorno->header_arquivo);
 		
+		// verifica header_arquivo
 		$this->assertEquals(341, $retorno->header_arquivo->codigo_banco);
 		$this->assertEquals(0, $retorno->header_arquivo->lote_servico);
 		$this->assertEquals(0, $retorno->header_arquivo->tipo_registro);
@@ -51,5 +54,15 @@ class RetornoParserItauCobrancaCnab240Test extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('', $retorno->header_arquivo->brancos_06);
 		$this->assertEquals(0, $retorno->header_arquivo->zeros_04);
 		$this->assertEquals('', $retorno->header_arquivo->brancos_07);
+
+		// verifica trailer_arquivo
+		$this->assertEquals(341, $retorno->trailer_arquivo->codigo_banco);
+		$this->assertEquals(9999, $retorno->trailer_arquivo->lote_servico);
+		$this->assertEquals(9, $retorno->trailer_arquivo->registro);
+		$this->assertEquals('', $retorno->trailer_arquivo->brancos_01);
+		$this->assertEquals(1, $retorno->trailer_arquivo->total_lotes);
+		$this->assertEquals(8, $retorno->trailer_arquivo->total_registros);
+		$this->assertEquals(0, $retorno->trailer_arquivo->zeros_01);
+		$this->assertEquals('', $retorno->trailer_arquivo->brancos_02);
 	}
 }
