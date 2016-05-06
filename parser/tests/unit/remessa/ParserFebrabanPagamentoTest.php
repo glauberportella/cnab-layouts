@@ -8,13 +8,13 @@ class ParserFebrabanPagamentoTest extends \PHPUnit_Framework_TestCase
 {
 	public function testDeveInstanciarLayout()
 	{
-		$layout = new Layout(__DIR__.'/../../config/febraban/cnab240/pagamentos.yml');
+		$layout = new Layout(__DIR__.'/../../../../config/febraban/cnab240/pagamentos.yml');
 		$this->assertInstanceOf('CnabParser\Parser\Layout', $layout);
 	}
 
 	public function testRemessaPagamentosOk()
 	{
-		$remessaLayout = new Layout(__DIR__.'/../../config/febraban/cnab240/pagamentos.yml');
+		$remessaLayout = new Layout(__DIR__.'/../../../../config/febraban/cnab240/pagamentos.yml');
 		$remessa = new Remessa($remessaLayout);
 		$this->assertInstanceOf('CnabParser\Model\Remessa', $remessa);
 		
@@ -182,15 +182,6 @@ class ParserFebrabanPagamentoTest extends \PHPUnit_Framework_TestCase
 		// gera arquivo
 		$remessaFile = new RemessaFile($remessa);
 		$this->assertInstanceOf('CnabParser\Output\RemessaFile', $remessaFile);
-		$remessaFile->generate(__DIR__.'/out/febraban-pagamento-cnab240.rem');
+		$remessaFile->generate(__DIR__.'/../../out/febraban-pagamento-cnab240.rem');
 	}
-
-	/*
-	public function testRetornoPagamentosOK()
-	{
-		$retornoLayout = new Layout(__DIR__.'/../config/febraban/cnab240/pagamentos.yml');
-		$retornoReader = new RetornoReader($retornoLayout);
-		$retorno = $retornoReader->read(__DIR__'/in/retorno.ret');
-	}
-	*/
 }

@@ -1,32 +1,18 @@
 <?php
 
-namespace CnabParser\Output;
+namespace CnabParser;
 
-use CnabParser\Model\IntercambioBancarioAbstract;
-
+use CnabParser\IntercambioBancarioFileAbstract;
+use CnabParser\IntercambioBancarioAbstract;
 use CnabParser\Format\Picture;
 
-abstract class IntercambioBancarioFileAbstract
+abstract class IntercambioBancarioRemessaFileAbstract extends IntercambioBancarioFileAbstract
 {
-
-	/**
-	 * Model to write
-	 * @var CnabParser\Model\IntercambioBancarioAbstract
-	 */
-	protected $model;
-
 	public function __construct(IntercambioBancarioAbstract $model)
 	{
 		$this->model = $model;
 	}
-
-	/**
-	 * Write to file $path
-	 * @param  string $path
-	 * @return boolean
-	 */
-	abstract public function generate($path);
-
+	
 	protected function encode($fieldsDef, $modelSection)
 	{
 		$encoded = '';

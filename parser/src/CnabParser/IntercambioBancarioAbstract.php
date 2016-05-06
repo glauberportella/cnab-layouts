@@ -1,6 +1,6 @@
 <?php
 
-namespace CnabParser\Model;
+namespace CnabParser;
 
 use CnabParser\Parser\Layout;
 

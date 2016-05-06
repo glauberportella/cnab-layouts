@@ -2,7 +2,9 @@
 
 namespace CnabParser\Output;
 
-class RemessaFile extends IntercambioBancarioFileAbstract
+use CnabParser\IntercambioBancarioRemessaFileAbstract;
+
+class RemessaFile extends IntercambioBancarioRemessaFileAbstract
 {
 	public function generate($path)
 	{

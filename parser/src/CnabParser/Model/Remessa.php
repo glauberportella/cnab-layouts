@@ -2,6 +2,7 @@
 
 namespace CnabParser\Model;
 
+use CnabParser\IntercambioBancarioAbstract;
 use CnabParser\Parser\Layout;
 
 class Remessa extends IntercambioBancarioAbstract

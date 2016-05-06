@@ -8,13 +8,13 @@ class ParserItauCobrancaCnab240Test extends \PHPUnit_Framework_TestCase
 {
 	public function testDeveInstanciarLayout()
 	{
-		$layout = new Layout(__DIR__.'/../../config/itau/cnab240/cobranca_bloqueto.yml');
+		$layout = new Layout(__DIR__.'/../../../../config/itau/cnab240/cobranca_bloqueto.yml');
 		$this->assertInstanceOf('CnabParser\Parser\Layout', $layout);
 	}
 
 	public function testRemessaOk()
 	{
-		$remessaLayout = new Layout(__DIR__.'/../../config/itau/cnab240/cobranca_bloqueto.yml');
+		$remessaLayout = new Layout(__DIR__.'/../../../../config/itau/cnab240/cobranca_bloqueto.yml');
 		$remessa = new Remessa($remessaLayout);
 		$this->assertInstanceOf('CnabParser\Model\Remessa', $remessa);
 		
@@ -113,14 +113,15 @@ class ParserItauCobrancaCnab240Test extends \PHPUnit_Framework_TestCase
 		$detalhe->segmento_q->inscricao_sacador = '05346078000186';
 		$detalhe->segmento_q->nome_sacador = 'MACWEB SOLUTIONS LTDA';
 		// segmento r opcional nao adicionado no layout
+		unset($detalhe->segmento_r);
 		// segmento y opcional nao adicionado no layout
-		
+		unset($detalhe->segmento_y);
 		// insere o detalhe na remessa
 		$remessa->inserirDetalhe($detalhe);
 
 		// gera arquivo
 		$remessaFile = new RemessaFile($remessa);
 		$this->assertInstanceOf('CnabParser\Output\RemessaFile', $remessaFile);
-		$remessaFile->generate(__DIR__.'/out/itau-cobranca240.rem');
+		$remessaFile->generate(__DIR__.'/../../out/itau-cobranca240.rem');
 	}
 }
