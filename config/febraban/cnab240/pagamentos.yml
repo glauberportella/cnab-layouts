@@ -27,6 +27,8 @@ servico: 'pagamentos'
 
 versao: '09.1'
 
+layout: 'cnab240'
+
 remessa:
 
   header_arquivo:
