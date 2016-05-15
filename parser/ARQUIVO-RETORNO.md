@@ -32,16 +32,41 @@ Assumindo que o arquivo vem em ordem de lotes
 
 ```
 Início
-1) Inicia na linha 1 do arquivo
-2) Leia a linha
-3) Leia tipo de registro (campo tipo de registro, posição 8 picture 9(1))
-4) Se tipo de registro == 0 ou == 9 pula para proxima linha e volta ao passo 2
-5) Se tipo de registro == 1 então é novo lote, guarda o código do lote pula para próxima linha e volta ao passo 2
-6) Se tipo de registro == 3 então
-6.1) Leia codigo do lote
-6.2) Se não é o mesmo que o código guardado no passo 5 pula para próxima linha e volta ao passo 2
-6.3) Leia codigo do segmento 
-// CONTINUAR DAQUI
-7) Senão se tipo de registro == 5 finaliza lote pula para próxima linha e volta ao passo 2
-8) Senão tipo de registro não conhecido pula para próxima linha se houver e volta ao passo 2, se não há mais linha finaliza.
-```
+
+    var
+        tipo_registro: inteiro          // tipo de registro da linha
+        codigo_lote: inteiro            // código sequêncial do lote
+        codigo_lote_segmento: inteiro   // referência ao código sequencial do lote do registro detalhe
+        codigo_segmento: caractere      // código do segmento do registro detalhe
+        numero_registro: inteiro        // número sequencial do registro detalhe dentro do lote
+        indice_detalhe: inteiro         //
+        linha: string                   // a linha sendo processada
+        lote: matriz
+
+    "Inicia na primeira linha do arquivo"
+
+    // inicia lote como uma matriz vazia
+    lote := []
+    
+    indice_detalhe := 0
+    
+    Enquanto linha := "Leia a linha" faça
+        tipo_registro := "Leia tipo de registro (campo tipo de registro, posição 8 picture 9(1))"
+        Se tipo_registro = 1 então // é novo lote
+            codigo_lote := "leia o código do lote"
+            lote[codigo_lote] := "nova matriz"
+        senão se tipo_registro = 3 então // detalhe
+            codigo_lote_segmento := "Leia código do lote"
+            Se codigo_lote_segmento != codigo_lote então
+                continua
+            Fim se
+            codigo_segmento := "Leia código do segmento"
+            numero_registro := "Leia número do registro (campo posição 9 a 13, picture 9(5))"
+            lote[codigo_lote][indice_detalhe][codigo_segmento] := "Leia dados da linha"
+            Se codigo_segmento = "Último código de segmento do layout" então
+                indice_detalhe := indice_detalhe + 1
+            Fim se
+        Fim se
+    Fim enquanto
+    
+Fim.
