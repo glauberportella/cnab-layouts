@@ -24,8 +24,8 @@ class RetornoParserItauCobrancaCnab240Test extends \PHPUnit_Framework_TestCase
 
 		$retorno = $retornoFile->generate();
 		$this->assertInstanceOf('CnabParser\Model\Retorno', $retorno);
-
 		$this->assertInstanceOf('StdClass', $retorno->header_arquivo);
+		$this->assertNotEmpty($retorno->lotes);
 		
 		// verifica header_arquivo
 		$this->assertEquals(341, $retorno->header_arquivo->codigo_banco);

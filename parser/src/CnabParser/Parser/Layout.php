@@ -56,4 +56,13 @@ class Layout
 			? null
 			: $this->config['layout'];
 	}
+
+	public function getUltimoCodigoSegmentoRetorno()
+	{
+		$layout = $this->getRetornoLayout();
+		$segmentos = array_keys($layout['detalhes']);
+		$ultimoSegmento = $segmentos[count($segmentos) - 1];
+		$partes = explode('_', $ultimoSegmento);
+		return strtolower($partes[count($partes) - 1]);
+	}
 }
