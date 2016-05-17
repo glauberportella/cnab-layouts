@@ -1,0 +1,8 @@
+*.sublime-project
+*.sublime-workspace
+.phpintel/
+.settings/
+config/
+parser/
+.buildpath
+.project
