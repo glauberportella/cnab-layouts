@@ -85,11 +85,12 @@ class RetornoFile extends IntercambioBancarioRetornoFileAbstract
 
 		$indiceDetalhe = 0;
 		$ultimoCodigoSegmentoLayout = $this->layout->getUltimoCodigoSegmentoRetorno();
-		// guardar lotes em $this->model->lotes
+		
 		foreach ($this->linhas as $linhaStr) {
 			$linha = new Linha($linhaStr, $this->layout, 'retorno');
 			$tipoRegistro = (int)$linha->obterValorCampo($defTipoRegistro);
-			if ($tipoRegistro !== 1 && $tipoRegistro !== 3) {
+			if ($tipoRegistro !== IntercambioBancarioRetornoFileAbstract::REGISTRO_HEADER_LOTE && 
+				$tipoRegistro !== IntercambioBancarioRetornoFileAbstract::REGISTRO_DETALHES) {
 				continue;
 			}
 
