@@ -88,18 +88,21 @@ Na pasta `/parser` existe a implementação do parser dos layouts criados, segue
 
 Conforme informado acima, em **Como criar um Layout**, o arquivo de layout define o modelo de dados, ou seja, a classe Remessa e Retorno possuem atributos com o nome das chaves existentes no arquivo YAML do layout.
 
-## Exemplo de uso
+# Exemplos
+
+## Arquivo de Remessa
 
 Gerando um arquivo Remessa de pagamentos via DOC, TED, crédito em conta, etc. formato FEBRABAN CNAB240:
 
 ```php
+<?php 
 require_once __DIR__.'/vendor/autoload.php';
 
 use CnabParser\Parser\Layout;
 use CnabParser\Model\Remessa;
 use CnabParser\Output\RemessaFile;
 
-$remessaLayout = new Layout(__DIR__.'/../config/febraban/cnab240/pagamentos.yml');
+$remessaLayout = new Layout(__DIR__.'/config/febraban/cnab240/pagamentos.yml');
 $remessa = new Remessa($remessaLayout);
 
 // preenche campos
@@ -266,6 +269,27 @@ $remessa->inserirDetalhe($detalhe);
 // gera arquivo
 $remessaFile = new RemessaFile($remessa);
 $remessaFile->generate(__DIR__.'/out/remessa-pagamento.rem');
+```
+
+## Retorno
+
+Processando um arquivo de retorno transformando-o em modelo para uso em seu sistema.
+
+```php
+<?php
+require_once __DIR__.'/vendor/autoload.php';
+
+use CnabParser\Parser\Layout;
+use CnabParser\Model\Retorno;
+use CnabParser\Input\RetornoFile;
+
+$layout = new Layout(__DIR__.'/config/itau/cnab240/cobranca_bloqueto.yml');
+$retornoFile = new RetornoFile($layout, __DIR__.'/data/cobranca-itau-cnab240.ret');
+
+// Gera o objeto instancia de CnabParser\Model\Retorno com os dados do arquivo de retorno processado
+$retorno = $retornoFile->generate();
+
+// ... utilize o $retorno em seu sistema para verificações, etc. ...
 ```
 
 # A Fazer
