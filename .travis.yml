@@ -11,7 +11,6 @@ addons:
     repo_token: 153dcdbbca5ef9c1c42d3ce2a46df3e441951a99d9de6049f49d983c9464fa2d
 
 install:
-  - cd parser
   - composer install
 
 after_script:
