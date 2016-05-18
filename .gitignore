@@ -1,0 +1,12 @@
+.phpintel
+.settings
+.buildpath
+.project
+*.sublime-project
+*.sublime-workspace
+vendor/
+composer.lock
+tests/in/*.rem
+tests/out/*.rem
+tests/in/*.ret
+tests/out/*.ret
