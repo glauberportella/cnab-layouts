@@ -1,0 +1,1155 @@
+# FORMATO: ITAU - CNAB240
+# OBJETIVO DO ARQUIVO: COBRANÇA BANCÁRIA
+#
+# TAMANHO DO REGISTRO
+# O Tamanho do Registro é de 240 bytes.
+#
+# ALINHAMENTO DE CAMPOS
+# - Campos Numéricos (9) = Sempre à direita e preenchidos com zeros à esquerda.
+# - Campos Alfanuméricos (X) = Sempre à esquerda e preenchidos com brancos à direita. 
+#
+servico: 'cobranca_bloqueto'
+
+versao: 'fev2016'
+
+layout: 'cnab240'
+
+remessa:
+  header_arquivo:
+    codigo_banco:
+      pos: [1,3]
+      picture: '9(3)'
+      default: 341
+    lote_servico:
+      pos: [4,7]
+      picture: '9(4)'
+      default: '0000'
+    tipo_registro:
+      pos: [8,8]
+      picture: '9(1)'
+      default: 0
+    brancos_01:
+      pos: [9,17]
+      picture: 'X(9)'
+      default: ''
+    tipo_inscricao:
+      pos: [18,18]
+      picture: '9(1)'
+    inscricao_numero:
+      pos: [19,32]
+      picture: '9(14)'
+    brancos_02:
+      pos: [33,52]
+      picture: 'X(20)'
+      default: ''
+    zeros_01:
+      pos: [53,53]
+      picture: '9(1)'
+      default: 0
+    agencia:
+      pos: [54,57]
+      picture: '9(4)'
+    brancos_03:
+      pos: [58,58]
+      picture: 'X(1)'
+      default: ''
+    zeros_02:
+      pos: [59,65]
+      picture: '9(7)'
+      default: '0000000'
+    conta:
+      pos: [66,70]
+      picture: '9(5)'
+    brancos_04:
+      pos: [71,71]
+      picture: 'X(1)'
+      default: ''
+    dac:
+      pos: [72,72]
+      picture: '9(1)'
+    nome_empresa:
+      pos: [73,102]
+      picture: 'X(30)'
+    nome_banco:
+      pos: [103,132]
+      picture: 'X(30)'
+      default: 'BANCO ITAU SA'
+    brancos_05:
+      pos: [133,142]
+      picture: 'X(10)'
+      default: ''
+    codigo_arquivo:
+      pos: [143,143]
+      picture: '9(1)'
+      default: 1
+    data_geracao:
+      pos: [144,151]
+      picture: '9(8)'
+    hora_geracao:
+      pos: [152,157]
+      picture: '9(6)'
+    numero_sequencial_arquivo_retorno:
+      pos: [158,163]
+      picture: '9(6)'
+    versao_layout_arquivo:
+      pos: [164,166]
+      picture: '9(3)'
+      default: '040'
+    zeros_03:
+      pos: [167,171]
+      picture: '9(5)'
+      default: '00000'
+    brancos_06:
+      pos: [172,225]
+      picture: 'X(54)'
+      default: ''
+    zeros_04:
+      pos: [226,228]
+      picture: '9(3)'
+      default: '000'
+    brancos_07:
+      pos: [229,240]
+      picture: 'X(12)'
+      default: ''
+
+  header_lote:
+    codigo_banco:
+      pos: [1,3]
+      picture: '9(3)'
+      default: 341
+    lote_servico:
+      pos: [4,7]
+      picture: '9(4)'
+    tipo_registro:
+      pos: [8,8]
+      picture: '9(1)'
+      default: 1
+    tipo_operacao:
+      pos: [9,9]
+      picture: 'X(1)'
+      default: 'R'
+    tipo_servico:
+      pos: [10,11]
+      picture: '9(2)'
+      default: '01'
+    zeros_01:
+      pos: [12,13]
+      picture: '9(2)'
+      default: '00'
+    versao_layout_lote:
+      pos: [14,16]
+      picture: '9(3)'
+      default: '030'
+    brancos_01:
+      pos: [17,17]
+      picture: 'X(1)'
+      default: ''
+    tipo_inscricao:
+      pos: [18,18]
+      picture: '9(1)'
+    inscricao_empresa:
+      pos: [19,33]
+      picture: '9(15)'
+    brancos_02:
+      pos: [34,53]
+      picture: '9(20)'
+      default: 0
+    zeros_02:
+      pos: [54,54]
+      picture: '9(1)'
+      default: 0
+    agencia:
+      pos: [55,58]
+      picture: '9(4)'
+    brancos_03:
+      pos: [59,59]
+      picture: 'X(1)'
+      default: ''
+    zeros_03:
+      pos: [60,66]
+      picture: '9(7)'
+      default: 0
+    conta:
+      pos: [67,71]
+      picture: '9(5)'
+    brancos_04:
+      pos: [72,72]
+      picture: 'X(1)'
+      default: ''  
+    dac:
+      pos: [73,73]
+      picture: '9(1)'
+    nome_empresa:
+      pos: [74,103]
+      picture: 'X(30)'
+    brancos_05:
+      pos: [104,183]
+      picture: 'X(80)'
+      default: ''
+    numero_sequencial_arquivo_retorno:
+      pos: [184,191]
+      picture: '9(8)'
+    data_gravacao:
+      pos: [192,199]
+      picture: '9(8)'
+    data_credito:
+      pos: [200,207]
+      picture: '9(8)'
+    brancos_06:
+      pos: [208,240]
+      picture: 'X(33)'
+      default: ''
+
+  trailer_lote:
+    codigo_banco:
+      pos: [1,3]
+      picture: '9(3)'
+      default: 341
+    lote_servico:
+      pos: [4,7]
+      picture: '9(4)'
+    tipo_registro:
+      pos: [8,8]
+      picture: '9(1)'
+      default: 5
+    brancos_01:
+      pos: [9,17]
+      picture: 'X(9)'
+      default: ''
+    quantidade_registros_lote:
+      pos: [18,23]
+      picture: '9(6)'
+    quantidade_cobranca_simples:
+      pos: [24,29]
+      picture: '9(6)'
+    valor_total_cobranca_simples:
+      pos: [30,46]
+      picture: '9(15)V9(2)'
+    quantidade_cobranca_vinculada:
+      pos: [47,52]
+      picture: '9(6)'
+    valor_total_cobranca_vinculada:
+      pos: [53,69]
+      picture: '9(15)V9(2)'
+    zeros_01:
+      pos: [70,115]
+      picture: '9(46)'
+      default: '0'
+    #
+    # Campo: aviso_bancario
+    # Refere-se ao código do extrato de Movimentação de Títulos (MT) associado a esse movimento
+    #
+    aviso_bancario:
+      pos: [116,123]
+      picture: 'X(8)'
+      default: ''
+    brancos_02:
+      pos: [124,240]
+      picture: 'X(117)'
+      default: ''
+
+  trailer_arquivo:
+    codigo_banco:
+      pos: [1,3]
+      picture: '9(3)'
+      default: 341
+    lote_servico:
+      pos: [4,7]
+      picture: '9(4)'
+      default: 9999
+    registro:
+      pos: [8,8]
+      picture: '9(1)'
+      default: 9
+    brancos_01:
+      pos: [9,17]
+      picture: 'X(9)'
+      default: ''
+    total_lotes:
+      pos: [18,23]
+      picture: '9(6)'
+    total_registros:
+      pos: [24,29]
+      picture: '9(6)'
+    zeros_01:
+      pos: [30,35]
+      picture: '9(6)'
+      default: '000000'
+    brancos_02:
+      pos: [36,240]
+      picture: 'X(205)'
+      default: ''
+
+  detalhes:
+    # obrigatorio
+    segmento_p:
+      codigo_banco:
+        pos: [1,3]
+        picture: '9(3)'
+        default: 341
+      lote_servico:
+        pos: [4,7]
+        picture: '9(4)'
+      tipo_registro:
+        pos: [8,8]
+        picture: '9(1)'
+        default: 3
+      nummero_sequencial_registro_lote:
+        pos: [9,13]
+        picture: '9(5)'
+      segmento:
+        pos: [14,14]
+        picture: 'X(1)'
+        default: 'P'
+      brancos_01:
+        pos: [15,15]
+        picture: 'X(1)'
+        default: ''
+      codigo_ocorrencia:
+        pos: [16,17]
+        picture: '9(2)'
+      zeros_01:
+        pos: [18,18]
+        picture: '9(1)'
+        default: '0'
+      agencia:
+        pos: [19,22]
+        picture: '9(4)'
+      brancos_02:
+        pos: [23,23]
+        picture: 'X(1)'
+        default: ''
+      zeros_02:
+        pos: [24,30]
+        picture: '9(7)'
+        default: '0000000'
+      conta:
+        pos: [31,35]
+        picture: '9(5)'
+      brancos_03:
+        pos: [36,36]
+        picture: 'X(1)'
+        default: ''
+      dac:
+        pos: [37,37]
+        picture: '9(1)'
+      carteira:
+        pos: [38,40]
+        picture: '9(3)'
+      nosso_numero:
+        pos: [41,48]
+        picture: '9(8)'
+      dac_nosso_numero:
+        pos: [49,49]
+        picture: '9(1)'
+      brancos_04:
+        pos: [50,57]
+        picture: 'X(8)'
+        default: ''
+      zeros_03:
+        pos: [58,62]
+        picture: '9(5)'
+        default: '00000'
+      numero_documento:
+        pos: [63,72]
+        picture: 'X(10)'
+      brancos_05:
+        pos: [73,77]
+        picture: 'X(5)'
+        default: ''
+      vencimento:
+        pos: [78,85]
+        picture: '9(8)'
+      valor_titulo:
+        pos: [86,100]
+        picture: '9(13)V9(2)'
+      agencia_cobradora:
+        pos: [101,105]
+        picture: '9(5)'
+        default: '00000'
+      dac_agencia_cobradora:
+        pos: [106,106]
+        picture: '9(1)'
+      especie:
+        pos: [107,108]
+        picture: '9(2)'
+      aceite:
+        pos: [109,109]
+        picture: 'X(1)'
+        default: 'N'
+      data_emissao:
+        pos: [110,117]
+        picture: '9(8)'
+      zeros_04:
+        pos: [118,118]
+        picture: '9(1)'
+        default: '0'
+      data_juros_mora:
+        pos: [119,126]
+        picture: '9(8)'
+      juros_1_dia:
+        pos: [127,141]
+        picture: '9(13)V9(2)'
+      zeros_05:
+        pos: [142,142]
+        picture: '9(1)'
+        default: '0'
+      data_1o_desconto:
+        pos: [143,150]
+        picture: '9(8)'
+      valor_1o_desconto:
+        pos: [151,165]
+        picture: '9(13)V9(2)'
+      valor_iof:
+        pos: [166,180]
+        picture: '9(13)V9(2)'
+      valor_abatimento:
+        pos: [181,195]
+        picture: '9(13)V9(2)'
+      identificacao_titulo_empresa:
+        pos: [196,220]
+        picture: 'X(25)'
+      codigo_negativacao_protesto:
+        pos: [221,221]
+        picture: '9(1)'
+      prazo_negativacao_protesto:
+        pos: [222,223]
+        picture: '9(2)'
+      codigo_baixa:
+        pos: [224,224]
+        picture: '9(1)'
+      prazo_baixa:
+        pos: [225,226]
+        picture: '9(2)'
+      zeros_06:
+        pos: [227,239]
+        picture: '9(13)'
+        default: '0000000000000'
+      brancos_06:
+        pos: [240,240]
+        picture: 'X(1)'
+        default: ''
+
+    # obrigatorio
+    segmento_q:
+      codigo_banco:
+        pos: [1,3]
+        picture: '9(3)'
+        default: 341
+      lote_servico:
+        pos: [4,7]
+        picture: '9(4)'
+      tipo_registro:
+        pos: [8,8]
+        picture: '9(1)'
+        default: 3
+      nummero_sequencial_registro_lote:
+        pos: [9,13]
+        picture: '9(5)'
+      segmento:
+        pos: [14,14]
+        picture: 'X(1)'
+        default: 'Q'
+      brancos_01:
+        pos: [15,15]
+        picture: 'X(1)'
+        default: ''
+      codigo_ocorrencia:
+        pos: [16,17]
+        picture: '9(2)'
+      tipo_inscricao:
+        pos: [18,18]
+        picture: '9(1)'
+      inscricao_numero:
+        pos: [19,33]
+        picture: '9(15)'
+      nome_pagador:
+        pos: [34,63]
+        picture: 'X(30)'
+      brancos_02:
+        pos: [64,73]
+        picture: 'X(10)'
+        default: ''
+      logradouro:
+        pos: [74,113]
+        picture: 'X(40)'
+      bairro:
+        pos: [114,128]
+        picture: 'X(15)'
+      cep:
+        pos: [129,133]
+        picture: '9(5)'
+      sufixo_cep:
+        pos: [134,136]
+        picture: '9(3)'
+      cidade:
+        pos: [137,151]
+        picture: 'X(15)'
+      uf:
+        pos: [152,153]
+        picture: 'X(2)'
+      tipo_inscricao_sacador:
+        pos: [154,154]
+        picture: '9(1)'
+      inscricao_sacador:
+        pos: [155,169]
+        picture: '9(15)'
+      nome_sacador:
+        pos: [170,199]
+        picture: 'X(30)'
+      brancos_03:
+        pos: [200,209]
+        picture: 'X(10)'
+        default: ''
+      zeros_01:
+        pos: [210,212]
+        picture: '9(3)'
+        default: '000'
+      brancos_04:
+        pos: [213,240]
+        picture: 'X(28)'
+        default: ''
+
+    # opcional
+    # O registro R é opcional, deve ser utilizado quando o cliente beneficiário tiver interesse em registrar ou
+    # alterar o valor ou percentual de desconto e/ou multa diferente para cada título. Válido somente para
+    # carteiras de Cobrança com registro, pode ser utilizado a qualquer momento sem necessidade de
+    # cadastro prévio junto ao Itaú.
+    # O arquivo remessa poderá conter esse registro opcional quando apresentar ocorrência “01 – Entrada”
+    # ou “49 – Alteração de dados extras” para multa.
+    # Só poderá ser enviado um tipo de registro do Segmento R, quando o tipo de segmento P anterior, tiver ocorrência 01
+    # (Entrada) ou ocorrência 31 (Alteração de Outros Dados).
+    # Qualquer outra ocorrência diferente de 01 e 31 informada no registro com segmento tipo P, será considerada erro
+    # com envio de mensagem de erro - Registro inválido
+    segmento_r:
+     codigo_banco:
+       pos: [1,3]
+       picture: '9(3)'
+       defalut: 341
+     lote_servico:
+       pos: [4,7]
+       picture: '9(4)'
+     tipo_registro:
+       pos: [8,8]
+       picture: '9(1)'
+       defalut: 3
+     nummero_sequencial_registro_lote:
+       pos: [9,13]
+       picture: '9(5)'
+     segmento:
+       pos: [14,14]
+       picture: 'X(1)'
+       defalut: 'R'
+     brancos_01:
+       pos: [15,15]
+       picture: 'X(1)'
+       defalut: ''
+     codigo_ocorrencia:
+       pos: [16,17]
+       picture: '9(2)'
+     zeros_01:
+       pos: [18,18]
+       picture: '9(1)'
+       defalut: '0'
+     data_2o_desconto:
+       pos: [19,26]
+       picture: '9(8)'
+       default: '00000000'
+     valor_2o_desconto:
+       pos: [27,41]
+       picture: '9(13)V9(2)'
+       defalut: 0
+     zeros_02:
+       pos: [42,42]
+       picture: '9(1)'
+       defalut: '0'
+     data_3o_desconto:
+       pos: [43,50]
+       picture: '9(8)'
+       defalut: '00000000'
+     valor_3o_desconto:
+       pos: [51,65]
+       picture: '9(13)V9(2)'
+       defalut: 0
+     codigo_multa:
+       pos: [66,66]
+       picture: '9(1)'
+     data_multa:
+       pos: [67,74]
+       picture: 'X(8)'
+       defalut: ''
+     multa:
+       pos: [75,89]
+       picture: 'X(13)'
+       defalut: ''
+     brancos_02:
+       pos: [90,99]
+       picture: 'X(10)'
+       defalut: ''
+     informacoes_pagador:
+       pos: [100,139]
+       picture: 'X(40)'
+       defalut: ''
+     brancos_03:
+       pos: [140,199]
+       picture: 'X(60)'
+       defalut: ''
+     codigo_ocorrencia_pagador:
+       pos: [200,207]
+       picture: '9(8)'
+     zeros_03:
+       pos: [208,215]
+       picture: '9(8)'
+       defalut: '00000000'
+     brancos_04:
+       pos: [216,216]
+       picture: 'X(1)'
+       defalut: ''
+     zeros_04:
+       pos: [217,228]
+       picture: '9(12)'
+       defalut: '000000000000'
+     brancos_05:
+       pos: [229,230]
+       picture: 'X(2)'
+       defalut: ''
+     zeros_05:
+       pos: [231,231]
+       picture: '9(1)'
+       defalut: '0'
+     brancos_06:
+       pos: [232,240]
+       picture: 'X(9)'
+       defalut: ''
+
+    # opcional
+    # Dados sobre o BENEFICIÁRIO original do título de cobrança.
+    segmento_y:
+     codigo_banco:
+       pos: [1,3]
+       picture: '9(3)'
+       default: 341
+     lote_servico:
+       pos: [4,7]
+       picture: '9(4)'
+     tipo_registro:
+       pos: [8,8]
+       picture: '9(1)'
+       default: 3
+     nummero_sequencial_registro_lote:
+       pos: [9,13]
+       picture: '9(5)'
+     segmento:
+       pos: [14,14]
+       picture: 'X(1)'
+       default: 'Y'
+     brancos_01:
+       pos: [15,15]
+       picture: 'X(1)'
+       default: ''
+     codigo_ocorrencia:
+       pos: [16,17]
+       picture: '9(2)'
+       default: ''
+     codigo_registro_opcional:
+       pos: [18,19]
+       picture: '9(2)'
+       default: '01'
+     tipo_inscricao:
+       pos: [20,20]
+       picture: '9(1)'
+     inscricao_numero:
+       pos: [21,35]
+       picture: '9(15)'
+     nome_sacador:
+       pos: [36,75]
+       picture: 'X(40)'
+     endereco_sacador:
+       pos: [76,115]
+       picture: 'X(40)'
+     bairro_sacador:
+       pos: [116,130]
+       picture: 'X(15)'
+     cep_sacador:
+       pos: [131,138]
+       picture: '9(8)'
+     cidade_sacador:
+       pos: [139,153]
+       picture: 'X(15)'
+     uf_sacador:
+       pos: [154,155]
+       picture: 'X(2)'
+     brancos_02:
+       pos: [156,240]
+       picture: 'X(85)'
+       default: ''
+
+retorno:
+
+  header_arquivo:
+    codigo_banco:
+      pos: [1,3]
+      picture: '9(3)'
+      default: 341
+    lote_servico:
+      pos: [4,7]
+      picture: '9(4)'
+      default: '0000'
+    tipo_registro:
+      pos: [8,8]
+      picture: '9(1)'
+      default: 0
+    brancos_01:
+      pos: [9,17]
+      picture: 'X(9)'
+      default: ''
+    tipo_inscricao:
+      pos: [18,18]
+      picture: '9(1)'
+    inscricao_numero:
+      pos: [19,32]
+      picture: '9(14)'
+    brancos_02:
+      pos: [33,52]
+      picture: 'X(20)'
+      default: ''
+    zeros_01:
+      pos: [53,53]
+      picture: '9(1)'
+      default: 0
+    agencia:
+      pos: [54,57]
+      picture: '9(4)'
+    brancos_03:
+      pos: [58,58]
+      picture: 'X(1)'
+      default: ''
+    zeros_02:
+      pos: [59,65]
+      picture: '9(7)'
+      default: '0000000'
+    conta:
+      pos: [66,70]
+      picture: '9(5)'
+    brancos_04:
+      pos: [71,71]
+      picture: 'X(1)'
+      default: ''
+    dac:
+      pos: [72,72]
+      picture: '9(1)'
+    nome_empresa:
+      pos: [73,102]
+      picture: 'X(30)'
+    nome_banco:
+      pos: [103,132]
+      picture: 'X(30)'
+      default: 'BANCO ITAU SA'
+    brancos_05:
+      pos: [133,142]
+      picture: 'X(10)'
+      default: ''
+    codigo_arquivo:
+      pos: [143,143]
+      picture: '9(1)'
+      default: 1
+    data_geracao:
+      pos: [144,151]
+      picture: '9(8)'
+    hora_geracao:
+      pos: [152,157]
+      picture: '9(6)'
+    numero_sequencial_arquivo_retorno:
+      pos: [158,163]
+      picture: '9(6)'
+    versao_layout_arquivo:
+      pos: [164,166]
+      picture: '9(3)'
+      default: '040'
+    zeros_03:
+      pos: [167,171]
+      picture: '9(5)'
+      default: '00000'
+    brancos_06:
+      pos: [172,225]
+      picture: 'X(54)'
+      default: ''
+    zeros_04:
+      pos: [226,228]
+      picture: '9(3)'
+      default: '000'
+    brancos_07:
+      pos: [229,240]
+      picture: 'X(12)'
+      default: ''
+
+  header_lote:
+    codigo_banco:
+      pos: [1,3]
+      picture: '9(3)'
+      default: 341
+    lote_servico:
+      pos: [4,7]
+      picture: '9(4)'
+    tipo_registro:
+      pos: [8,8]
+      picture: '9(1)'
+      default: 1
+    tipo_operacao:
+      pos: [9,9]
+      picture: 'X(1)'
+      default: 'R'
+    tipo_servico:
+      pos: [10,11]
+      picture: '9(2)'
+      default: '01'
+    zeros_01:
+      pos: [12,13]
+      picture: '9(2)'
+      default: '00'
+    versao_layout_lote:
+      pos: [14,16]
+      picture: '9(3)'
+      default: '030'
+    brancos_01:
+      pos: [17,17]
+      picture: 'X(1)'
+      default: ''
+    tipo_inscricao:
+      pos: [18,18]
+      picture: '9(1)'
+    inscricao_empresa:
+      pos: [19,33]
+      picture: '9(15)'
+    brancos_02:
+      pos: [34,53]
+      picture: '9(20)'
+      default: 0
+    zeros_02:
+      pos: [54,54]
+      picture: '9(1)'
+      default: 0
+    agencia:
+      pos: [55,58]
+      picture: '9(4)'
+    brancos_03:
+      pos: [59,59]
+      picture: 'X(1)'
+      default: ''
+    zeros_03:
+      pos: [60,66]
+      picture: '9(7)'
+      default: 0
+    conta:
+      pos: [67,71]
+      picture: '9(5)'
+    brancos_04:
+      pos: [72,72]
+      picture: 'X(1)'
+      default: ''  
+    dac:
+      pos: [73,73]
+      picture: '9(1)'
+    nome_empresa:
+      pos: [74,103]
+      picture: 'X(30)'
+    brancos_05:
+      pos: [104,183]
+      picture: 'X(80)'
+      default: ''
+    numero_sequencial_arquivo_retorno:
+      pos: [184,191]
+      picture: '9(8)'
+    data_gravacao:
+      pos: [192,199]
+      picture: '9(8)'
+    data_credito:
+      pos: [200,207]
+      picture: '9(8)'
+    brancos_06:
+      pos: [208,240]
+      picture: 'X(33)'
+      default: ''
+
+  trailer_lote:
+    codigo_banco:
+      pos: [1,3]
+      picture: '9(3)'
+      default: 341
+    lote_servico:
+      pos: [4,7]
+      picture: '9(4)'
+    tipo_registro:
+      pos: [8,8]
+      picture: '9(1)'
+      default: 5
+    brancos_01:
+      pos: [9,17]
+      picture: 'X(9)'
+      default: ''
+    quantidade_registros_lote:
+      pos: [18,23]
+      picture: '9(6)'
+    quantidade_cobranca_simples:
+      pos: [24,29]
+      picture: '9(6)'
+    valor_total_cobranca_simples:
+      pos: [30,46]
+      picture: '9(15)V9(2)'
+    quantidade_cobranca_vinculada:
+      pos: [47,52]
+      picture: '9(6)'
+    valor_total_cobranca_vinculada:
+      pos: [53,69]
+      picture: '9(15)V9(2)'
+    zeros_01:
+      pos: [70,115]
+      picture: '9(46)'
+      default: '0'
+    #
+    # Campo: aviso_bancario
+    # Refere-se ao código do extrato de Movimentação de Títulos (MT) associado a esse movimento
+    #
+    aviso_bancario:
+      pos: [116,123]
+      picture: 'X(8)'
+      default: ''
+    brancos_02:
+      pos: [124,240]
+      picture: 'X(117)'
+      default: ''
+
+  trailer_arquivo:
+    codigo_banco:
+      pos: [1,3]
+      picture: '9(3)'
+      default: 341
+    lote_servico:
+      pos: [4,7]
+      picture: '9(4)'
+      default: 9999
+    registro:
+      pos: [8,8]
+      picture: '9(1)'
+      default: 9
+    brancos_01:
+      pos: [9,17]
+      picture: 'X(9)'
+      default: ''
+    total_lotes:
+      pos: [18,23]
+      picture: '9(6)'
+    total_registros:
+      pos: [24,29]
+      picture: '9(6)'
+    zeros_01:
+      pos: [30,35]
+      picture: '9(6)'
+      default: '000000'
+    brancos_02:
+      pos: [36,240]
+      picture: 'X(205)'
+      default: ''
+
+  detalhes:
+    # obrigatorio
+    segmento_t:
+      codigo_banco:
+        pos: [1,3]
+        picture: '9(3)'
+        default: 341
+      codigo_lote:
+        pos: [4,7]
+        picture: '9(4)'
+      tipo_registro:
+        pos: [8,8]
+        picture: '9(1)'
+        default: 3
+      numero_sequencial_registro:
+        pos: [9,13]
+        picture: '9(5)'
+      codigo_segmento:
+        pos: [14,14]
+        picture: 'X(1)'
+        default: 'T'
+      boleto_dda:
+        pos: [15,15]
+        picture: 'X(1)'
+      codigo_ocorrencia:
+        pos: [16,17]
+        picture: '9(2)'
+      zeros_01:
+        pos: [18,18]
+        picture: '9(1)'
+        default: 0
+      agencia_mantenedora:
+        pos: [19,22]
+        picture: '9(4)'
+      zeros_02:
+        pos: [23,30]
+        picture: '9(8)'
+        default: '00000000'
+      conta:
+        pos: [31,35]
+        picture: '9(5)'
+      zeros_03:
+        pos: [36,35]
+        picture: '9(1)'
+        default: 0
+      dac:
+        pos: [37,37]
+        picture: '9(1)'
+      carteira:
+        pos: [38,40]
+        picture: '9(3)'
+      nosso_numero:
+        pos: [41,48]
+        picture: '9(8)'
+      dac_nosso_numero:
+        pos: [49,49]
+        picture: '9(1)'
+      brancos_01:
+        pos: [50,57]
+        picture: 'X(8)'
+        default: ''
+      zeros_04:
+        pos: [58,58]
+        picture: '9(1)'
+        default: 0
+      numero_documento:
+        pos: [59,68]
+        picture: 'X(10)'
+      brancos_02:
+        pos: [69,73]
+        picture: 'X(5)'
+        default: ''
+      vencimento:
+        pos: [74,81]
+        picture: '9(8)'
+      valor:
+        pos: [82,96]
+        picture: '9(13)V9(2)'
+      zeros_05:
+        pos: [97,99]
+        picture: '9(3)'
+        default: 0
+      agencia_cobradora:
+        pos: [100,104]
+        picture: '9(5)'
+      dac_cobradora:
+        pos: [105,105]
+        picture: '9(1)'
+      uso_empresa:
+        pos: [106,130]
+        picture: 'X(25)'
+      zeros_06:
+        pos: [131,132]
+        picture: '9(2)'
+        default: 0
+      tipo_inscricao_pagador:
+        pos: [133,133]
+        picture: '9(1)'
+      inscricao_numero:
+        pos: [134,148]
+        picture: '9(15)'
+      nome_pagador:
+        pos: [149,178]
+        picture: 'X(30)'
+      brancos_03:
+        pos: [179, 188]
+        picture: 'X(10)'
+        default: ''
+      zeros_07:
+        pos: [189,198]
+        picture: '9(10)'
+        default: 0
+      tarifas_custas:
+        pos: [199,213]
+        picture: '9(13)V9(2)'
+      erros:
+        pos: [214,221]
+        picture: '9(8)'
+      codigo_liquidacao:
+        pos: [222,223]
+        picture: 'X(2)'
+      brancos_04:
+        pos: [224,240]
+        picture: 'X(17)'
+        default: ''
+
+    # obrigatorio
+    segmento_u:
+      codigo_banco:
+        pos: [1,3]
+        picture: '9(3)'
+        default: 341
+      codigo_lote:
+        pos: [4,7]
+        picture: '9(4)'
+      tipo_registro:
+        pos: [8,8]
+        picture: '9(1)'
+        default: 3
+      numero_sequencial_registro:
+        pos: [9,13]
+        picture: '9(5)'
+      segmento:
+        pos: [14,14]
+        picture: 'X(1)'
+        deafault: 'U'
+      brancos_01:
+        pos: [15,15]
+        picture: 'X(1)'
+        default: ''
+      codigo_ocorrencia:
+        pos: [16,17]
+        picture: '9(2)'
+      juros_multa:
+        pos: [18,32]
+        picture: '9(13)V9(2)'
+      valor_desconto:
+        pos: [33,47]
+        picture: '9(13)V9(2)'
+      valor_abatimento:
+        pos: [48,62]
+        picture: '9(13)V9(2)'
+      valor_iof:
+        pos: [63,77]
+        picture: '9(13)V9(2)'
+      valor_creditado_01:
+        pos: [78,92]
+        picture: '9(13)V9(2)'
+      valor_creditado_02:
+        pos: [93,107]
+        picture: '9(13)V9(2)'
+      zeros_01:
+        pos: [108,137]
+        picture: '9(30)'
+        default: 0
+      data_ocorrencia_banco:
+        pos: [138,145]
+        picture: '9(8)'
+      data_credito:
+        pos: [146,153]
+        picture: '9(8)'
+      codigo_ocorrencia_pagador:
+        pos: [154,157]
+        picture: '9(4)'
+      data_ocorrencia_pagador:
+        pos: [158,165]
+        picture: '9(8)'
+      valor_ocorrencia_pagador:
+        pos: [166,180]
+        picture: '9(13)V9(2)'
+      brancos_02:
+        pos: [181,210]
+        picture: 'X(30)'
+        default: ''
+      zeros_02:
+        pos: [211,233]
+        picture: '9(23)'
+        default: 0
+      brancos_03:
+        pos: [234,240]
+        picture: 'X(7)'
+        default: ''

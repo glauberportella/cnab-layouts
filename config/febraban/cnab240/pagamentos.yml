@@ -1,0 +1,1456 @@
+# FORMATO: FEBRABAN - CNAB240
+# OBJETIVO DO ARQUIVO: PAGAMENTOS - PAGAMENTO ATRAVÉS DE CRÉDITO EM CONTA, CHEQUE, OP, DOC, TED OU PAGAMENTO COM AUTENTICAÇÃO
+#
+# TAMANHO DO REGISTRO
+# O Tamanho do Registro é de 240 bytes.
+#
+# ALINHAMENTO DE CAMPOS
+# - Campos Numéricos (9) = Sempre à direita e preenchidos com zeros à esquerda.
+# - Campos Alfanuméricos (X) = Sempre à esquerda e preenchidos com brancos à direita. 
+#
+# A versão é identificada através de um código com a seguinte composição:
+# - VV.R onde:
+#   VV (2 dígitos) = Número da versão
+#    R (1 dígito) = Número do release
+#
+# RELEASE
+# Será alterado sempre que ocorrer alteração de campos “USO EXCLUSIVO CNAB/FEBRABAN” ou alteração na
+# descrição de campos.
+#
+# VERSÃO DE LAYOUT DE LOTE
+# Será alterado quando ocorrer inclusão/exclusão de campos.
+#
+# VERSÃO DE LAYOUT DE ARQUIVO
+# Será alterado quando ocorrer inclusão/exclusão de serviços / produtos (lotes de serviços / produtos). 
+
+servico: 'pagamentos'
+
+versao: '09.1'
+
+layout: 'cnab240'
+
+remessa:
+
+  header_arquivo:
+    codigo_banco:
+      pos: [1,3]
+      picture: '9(3)'
+    #
+    # Campo: lote_servico
+    # Número seqüencial para identificar univocamente um lote de serviço. Criado e controlado pelo responsável pela geração magnética dos dados contidos no arquivo.
+    # Preencher com '0001' para o primeiro lote do arquivo. Para os demais: número do lote anterior acrescido de 1. O número não poderá ser repetido dentro do arquivo.
+    # Se registro for Header do Arquivo preencher com '0000'
+    # Se registro for Trailer do Arquivo preencher com '9999'
+    #
+    lote_servico:
+      pos: [4,7]
+      picture: '9(4)'
+      default: '0000'
+    # Campo: tipo_registro
+    # Código adotado pela FEBRABAN para identificar o tipo de registro.
+    # Domínio:
+    # '0' = Header de Arquivo
+    # '1' = Header de Lote
+    # '2' = Registros Iniciais do Lote
+    # '3' = Detalhe
+    # '4' = Registros Finais do Lote
+    # '5' = Trailer de Lote
+    # '9' = Trailer de Arquivo
+    tipo_registro:
+      pos: [8,8]
+      picture: '9(1)'
+      default: '0'
+    exclusivo_febraban_01:
+      pos: [9,17]
+      picture: 'X(9)'
+      default: ''
+    #
+    # Campo: tipo_inscricao_empresa
+    # Código que identifica o tipo de inscrição da Empresa ou Pessoa Física perante uma Instituição governamental.
+    # Domínio:
+    # '0' = Isento / Não Informado
+    # '1' = CPF
+    # '2' = CGC / CNPJ
+    # '3' = PIS / PASEP
+    # '9' = Outros
+    # - Preenchimento deste campo é obrigatório para DOC e TED (Forma de Lançamento = 03, 41, 43).
+    # - Para pagamento para o SIAPE com crédito em conta, o CPF deverá ser do 1º titular.
+    # - Para o Produto/Serviço Cobrança considerar como obrigatório, a partir de 01.06.2015, somente o CPF (código 1) ou o CNPJ (código 2). Os demais códigos não deverão ser utilizados.
+    #
+    tipo_inscricao_empresa:
+      pos: [18,18]
+      picture: '9(1)'
+    numero_inscricao_empresa:
+      pos: [19,32]
+      picture: '9(14)'
+    codigo_convenio_banco:
+      pos: [33,52]
+      picture: 'X(20)'
+    agencia_mantenedora_conta:
+      pos: [53,57]
+      picture: '9(5)'
+    digito_verificador_agencia:
+      pos: [58,58]
+      picture: 'X(1)'
+    numero_conta_corrente:
+      pos: [59,70]
+      picture: '9(12)'
+    digito_verificador_conta:
+      pos: [71,71]
+      picture: 'X(1)'
+    digito_verificador_agencia_conta:
+      pos: [72,72]
+      picture: 'X(1)'
+    nome_empresa:
+      pos: [73,102]
+      picture: 'X(30)'
+    nome_banco:
+      pos: [103,132]
+      picture: 'X(30)'
+    exclusivo_febraban_02:
+      pos: [133,142]
+      picture: 'X(10)'
+      default: ''
+    # Campo: codigo_remessa_retorno
+    # Código adotado pela FEBRABAN para qualificar o envio ou devolução de arquivo entre a
+    # Empresa Cliente e o Banco prestador dos Serviços.
+    # Domínio:
+    # '1' = Remessa (Cliente -> Banco)
+    # '2' = Retorno (Banco -> Cliente)
+    #
+    codigo_remessa_retorno:
+      pos: [143,143]
+      picture: '9(1)'
+    #
+    # Campo: data_geracao_arquivo
+    # Data da criação do arquivo.
+    # Utilizar o formato DDMMAAAA, onde :
+    # DD = dia
+    # MM = mês
+    # AAAA = ano
+    #
+    data_geracao_arquivo:
+      pos: [144,151]
+      picture: '9(8)'
+    #
+    # Campo: hora_geracao_arquivo
+    # Hora da criação do arquivo.
+    # Utilizar o formato HHMMSS, onde :
+    # HH = hora
+    # MM = minuto
+    # SS = segundo
+    #
+    hora_geracao_arquivo:
+      pos: [152,157]
+      picture: '9(6)'
+    #
+    # Campo: numero_sequencial_arquivo
+    # Número seqüencial adotado e controlado pelo responsável pela geração do arquivo para
+    # ordenar a disposição dos arquivos encaminhados.
+    # Evoluir um número seqüencial a cada header de arquivo.
+    #
+    numero_sequencial_arquivo:
+      pos: [158,163]
+      picture: '9(6)'
+    #
+    # Campo: versao_layout_arquivo
+    # Código adotado pela FEBRABAN para identificar qual a versão de layout do arquivo encaminhado.
+    # O código é composto de:
+    # Versão = 2 dígitos
+    # Release = 1 dígito
+    #
+    versao_layout_arquivo:
+      pos: [164,166]
+      picture: '9(3)'
+      default: '091'
+    #
+    # Campo: densidade_gravacao_arquivo
+    # Densidade de gravação (BPI), do arquivo encaminhado.
+    # Domínio:
+    # 1600 BPI
+    # 6250 BPI
+    #
+    densidade_gravacao_arquivo:
+      pos: [167,171]
+      picture: '9(5)'
+    reservado_banco_01:
+      pos: [172,191]
+      picture: 'X(20)'
+    reservado_empresa_01:
+      pos: [192,211]
+      picture: 'X(20)'
+    exclusivo_febraban_03:
+      pos: [212,240]
+      picture: 'X(29)'
+      default: ''
+
+  trailer_arquivo:
+    codigo_banco:
+      pos: [1,3]
+      picture: '9(3)'
+    lote_servico:
+      pos: [4,7]
+      picture: '9(4)'
+      default: '9999'
+    tipo_registro:
+      pos: [8,8]
+      picture: '9(1)'
+      default: '9'
+    exclusivo_febraban_01:
+      pos: [9,17]
+      picture: 'X(9)'
+      default: ''
+    quantidade_lotes_arquivo:
+      pos: [18,23]
+      picture: '9(6)'
+    quantidade_registros_arquivo:
+      pos: [24,29]
+      picture: '9(6)'
+    quantidade_contas_conciliacao_lotes:
+      pos: [30,35]
+      picture: '9(6)'
+    exclusivo_febraban_02:
+      pos: [36,240]
+      picture: 'X(205)'
+      default: ''
+
+  header_lote:
+    codigo_banco:
+      pos: [1,3]
+      picture: '9(3)'
+    lote_servico:
+      pos: [4,7]
+      picture: '9(4)'
+    tipo_registro:
+      pos: [8,8]
+      picture: '9(1)'
+      default: '1'
+    tipo_operacao:
+      pos: [9,9]
+      picture: 'X(1)'
+      default: 'C'
+    #
+    # Campo: tipo_servico
+    # Código adotado pela FEBRABAN para indicar o tipo de serviço / produto (processo) contido no arquivo / lote.
+    # Domínio:
+    # '01' = Cobrança
+    # '03' = Bloqueto Eletrônico
+    # '04' = Conciliação Bancária
+    # '05' = Débitos
+    # '06' = Custódia de Cheques
+    # '07' = Gestão de Caixa
+    # '08' = Consulta/Informação Margem
+    # '09' = Averbação da Consignação/Retenção
+    # '10' = Pagamento Dividendos
+    # ‘11’ = Manutenção da Consignação
+    # ‘12’ = Consignação de Parcelas
+    # ‘13’ = Glosa da Consignação (INSS)
+    # ‘14’ = Consulta de Tributos a pagar
+    # '20' = Pagamento Fornecedor
+    # ‘22’ = Pagamento de Contas, Tributos e Impostos
+    # ‘25’ = Compror
+    # ‘26’ = Compror Rotativo
+    # '29' = Alegação do Sacado
+    # '30' = Pagamento Salários
+    # ‘32’ = Pagamento de honorários
+    # ‘33’ = Pagamento de bolsa auxílio
+    # ‘34’ = Pagamento de prebenda (remuneração a padres e sacerdotes)
+    # '40' = Vendor
+    # '41' = Vendor a Termo
+    # '50' = Pagamento Sinistros Segurados
+    # '60' = Pagamento Despesas Viajante em Trânsito
+    # '70' = Pagamento Autorizado
+    # '75' = Pagamento Credenciados
+    # ‘77’ = Pagamento de Remuneração
+    # '80' = Pagamento Representantes / Vendedores Autorizados
+    # '90' = Pagamento Benefícios
+    # '98' = Pagamentos Diversos
+    #
+    tipo_servico:
+      pos: [10,11]
+      picture: '9(2)'
+    #
+    # Campo: forma_lancamento
+    # Código adotado pela FEBRABAN para identificar a operação que está contida no lote.
+    # Domínio:
+    # '01' = Crédito em Conta Corrente
+    # '02' = Cheque Pagamento / Administrativo
+    # '03' = DOC/TED (1) (2)
+    # '04' = Cartão Salário (somente para Tipo de Serviço = '30')
+    # '05' = Crédito em Conta Poupança
+    # '10' = OP à Disposição
+    # ‘11’ = Pagamento de Contas e Tributos com Código de Barras
+    # ‘16’ = Tributo - DARF Normal
+    # ‘17’ = Tributo - GPS (Guia da Previdência Social)
+    # ‘18’ = Tributo - DARF Simples
+    # ‘19’ = Tributo - IPTU – Prefeituras
+    # '20' = Pagamento com Autenticação
+    # ‘21’ = Tributo – DARJ
+    # ‘22’ = Tributo - GARE-SP ICMS
+    # ‘23’ = Tributo - GARE-SP DR
+    # ‘24’ = Tributo - GARE-SP ITCMD
+    # ‘25’ = Tributo - IPVA
+    # ‘26’ = Tributo - Licenciamento
+    # ‘27’ = Tributo – DPVAT
+    # '30' = Liquidação de Títulos do Próprio Banco
+    # '31' = Pagamento de Títulos de Outros Bancos
+    # '40' = Extrato de Conta Corrente
+    # '41' = TED – Outra Titularidade (1)
+    # '43' = TED – Mesma Titularidade (1)
+    # ‘44’ = TED para Transferência de Conta Investimento
+    # '50' = Débito em Conta Corrente
+    # '70' = Extrato para Gestão de Caixa
+    # ‘71’ = Depósito Judicial em Conta Corrente
+    # ‘72’ = Depósito Judicial em Poupança
+    # ‘73’ = Extrato de Conta Investimento
+    # (1) A identificação da titularidade também poderá ser feita a partir do campo G005, “Tipo de Inscrição do Favorecido”, no registro detalhe, segmento “B”, a critério de cada banco. Neste caso prevalecerá o código “03” ou “41”.
+    # (2) A câmara pela qual transitará a transferência também poderá ser identificada a partir do campo P001, “Código da Câmara Centralizadora”, no registro detalhe, segmento “A”, a critério de cada banco, com preenchimento a saber: Forma Lançamento Código da Câmara Centralizadora 03 018/700 41/43 018
+    # (3) Para a forma de lançamento ‘11’ – Pagamento de Contas e Tributos com código de barras, caso o tributo FGTS a ser pago, pertencer aos convênios 0181 - Caixa – Arrecadação do FGTS – Recolhimento Recursal (418) ou Filantrópico (604) e 0182 – Caixa _ Arrecadação do FGTS – Recolhimento Parcelamento sem Multa (327,337 e 345) é obrigatório preencher as Informações Complementares de Tributo no segmento W. Este campo não será utilizado pela Cobrança.
+    #
+    forma_lancamento:
+      pos: [12,13]
+      picture: '9(2)'
+    versao_layout_lote:
+      pos: [14,16]
+      picture: '9(3)'
+      default: '045'
+    exclusivo_febraban_01:
+      pos: [17,17]
+      picture: 'X(1)'
+      default: ''
+    tipo_inscricao_empresa:
+      pos: [18,18]
+      picture: '9(1)'
+    numero_inscricao_empresa:
+      pos: [19,32]
+      picture: '9(14)'
+    codigo_convenio_banco:
+      pos: [33,52]
+      picture: 'X(20)'
+    agencia_mantenedora_conta:
+      pos: [53,57]
+      picture: '9(5)'
+    digito_verificador_agencia:
+      pos: [58,58]
+      picture: 'X(1)'
+    numero_conta_corrente:
+      pos: [59,70]
+      picture: '9(12)'
+    digito_verificador_conta:
+      pos: [71,71]
+      picture: 'X(1)'
+    digito_verificador_agencia_conta:
+      pos: [72,72]
+      picture: 'X(1)'
+    nome_empresa:
+      pos: [73,102]
+      picture: 'X(30)'
+    mensagem:
+      pos: [103,142]
+      picture: 'X(40)'
+    logradouro:
+      pos: [143,172]
+      picture: 'X(30)'
+    numero:
+      pos: [173,177]
+      picture: '9(5)'
+    complemento:
+      pos: [178,192]
+      picture: 'X(15)'
+    cidade:
+      pos: [193,212]
+      picture: 'X(20)'
+    cep:
+      pos: [213,217]
+      picture: '9(5)'
+    complemento_cep:
+      pos: [218,220]
+      picture: 'X(3)'
+    estado:
+      pos: [221,222]
+      picture: 'X(2)'
+    #
+    # Campo: indicativo_forma_pagamento_servico
+    # Possibilitar ao Pagador, mediante acordo com o seu Banco de Relacionamento, a forma de pagamento do compromisso.
+    # 01 - Débito em Conta Corrente
+    # 02 – Débito Empréstimo/Financiamento
+    # 03 – Débito Cartão de Crédito
+    #
+    indicativo_forma_pagamento_servico:
+      pos: [223,224]
+      picture: '9(2)'
+    exclusivo_febraban_02:
+      pos: [225,230]
+      picture: 'X(6)'
+      default: ''
+    #
+    # Campo: codigos_ocorrencias_retorno
+    # Código adotado pela FEBRABAN para identificar as ocorrências detectadas no processamento.
+    # Pode-se informar até 5 ocorrências simultaneamente, cada uma delas codificada com dois dígitos, conforme relação abaixo.
+    # Domínio:
+    # '00' = Crédito ou Débito Efetivado -> Este código indica que o pagamento foi confirmado
+    # '01' = Insuficiência de Fundos - Débito Não Efetuado
+    # '02' = Crédito ou Débito Cancelado pelo Pagador/Credor
+    # '03' = Débito Autorizado pela Agência - Efetuado
+    # 'AA' = Controle Inválido
+    # 'AB' = Tipo de Operação Inválido
+    # 'AC' = Tipo de Serviço Inválido
+    # 'AD' = Forma de Lançamento Inválida
+    # 'AE' = Tipo/Número de Inscrição Inválido
+    # 'AF' = Código de Convênio Inválido
+    # 'AG' = Agência/Conta Corrente/DV Inválido
+    # 'AH' = Nº Seqüencial do Registro no Lote Inválido
+    # 'AI' = Código de Segmento de Detalhe Inválido
+    # 'AJ' = Tipo de Movimento Inválido
+    # 'AK' = Código da Câmara de Compensação do Banco Favorecido/Depositário Inválido
+    # 'AL' = Código do Banco Favorecido ou Depositário Inválido
+    # 'AM' = Agência Mantenedora da Conta Corrente do Favorecido Inválida
+    # 'AN' = Conta Corrente/DV do Favorecido Inválido
+    # 'AO' = Nome do Favorecido Não Informado
+    # 'AP' = Data Lançamento Inválido
+    # 'AQ' = Tipo/Quantidade da Moeda Inválido
+    # 'AR' = Valor do Lançamento Inválido
+    # 'AS' = Aviso ao Favorecido - Identificação Inválida
+    # 'AT' = Tipo/Número de Inscrição do Favorecido Inválido
+    # 'AU' = Logradouro do Favorecido Não Informado
+    # 'AV' = Nº do Local do Favorecido Não Informado
+    # 'AW' = Cidade do Favorecido Não Informada
+    # 'AX' = CEP/Complemento do Favorecido Inválido
+    # 'AY' = Sigla do Estado do Favorecido Inválida
+    # 'AZ' = Código/Nome do Banco Depositário Inválido
+    # 'BA' = Código/Nome da Agência Depositária Não Informado
+    # 'BB' = Seu Número Inválido
+    # 'BC' = Nosso Número Inválido
+    # 'BD' = Inclusão Efetuada com Sucesso
+    # 'BE' = Alteração Efetuada com Sucesso
+    # 'BF' = Exclusão Efetuada com Sucesso
+    # 'BG' = Agência/Conta Impedida Legalmente
+    # ‘BH’= Empresa não pagou salário
+    # ‘BI’ = Falecimento do mutuário
+    # ‘BJ’ = Empresa não enviou remessa do mutuário
+    # ‘BK’= Empresa não enviou remessa no vencimento
+    # ‘BL’ = Valor da parcela inválida
+    # ‘BM’= Identificação do contrato inválida
+    # ‘BN’ = Operação de Consignação Incluída com Sucesso
+    # ‘BO’ = Operação de Consignação Alterada com Sucesso
+    # ‘BP’ = Operação de Consignação Excluída com Sucesso
+    # ‘BQ’ = Operação de Consignação Liquidada com Sucesso
+    # ‘BR’ = Reativação Efetuada com Sucesso
+    # ‘BS’ = Suspensão Efetuada com Sucesso
+    # 'CA' = Código de Barras - Código do Banco Inválido
+    # 'CB' = Código de Barras - Código da Moeda Inválido
+    # 'CC' = Código de Barras - Dígito Verificador Geral Inválido
+    # 'CD' = Código de Barras - Valor do Título Inválido
+    # 'CE' = Código de Barras - Campo Livre Inválido
+    # 'CF' = Valor do Documento Inválido
+    # 'CG' = Valor do Abatimento Inválido
+    # 'CH' = Valor do Desconto Inválido
+    # 'CI' = Valor de Mora Inválido
+    # 'CJ' = Valor da Multa Inválido
+    # 'CK' = Valor do IR Inválido
+    # 'CL' = Valor do ISS Inválido
+    # 'CM' = Valor do IOF Inválido
+    # 'CN' = Valor de Outras Deduções Inválido
+    # 'CO' = Valor de Outros Acréscimos Inválido
+    # 'CP' = Valor do INSS Inválido
+    # 'HA' = Lote Não Aceito
+    # 'HB' = Inscrição da Empresa Inválida para o Contrato
+    # 'HC' = Convênio com a Empresa Inexistente/Inválido para o Contrato
+    # 'HD' = Agência/Conta Corrente da Empresa Inexistente/Inválido para o Contrato
+    # 'HE' = Tipo de Serviço Inválido para o Contrato
+    # 'HF' = Conta Corrente da Empresa com Saldo Insuficiente
+    # 'HG' = Lote de Serviço Fora de Seqüência
+    # 'HH' = Lote de Serviço Inválido
+    # `HI` = Arquivo não aceito
+    # `HJ` = Tipo de Registro Inválido
+    # `HK` = Código Remessa / Retorno Inválido
+    # `HL` = Versão de layout inválida
+    # `HM` = Mutuário não identificado
+    # `HN` = Tipo do beneficio não permite empréstimo
+    # `HO` = Beneficio cessado/suspenso
+    # `HP` = Beneficio possui representante legal
+    # `HQ` = Beneficio é do tipo PA (Pensão alimentícia)
+    # `HR` = Quantidade de contratos permitida excedida
+    # `HS` = Beneficio não pertence ao Banco informado
+    # `HT` = Início do desconto informado já ultrapassado
+    # `HU`= Número da parcela inválida
+    # `HV`= Quantidade de parcela inválida
+    # `HW`= Margem consignável excedida para o mutuário dentro do prazo do contrato
+    # `HX` = Empréstimo já cadastrado
+    # `HY` = Empréstimo inexistente
+    # `HZ` = Empréstimo já encerrado
+    # `H1` = Arquivo sem trailer
+    # `H2` = Mutuário sem crédito na competência
+    # `H3` = Não descontado – outros motivos
+    # `H4` = Retorno de Crédito não pago
+    # `H5` = Cancelamento de empréstimo retroativo
+    # `H6` = Outros Motivos de Glosa
+    # ‘H7’ = Margem consignável excedida para o mutuário acima do prazo do contrato
+    # ‘H8’ = Mutuário desligado do empregador
+    # ‘H9’ = Mutuário afastado por licença
+    # ‘IA’ = Primeiro nome do mutuário diferente do primeiro nome do movimento do censo ou diferente da base de Titular do Benefício
+    # ‘IB’ = Benefício suspenso/cessado pela APS ou Sisobi
+    # ‘IC’ = Benefício suspenso por dependência de cálculo
+    # ‘ID’ = Benefício suspenso/cessado pela inspetoria/auditoria
+    # ‘IE’ = Benefício bloqueado para empréstimo pelo beneficiário
+    # ‘IF’ = Benefício bloqueado para empréstimo por TBM
+    # ‘IG’ = Benefício está em fase de concessão de PA ou desdobramento
+    # ‘IH’ = Benefício cessado por óbito
+    # ‘II’ = Benefício cessado por fraude
+    # ‘IJ’ = Benefício cessado por concessão de outro benefício
+    # ‘IK’ = Benefício cessado: estatutário transferido para órgão de origem
+    # ‘IL’ = Empréstimo suspenso pela APS
+    # ‘IM’ = Empréstimo cancelado pelo banco
+    # ‘IN’ = Crédito transformado em PAB
+    # ‘IO’ = Término da consignação foi alterado
+    # ‘IP’ = Fim do empréstimo ocorreu durante período de suspensão ou concessão
+    # ‘IQ’ = Empréstimo suspenso pelo banco
+    # 'TA' = Lote Não Aceito - Totais do Lote com Diferença
+    # 'YA' = Título Não Encontrado
+    # 'YB' = Identificador Registro Opcional Inválido
+    # 'YC' = Código Padrão Inválido
+    # 'YD' = Código de Ocorrência Inválido
+    # 'YE' = Complemento de Ocorrência Inválido
+    # 'YF' = Alegação já Informada
+    # Observação: As ocorrências iniciadas com 'ZA' tem caráter informativo para o cliente
+    # 'ZA' = Agência / Conta do Favorecido Substituída
+    # ‘ZB’ = Divergência entre o primeiro e último nome do beneficiário versus primeiro e último nome na Receita Federal
+    # ‘ZC’ = Confirmação de Antecipação de Valor
+    # ‘ZD’ = Antecipação parcial de valor
+    codigos_ocorrencias_retorno:
+      pos: [231,240]
+      picture: 'X(10)'
+
+  trailer_lote:
+    codigo_banco:
+      pos: [1,3]
+      picture: '9(3)'
+    #
+    # Campo: lote_servico
+    # Número seqüencial para identificar univocamente um lote de serviço. Criado e controlado pelo responsável pela geração magnética dos dados contidos no arquivo.
+    # Preencher com '0001' para o primeiro lote do arquivo. Para os demais: número do lote anterior acrescido de 1. O número não poderá ser repetido dentro do arquivo.
+    # Se registro for Header do Arquivo preencher com '0000'
+    # Se registro for Trailer do Arquivo preencher com '9999'
+    #
+    lote_servico:
+      pos: [4,7]
+      picture: '9(4)'
+    # Campo: tipo_registro
+    # Código adotado pela FEBRABAN para identificar o tipo de registro.
+    # Domínio:
+    # '0' = Header de Arquivo
+    # '1' = Header de Lote
+    # '2' = Registros Iniciais do Lote
+    # '3' = Detalhe
+    # '4' = Registros Finais do Lote
+    # '5' = Trailer de Lote
+    # '9' = Trailer de Arquivo
+    tipo_registro:
+      pos: [8,8]
+      picture: '9(1)'
+      default: '5'
+    exclusivo_febraban_01:
+      pos: [9,17]
+      picture: 'X(9)'
+      default: ''
+    #
+    # Campo: quantidade_registros_lote
+    # Número obtido pela contagem dos registros enviados no lote do arquivo. Somatória dos
+    # registros de tipo 1, 2, 3, 4 e 5. Registros de tipo 2 e 4 são utilizados apenas em alguns
+    # produtos (exemplo: Extrato para Gestão de Caixa).
+    #
+    quantidade_registros_lote:
+      pos: [18,23]
+      picture: '9(6)'
+    #
+    # Campo: somatoria_valores
+    # Valor obtido pela somatória dos valores de crédito dos registros de detalhe (Registro = '3' / Código de Segmento = 'A').
+    #
+    somatoria_valores:
+      pos: [24,41]
+      picture: '9(16)V9(2)'
+    #
+    # Campo: somatoria_quantidade_moedas
+    # Valor obtido pela somatória das quantidades de moeda dos registros de detalhe (Registro = '3' / Código de Segmento = {'A' / 'J'}).
+    #
+    somatoria_quantidade_moedas:
+      pos: [42,59]
+      picture: '9(13)V9(5)'
+    #
+    # Campo: numero_aviso_debito
+    # Número atribuído pelo Banco para identificar um Débito efetuado na Conta Corrente a partir do(s) pagamento(s) efetivado(s), visando facilitar a Conciliação Bancária.
+    #
+    numero_aviso_debito:
+      pos: [60,65]
+      picture: '9(6)'
+    exclusivo_febraban_02:
+      pos: [66,230]
+      picture: 'X(165)'
+      default: ''
+    codigos_ocorrencias_retorno:
+      pos: [231,240]
+      picture: 'X(10)'
+
+  detalhes:
+    segmento_a:
+      codigo_banco:
+        pos: [1,3]
+        picture: '9(3)'
+      lote_servico:
+        pos: [4,7]
+        picture: '9(4)'
+      tipo_registro:
+        pos: [8,8]
+        picture: '9(1)'
+        default: '3'
+      #
+      # Campo: numero_sequencial_registro_lote
+      # Número adotado e controlado pelo responsável pela geração magnética dos dados
+      # contidos no arquivo, para identificar a seqüência de registros encaminhados no lote.
+      # Deve ser inicializado sempre em '1', em cada novo lote.
+      #
+      numero_sequencial_registro_lote:
+        pos: [9,13]
+        picture: '9(5)'
+      codigo_segmento_registro_detalhe:
+        pos: [14,14]
+        picture: 'X(1)'
+        default: 'A'
+      #
+      # Campo: tipo_movimento
+      # Código adotado pela FEBRABAN, para identificar o tipo de movimentação enviada no arquivo.
+      # Domínio:
+      # '0' = Indica INCLUSÃO
+      # ‘1’ = Indica CONSULTA
+      # ‘2’ = Indica SUSPENSÃO
+      # '3' = Indica ESTORNO (somente para retorno)
+      # ‘4’ = Indica REATIVAÇÃO
+      # '5' = Indica ALTERAÇÃO
+      # ‘7` = Indica LIQUIDAÇAO
+      # '9' = Indica EXCLUSÃO
+      #
+      tipo_movimento:
+        pos: [15,15]
+        picture: '9(1)'
+      #
+      # Campo: codigo_instrucao_movimento
+      # Código adotado pela FEBRABAN, para identificar a ação a ser realizada com o lançamento enviado no arquivo.
+      # Domínio:
+      # '00' = Inclusão de Registro Detalhe Liberado
+      # '09' = Inclusão do Registro Detalhe Bloqueado
+      # '10' = Alteração do Pagamento Liberado para Bloqueado (Bloqueio)
+      #
+      codigo_instrucao_movimento:
+        pos: [16,17]
+        picture: '9(2)'
+      #
+      # Campo: codigo_camara_centralizadora
+      # Código adotado pela FEBRABAN, para identificar qual Câmara de Centralizadora será responsável pelo processamento dos pagamentos.
+      # Preencher com o código da Câmara Centralizadora para envio do DOC.
+      # Domínio:
+      # '018' = TED (STR,CIP)
+      # '700' = DOC (COMPE)
+      # “888”- TED (STR/CIP) – Utilizado quando for necessário o envio de TED utilizando o
+      # código ISPB da Instituição Financeira Destinatária. Neste caso é obrigatório o
+      # preenchimento do campo “Código ISPB” – Campo 26.3B, do Segmento de Pagamento,
+      # conforme descrito na Nota P015.
+      #
+      codigo_camara_centralizadora:
+        pos: [18,20]
+        picture: '9(3)'
+      codigo_banco_favorecido:
+        pos: [21,23]
+        picture: '9(3)'
+      agencia_mantenedora_conta_favorecido:
+        pos: [24,28]
+        picture: '9(5)'
+      digito_verificador_agencia:
+        pos: [29,29]
+        picture: 'X(1)'
+      numero_conta_corrente:
+        pos: [30,41]
+        picture: '9(12)'
+      digito_verificador_conta:
+        pos: [42,42]
+        picture: 'X(1)'
+      digito_verificador_agencia_conta:
+        pos: [43,43]
+        picture: 'X(1)'
+      nome_favorecido:
+        pos: [44,73]
+        picture: 'X(30)'
+      #
+      # Campo: numero_documento_atribuido_empresa
+      # Número atribuído pela Empresa (Pagador) para identificar o documento de Pagamento (Nota Fiscal, Nota Promissória, etc.).
+      #
+      numero_documento_atribuido_empresa:
+        pos: [74,93]
+        picture: 'X(20)'
+      data_pagamento:
+        pos: [94,101]
+        picture: '9(8)'
+      #
+      # Campo: tipo_moeda
+      # Código adotado pela FEBRABAN para identificar a moeda utilizada para expressar o valor do documento.
+      # Baseada em tabela padrão S.W.I.F.T., acrescida dos principais índices nacionais.
+      # Domínio:
+      # 'BTN' = Bônus do Tesouro Nacional + TR
+      # 'BRL' = Real
+      # 'USD' = Dólar Americano
+      # 'PTE' = Escudo Português
+      # 'FRF' = Franco Francês
+      # 'CHF' = Franco Suíço
+      # 'JPY' = Ien Japonês
+      # 'IGP' = Índice Geral de Preços
+      # 'IGM' = Índice Geral de Preços de Mercado
+      # 'GBP' = Libra Esterlina
+      # 'ITL' = Lira Italiana
+      # 'DEM' = Marco Alemão
+      # 'TRD' = Taxa Referencial Diária
+      # 'UPC' = Unidade Padrão de Capital
+      # 'UPF' = Unidade Padrão de Financiamento
+      # 'UFR' = Unidade Fiscal de Referência
+      # 'XEU' = Unidade Monetária Européia
+      #
+      tipo_moeda:
+        pos: [102,104]
+        picture: 'X(3)'
+      quantidade_moeda:
+        pos: [105,119]
+        picture: '9(10)V9(5)'
+      valor_pagamento:
+        pos: [120,134]
+        picture: '9(13)V9(2)'
+      #
+      # Campo: numero_documento_atribuido_banco
+      # Número atribuído pelo Banco para identificar o lançamento, que será utilizado nas manutenções do mesmo.
+      #
+      numero_documento_atribuido_banco:
+        pos: [135,154]
+        picture: 'X(20)'
+      data_real_efetivacao_pagamento:
+        pos: [155,162]
+        picture: '9(8)'
+      valor_real_efetivacao_pagamento:
+        pos: [163,177]
+        picture: '9(13)V9(2)'
+      outras_informacoes:
+        pos: [178,217]
+        picture: 'X(40)'
+      #
+      # Campo: complemento_tipo_servico
+      # Código adotado pela FEBRABAN para identificação da finalidade do DOC (Documento de Ordem de Crédito).
+      # Domínio:
+      # '01' = Crédito em Conta
+      # '02' = Pagamento de Aluguel/Condomínio
+      # '03' = Pagamento de Duplicata/Títulos
+      # '04' = Pagamento de Dividendos
+      # '05' = Pagamento de Mensalidade Escolar
+      # '06' = Pagamento de Salários
+      # '07' = Pagamento a Fornecedores
+      # '08' = Operações de Câmbios/Fundos/Bolsa de Valores
+      # '09' = Repasse de Arrecadação/Pagamento de Tributos
+      # '10' = Transferência Internacional em Real
+      # '11' = DOC para Poupança
+      # '12' = DOC para Depósito Judicial
+      # '13' = Outros
+      # ‘16’ = Pagamento de bolsa auxílio
+      # ‘17’ = Remuneração à cooperado
+      # ‘18’ = Pagamento de honorários
+      # ‘19’ = Pagamento de prebenda (Remuneração a padres e sacerdotes)
+      #
+      complemento_tipo_servico:
+        pos: [218,219]
+        picture: 'X(2)'
+      #
+      # Campo: codigo_finalidade_ted
+      # Codigo adotado pelo Banco Central para identificar a finalidade da TED. Utitilizar os
+      # códigos de finalidade cliente, disponíveis no site do Banco Central do Brasil
+      # (www.bcb.gov.br), Sistema de Pagamentos Brasileiro, Transferência de Arquivos,
+      # Dicionários de Domínios para o SPB.
+      #
+      codigo_finalidade_ted:
+        pos: [220,224]
+        picture: 'X(5)'
+      #
+      # Campo: complemento_finalidade_pagamento
+      # Código adotado para complemento da finalidade pagamento. A forma de utilização deverá ser acordada entre banco e cliente.
+      #
+      complemento_finalidade_pagamento:
+        pos: [225,226]
+        picture: 'X(2)'
+      exclusivo_febraban_01:
+        pos: [227,229]
+        picture: 'X(3)'
+        default: ''
+      aviso_favorecido:
+        pos: [230,230]
+        picture: '9(1)'
+      codigos_ocorrencias_retorno:
+        pos: [231,240]
+        picture: 'X(10)'
+
+    segmento_b:
+      codigo_banco:
+        pos: [1,3]
+        picture: '9(3)'
+      lote_servico:
+        pos: [4,7]
+        picture: '9(4)'
+      tipo_registro:
+        pos: [8,8]
+        picture: '9(1)'
+        default: '3'
+      numero_sequencial_registro_lote:
+        pos: [9,13]
+        picture: '9(5)'
+      codigo_segmento_registro_detalhe:
+        pos: [14,14]
+        picture: 'X(1)'
+        default: 'B'
+      exclusivo_febraban_01:
+        pos: [15,17]
+        picture: 'X(3)'
+        default: ''
+      #
+      # Campo: tipo_inscricao_favorecido
+      # Código que identifica o tipo de inscrição da Empresa ou Pessoa Física perante uma
+      # Instituição governamental.Domínio:
+      # '0' = Isento / Não Informado
+      # '1' = CPF
+      # '2' = CGC / CNPJ
+      # '3' = PIS / PASEP
+      # '9' = Outros
+      # - Preenchimento deste campo é obrigatório para DOC e TED (Forma de Lançamento = 03, 41, 43).
+      # - Para pagamento para o SIAPE com crédito em conta, o CPF deverá ser do 1º titular.
+      # - Para o Produto/Serviço Cobrança considerar como obrigatório, a partir de
+      # 01.06.2015, somente o CPF (código 1) ou o CNPJ (código 2). Os demais códigos não
+      # deverão ser utilizados.
+      #
+      tipo_inscricao_favorecido:
+        pos: [18,18]
+        picture: '9(1)'
+      numero_inscricao_favorecido:
+        pos: [19,32]
+        picture: '9(14)'
+      logradouro:
+        pos: [33,62]
+        picture: 'X(30)'
+      numero:
+        pos: [63,67]
+        picture: '9(5)'
+      complemento:
+        pos: [68,82]
+        picture: 'X(15)'
+      bairro:
+        pos: [83,97]
+        picture: 'X(15)'
+      cidade:
+        pos: [98,117]
+        picture: 'X(20)'
+      cep:
+        pos: [118,122]
+        picture: '9(5)'
+      complemento_cep:
+        pos: [123,125]
+        picture: 'X(3)'
+      estado:
+        pos: [126,127]
+        picture: 'X(2)'
+      data_vencimento_nominal:
+        pos: [128,135]
+        picture: '9(8)'
+      valor_documento_nominal:
+        pos: [136,150]
+        picture: '9(13)V9(2)'
+      valor_abatimento:
+        pos: [151,165]
+        picture: '9(13)V9(2)'
+      valor_desconto:
+        pos: [166,180]
+        picture: '9(13)V9(2)'
+      valor_mora:
+        pos: [181,195]
+        picture: '9(13)V9(2)'
+      valor_multa:
+        pos: [196,210]
+        picture: '9(13)V9(2)'
+      #
+      # Campo: codigo_documento_favorecido
+      # Número ou Código de documento para identificar o Favorecido.
+      # O conteúdo deste campo não sofrerá nenhum tratamento por parte do Banco.
+      #
+      codigo_documento_favorecido:
+        pos: [211,225]
+        picture: 'X(15)'
+      aviso_favorecido:
+        pos: [226,226]
+        picture: '9(1)'
+      exclusivo_siape_01:
+        pos: [227,232]
+        picture: '9(6)'
+      codigo_ispb:
+        pos: [233,240]
+        picture: '9(8)'
+
+    # opcional remessa/retorno
+    segmento_c:
+      codigo_banco:
+        pos: [1,3]
+        picture: '9(3)'
+      lote_servico:
+        pos: [4,7]
+        picture: '9(4)'
+      tipo_registro:
+        pos: [8,8]
+        picture: '9(1)'
+        default: '3'
+      numero_sequencial_registro_lote:
+        pos: [9,13]
+        picture: '9(5)'
+      codigo_segmento_registro_detalhe:
+        pos: [14,14]
+        picture: 'X(1)'
+        default: 'C'
+      exclusivo_febraban_01:
+        pos: [15,17]
+        picture: 'X(3)'
+        default: ''
+      valor_ir:
+        pos: [18,32]
+        picture: '9(13)V9(2)'
+      valor_iss:
+        pos: [33,47]
+        picture: '9(13)V9(2)'
+      valor_iof:
+        pos: [48,62]
+        picture: '9(13)V9(2)'
+      valor_outras_deducoes:
+        pos: [63,77]
+        picture: '9(13)V9(2)'
+      valor_outros_acrescimos:
+        pos: [78,92]
+        picture: '9(13)V9(2)'
+      agencia_favorecido:
+        pos: [93,97]
+        picture: '9(5)'
+      digito_verificador_agencia:
+        pos: [98,98]
+        picture: 'X(1)'
+      numero_conta_corrente:
+        pos: [99,110]
+        picture: '9(12)'
+      digito_verificador_conta:
+        pos: [111,111]
+        picture: 'X(1)'
+      digito_verificador_agencia_conta:
+        pos: [112,112]
+        picture: 'X(1)'
+      valor_inss:
+        pos: [113,127]
+        picture: '9(13)V9(2)'
+      exclusivo_febraban_02:
+        pos: [128,240]
+        picture: 'X(113)'
+
+retorno:
+
+  header_arquivo:
+    codigo_banco:
+      pos: [1,3]
+      picture: '9(3)'
+    lote_servico:
+      pos: [4,7]
+      picture: '9(4)'
+      default: '0000'
+    tipo_registro:
+      pos: [8,8]
+      picture: '9(1)'
+      default: '0'
+    exclusivo_febraban_01:
+      pos: [9,17]
+      picture: 'X(9)'
+      default: ''
+    tipo_inscricao_empresa:
+      pos: [18,18]
+      picture: '9(1)'
+    numero_inscricao_empresa:
+      pos: [19,32]
+      picture: '9(14)'
+    codigo_convenio_banco:
+      pos: [33,52]
+      picture: 'X(20)'
+    agencia_mantenedora_conta:
+      pos: [53,57]
+      picture: '9(5)'
+    digito_verificador_agencia:
+      pos: [58,58]
+      picture: 'X(1)'
+    numero_conta_corrente:
+      pos: [59,70]
+      picture: '9(12)'
+    digito_verificador_conta:
+      pos: [71,71]
+      picture: 'X(1)'
+    digito_verificador_agencia_conta:
+      pos: [72,72]
+      picture: 'X(1)'
+    nome_empresa:
+      pos: [73,102]
+      picture: 'X(30)'
+    nome_banco:
+      pos: [103,132]
+      picture: 'X(30)'
+    exclusivo_febraban_02:
+      pos: [133,142]
+      picture: 'X(10)'
+      default: ''
+    codigo_remessa_retorno:
+      pos: [143,143]
+      picture: '9(1)'
+    data_geracao_arquivo:
+      pos: [144,151]
+      picture: '9(8)'
+    hora_geracao_arquivo:
+      pos: [152,157]
+      picture: '9(6)'
+    numero_sequencial_arquivo:
+      pos: [158,163]
+      picture: '9(6)'
+    versao_layout_arquivo:
+      pos: [164,166]
+      picture: '9(3)'
+      default: '091'
+    densidade_gravacao_arquivo:
+      pos: [167,171]
+      picture: '9(5)'
+    reservado_banco_01:
+      pos: [172,191]
+      picture: 'X(20)'
+    reservado_empresa_01:
+      pos: [192,211]
+      picture: 'X(20)'
+    exclusivo_febraban_03:
+      pos: [212,240]
+      picture: 'X(29)'
+      default: ''
+
+  trailer_arquivo:
+    codigo_banco:
+      pos: [1,3]
+      picture: '9(3)'
+    lote_servico:
+      pos: [4,7]
+      picture: '9(4)'
+      default: '9999'
+    tipo_registro:
+      pos: [8,8]
+      picture: '9(1)'
+      default: '9'
+    exclusivo_febraban_01:
+      pos: [9,17]
+      picture: 'X(9)'
+      default: ''
+    quantidade_lotes_arquivo:
+      pos: [18,23]
+      picture: '9(6)'
+    quantidade_registros_arquivo:
+      pos: [24,29]
+      picture: '9(6)'
+    quantidade_contas_conciliacao_lotes:
+      pos: [30,35]
+      picture: '9(6)'
+    exclusivo_febraban_02:
+      pos: [36,240]
+      picture: 'X(205)'
+      default: ''
+
+  header_lote:
+    codigo_banco:
+      pos: [1,3]
+      picture: '9(3)'
+    lote_servico:
+      pos: [4,7]
+      picture: '9(4)'
+    tipo_registro:
+      pos: [8,8]
+      picture: '9(1)'
+      default: '1'
+    tipo_operacao:
+      pos: [9,9]
+      picture: 'X(1)'
+      default: 'C'
+    tipo_servico:
+      pos: [10,11]
+      picture: '9(2)'
+    forma_lancamento:
+      pos: [12,13]
+      picture: '9(2)'
+    versao_layout_lote:
+      pos: [14,16]
+      picture: '9(3)'
+      default: '045'
+    exclusivo_febraban_01:
+      pos: [17,17]
+      picture: 'X(1)'
+      default: ''
+    tipo_inscricao_empresa:
+      pos: [18,18]
+      picture: '9(1)'
+    numero_inscricao_empresa:
+      pos: [19,32]
+      picture: '9(14)'
+    codigo_convenio_banco:
+      pos: [33,52]
+      picture: 'X(20)'
+    agencia_mantenedora_conta:
+      pos: [53,57]
+      picture: '9(5)'
+    digito_verificador_agencia:
+      pos: [58,58]
+      picture: 'X(1)'
+    numero_conta_corrente:
+      pos: [59,70]
+      picture: '9(12)'
+    digito_verificador_conta:
+      pos: [71,71]
+      picture: 'X(1)'
+    digito_verificador_agencia_conta:
+      pos: [72,72]
+      picture: 'X(1)'
+    nome_empresa:
+      pos: [73,102]
+      picture: 'X(30)'
+    mensagem:
+      pos: [103,142]
+      picture: 'X(40)'
+    logradouro:
+      pos: [143,172]
+      picture: 'X(30)'
+    numero:
+      pos: [173,177]
+      picture: '9(5)'
+    complemento:
+      pos: [178,192]
+      picture: 'X(15)'
+    cidade:
+      pos: [193,212]
+      picture: 'X(20)'
+    cep:
+      pos: [213,217]
+      picture: '9(5)'
+    complemento_cep:
+      pos: [218,220]
+      picture: 'X(3)'
+    estado:
+      pos: [221,222]
+      picture: 'X(2)'
+    indicativo_forma_pagamento_servico:
+      pos: [223,224]
+      picture: '9(2)'
+    exclusivo_febraban_02:
+      pos: [225,230]
+      picture: 'X(6)'
+      default: ''
+    codigos_ocorrencias_retorno:
+      pos: [231,240]
+      picture: 'X(10)'
+
+  trailer_lote:
+    codigo_banco:
+      pos: [1,3]
+      picture: '9(3)'
+    lote_servico:
+      pos: [4,7]
+      picture: '9(4)'
+    tipo_registro:
+      pos: [8,8]
+      picture: '9(1)'
+      default: '5'
+    exclusivo_febraban_01:
+      pos: [9,17]
+      picture: 'X(9)'
+      default: ''
+    quantidade_registros_lote:
+      pos: [18,23]
+      picture: '9(6)'
+    somatoria_valores:
+      pos: [24,41]
+      picture: '9(16)V9(2)'
+    somatoria_quantidade_moedas:
+      pos: [42,59]
+      picture: '9(13)V9(5)'
+    numero_aviso_debito:
+      pos: [60,65]
+      picture: '9(6)'
+    exclusivo_febraban_02:
+      pos: [66,230]
+      picture: 'X(165)'
+      default: ''
+    codigos_ocorrencias_retorno:
+      pos: [231,240]
+      picture: 'X(10)'
+
+  detalhes:
+    segmento_a:
+      codigo_banco:
+        pos: [1,3]
+        picture: '9(3)'
+      lote_servico:
+        pos: [4,7]
+        picture: '9(4)'
+      tipo_registro:
+        pos: [8,8]
+        picture: '9(1)'
+        default: '3'
+      numero_sequencial_registro_lote:
+        pos: [9,13]
+        picture: '9(5)'
+      codigo_segmento_registro_detalhe:
+        pos: [14,14]
+        picture: 'X(1)'
+        default: 'A'
+      tipo_movimento:
+        pos: [15,15]
+        picture: '9(1)'
+      codigo_instrucao_movimento:
+        pos: [16,17]
+        picture: '9(2)'
+      codigo_camara_centralizadora:
+        pos: [18,20]
+        picture: '9(3)'
+      codigo_banco_favorecido:
+        pos: [21,23]
+        picture: '9(3)'
+      agencia_mantenedora_conta_favorecido:
+        pos: [24,28]
+        picture: '9(5)'
+      digito_verificador_agencia:
+        pos: [29,29]
+        picture: 'X(1)'
+      numero_conta_corrente:
+        pos: [30,41]
+        picture: '9(12)'
+      digito_verificador_conta:
+        pos: [42,42]
+        picture: 'X(1)'
+      digito_verificador_agencia_conta:
+        pos: [43,43]
+        picture: 'X(1)'
+      nome_favorecido:
+        pos: [44,73]
+        picture: 'X(30)'
+      numero_documento_atribuido_empresa:
+        pos: [74,93]
+        picture: 'X(20)'
+      data_pagamento:
+        pos: [94,101]
+        picture: '9(8)'
+      tipo_moeda:
+        pos: [102,104]
+        picture: 'X(3)'
+      quantidade_moeda:
+        pos: [105,119]
+        picture: '9(10)V9(5)'
+      valor_pagamento:
+        pos: [120,134]
+        picture: '9(13)V9(2)'
+      numero_documento_atribuido_banco:
+        pos: [135,154]
+        picture: 'X(20)'
+      data_real_efetivacao_pagamento:
+        pos: [155,162]
+        picture: '9(8)'
+      valor_real_efetivacao_pagamento:
+        pos: [163,177]
+        picture: '9(13)V9(2)'
+      outras_informacoes:
+        pos: [178,217]
+        picture: 'X(40)'
+      complemento_tipo_servico:
+        pos: [218,219]
+        picture: 'X(2)'
+      codigo_finalidade_ted:
+        pos: [220,224]
+        picture: 'X(5)'
+      complemento_finalidade_pagamento:
+        pos: [225,226]
+        picture: 'X(2)'
+      exclusivo_febraban_01:
+        pos: [227,229]
+        picture: 'X(3)'
+        default: ''
+      aviso_favorecido:
+        pos: [230,230]
+        picture: '9(1)'
+      codigos_ocorrencias_retorno:
+        pos: [231,240]
+        picture: 'X(10)'
+
+    segmento_b:
+      codigo_banco:
+        pos: [1,3]
+        picture: '9(3)'
+      lote_servico:
+        pos: [4,7]
+        picture: '9(4)'
+      tipo_registro:
+        pos: [8,8]
+        picture: '9(1)'
+        default: '3'
+      numero_sequencial_registro_lote:
+        pos: [9,13]
+        picture: '9(5)'
+      codigo_segmento_registro_detalhe:
+        pos: [14,14]
+        picture: 'X(1)'
+        default: 'B'
+      exclusivo_febraban_01:
+        pos: [15,17]
+        picture: 'X(3)'
+        default: ''
+      tipo_inscricao_favorecido:
+        pos: [18,18]
+        picture: '9(1)'
+      numero_inscricao_favorecido:
+        pos: [19,32]
+        picture: '9(14)'
+      logradouro:
+        pos: [33,62]
+        picture: 'X(30)'
+      numero:
+        pos: [63,67]
+        picture: '9(5)'
+      complemento:
+        pos: [68,82]
+        picture: 'X(15)'
+      bairro:
+        pos: [83,97]
+        picture: 'X(15)'
+      cidade:
+        pos: [98,117]
+        picture: 'X(20)'
+      cep:
+        pos: [118,122]
+        picture: '9(5)'
+      complemento_cep:
+        pos: [123,125]
+        picture: 'X(3)'
+      estado:
+        pos: [126,127]
+        picture: 'X(2)'
+      data_vencimento_nominal:
+        pos: [128,135]
+        picture: '9(8)'
+      valor_documento_nominal:
+        pos: [136,150]
+        picture: '9(13)V9(2)'
+      valor_abatimento:
+        pos: [151,165]
+        picture: '9(13)V9(2)'
+      valor_desconto:
+        pos: [166,180]
+        picture: '9(13)V9(2)'
+      valor_mora:
+        pos: [181,195]
+        picture: '9(13)V9(2)'
+      valor_multa:
+        pos: [196,210]
+        picture: '9(13)V9(2)'
+      codigo_documento_favorecido:
+        pos: [211,225]
+        picture: 'X(15)'
+      #
+      # Campo: aviso_favorecido
+      # Código adotado pela FEBRABAN para identificar a necessidade de emissão de aviso de
+      # pagamento ao Favorecido.
+      # Domínio:
+      # '0' = Não Emite Aviso
+      # '2' = Emite Aviso Somente para o Remetente
+      # '5' = Emite Aviso Somente para o Favorecido
+      # '6' = Emite Aviso para o Remetente e Favorecido
+      # '7' = Emite Aviso para o Favorecido e 2 Vias para o Remetente
+      # 
+      aviso_favorecido:
+        pos: [226,226]
+        picture: '9(1)'
+      #
+      # Campo: exclusivo_siape_01
+      # Uso exclusivo para Pagamentos de Salários dos servidores, pelo SIAPE
+      #
+      exclusivo_siape_01:
+        pos: [227,232]
+        picture: '9(6)'
+      #
+      # Campo: codigo_ispb
+      # Código Adotado pelo Banco Central para identificação das instituições financeiras no
+      # Sistema de Pagamentos Brasileiro.
+      # A informação do Código ISPB é obrigatória quando for necessário o envio de TED para
+      # instituição financeira que não possui código COMPE.
+      # A informação do código ISPB pode ser obtida por meio do seguinte site:
+      # www.bacen.gov.br - Início - Sistema de Pagamentos Brasileiro - STR - Sistema de
+      # Transferência de Reservas - Relação de participantes do STR
+      #
+      codigo_ispb:
+        pos: [233,240]
+        picture: '9(8)'
+
+    # opcional remessa/retorno
+    segmento_c:
+      codigo_banco:
+        pos: [1,3]
+        picture: '9(3)'
+      lote_servico:
+        pos: [4,7]
+        picture: '9(4)'
+      tipo_registro:
+        pos: [8,8]
+        picture: '9(1)'
+        default: '3'
+      numero_sequencial_registro_lote:
+        pos: [9,13]
+        picture: '9(5)'
+      codigo_segmento_registro_detalhe:
+        pos: [14,14]
+        picture: 'X(1)'
+        default: 'C'
+      exclusivo_febraban_01:
+        pos: [15,17]
+        picture: 'X(3)'
+        default: ''
+      valor_ir:
+        pos: [18,32]
+        picture: '9(13)V9(2)'
+      valor_iss:
+        pos: [33,47]
+        picture: '9(13)V9(2)'
+      valor_iof:
+        pos: [48,62]
+        picture: '9(13)V9(2)'
+      valor_outras_deducoes:
+        pos: [63,77]
+        picture: '9(13)V9(2)'
+      valor_outros_acrescimos:
+        pos: [78,92]
+        picture: '9(13)V9(2)'
+      agencia_favorecido:
+        pos: [93,97]
+        picture: '9(5)'
+      digito_verificador_agencia:
+        pos: [98,98]
+        picture: 'X(1)'
+      numero_conta_corrente:
+        pos: [99,110]
+        picture: '9(12)'
+      digito_verificador_conta:
+        pos: [111,111]
+        picture: 'X(1)'
+      digito_verificador_agencia_conta:
+        pos: [112,112]
+        picture: 'X(1)'
+      valor_inss:
+        pos: [113,127]
+        picture: '9(13)V9(2)'
+      exclusivo_febraban_02:
+        pos: [128,240]
+        picture: 'X(113)'
