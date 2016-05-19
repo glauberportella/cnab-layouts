@@ -8,7 +8,7 @@
 # - Campos Numéricos (9) = Sempre à direita e preenchidos com zeros à esquerda.
 # - Campos Alfanuméricos (X) = Sempre à esquerda e preenchidos com brancos à direita. 
 #
-servico: 'cobranca_bloqueto'
+servico: 'cobranca'
 
 versao: 'fev2016'
 

@@ -693,35 +693,6 @@ remessa:
         pos: [163,240]
         picture: 'X(78)'
         default: ''
-      # colocar em arquivo cobranca_sem_email
-      # identificacao_impressao:
-      #   pos: [18,18]
-      #   picture: '9(1)'
-      #   default: 0
-      # mensagem_05:
-      #   pos: [19,58]
-      #   picture: 'X(40)'
-      #   default: ''
-      # mensagem_06:
-      #   pos: [59,98]
-      #   picture: 'X(40)'
-      #   default: ''
-      # mensagem_07:
-      #   pos: [99,138]
-      #   picture: 'X(40)'
-      #   default: ''
-      # mensagem_08:
-      #   pos: [139,178]
-      #   picture: 'X(40)'
-      #   default: ''
-      # mensagem_09:
-      #   pos: [179,218]
-      #   picture: 'X(40)'
-      #   default: ''
-      # exclusivo_febraban_03:
-      #   pos: [219,240]
-      #   picture: 'X(22)'
-      #   default: ''
 
     # segmento não utilizado pelo BB
     segmento_y01:
@@ -752,7 +723,7 @@ remessa:
         picture: '9(2)'
       identificacao_registro:
         pos: [18,19]
-        picture: '9(1)'
+        picture: '9(2)'
         default: 1
       tipo_inscricao:
         pos: [20,20]

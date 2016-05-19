@@ -731,7 +731,7 @@ remessa:
         picture: '9(2)'
       identificacao_registro:
         pos: [18,19]
-        picture: '9(1)'
+        picture: '9(2)'
         default: 1
       tipo_inscricao:
         pos: [20,20]
