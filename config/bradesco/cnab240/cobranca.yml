@@ -399,7 +399,7 @@ remessa:
         default: 0
       identificacao_titulo_empresa:
         pos: [196,220]
-        picture: 'X(20)'
+        picture: 'X(25)'
         default: ''
       codigo_protesto:
         pos: [221,221]
