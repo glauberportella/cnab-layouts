@@ -8,7 +8,7 @@ class RetornoParserItauCobrancaCnab240Test extends \PHPUnit_Framework_TestCase
 {
 	public function testRetornoFileInstanceSuccess()
 	{
-		$layout = new Layout(__DIR__.'/../../../../config/itau/cnab240/cobranca_bloqueto.yml');
+		$layout = new Layout(__DIR__.'/../../../../config/itau/cnab240/cobranca.yml');
 		$this->assertInstanceOf('CnabParser\Parser\Layout', $layout);
 
 		$retornoFile = new RetornoFile($layout, __DIR__.'/../../data/cobranca-itau-cnab240.ret');
@@ -17,7 +17,7 @@ class RetornoParserItauCobrancaCnab240Test extends \PHPUnit_Framework_TestCase
 
 	public function testRetornoGenerateModelSuccess()
 	{
-		$layout = new Layout(__DIR__.'/../../../../config/itau/cnab240/cobranca_bloqueto.yml');
+		$layout = new Layout(__DIR__.'/../../../../config/itau/cnab240/cobranca.yml');
 		$retornoFile = new RetornoFile($layout, __DIR__.'/../../data/cobranca-itau-cnab240.ret');
 
 		$this->assertEquals(1, $retornoFile->getTotalLotes());

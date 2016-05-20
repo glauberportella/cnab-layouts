@@ -8,13 +8,13 @@ class ParserItauCobrancaCnab240Test extends \PHPUnit_Framework_TestCase
 {
 	public function testDeveInstanciarLayout()
 	{
-		$layout = new Layout(__DIR__.'/../../../../config/itau/cnab240/cobranca_bloqueto.yml');
+		$layout = new Layout(__DIR__.'/../../../../config/itau/cnab240/cobranca.yml');
 		$this->assertInstanceOf('CnabParser\Parser\Layout', $layout);
 	}
 
 	public function testRemessaOk()
 	{
-		$remessaLayout = new Layout(__DIR__.'/../../../../config/itau/cnab240/cobranca_bloqueto.yml');
+		$remessaLayout = new Layout(__DIR__.'/../../../../config/itau/cnab240/cobranca.yml');
 		$remessa = new Remessa($remessaLayout);
 		$this->assertInstanceOf('CnabParser\Model\Remessa', $remessa);
 		

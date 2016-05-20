@@ -6,6 +6,7 @@
         "psr-4": { "": "src/" }
     },
     "require-dev": {
-        "codeclimate/php-test-reporter": "^0.3.2"
+        "codeclimate/php-test-reporter": "^0.3.2",
+	"phpunit/phpunit": "@stable"
     }
 }
