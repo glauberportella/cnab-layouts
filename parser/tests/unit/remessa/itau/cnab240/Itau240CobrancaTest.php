@@ -4,17 +4,17 @@ use CnabParser\Parser\Layout;
 use CnabParser\Model\Remessa;
 use CnabParser\Output\RemessaFile;
 
-class ParserItauCobrancaCnab240Test extends \PHPUnit_Framework_TestCase
+class Itau240CobrancaTest extends \PHPUnit_Framework_TestCase
 {
 	public function testDeveInstanciarLayout()
 	{
-		$layout = new Layout(__DIR__.'/../../../../config/itau/cnab240/cobranca.yml');
+		$layout = new Layout(__DIR__.'/../../../../../../config/itau/cnab240/cobranca.yml');
 		$this->assertInstanceOf('CnabParser\Parser\Layout', $layout);
 	}
 
 	public function testRemessaOk()
 	{
-		$remessaLayout = new Layout(__DIR__.'/../../../../config/itau/cnab240/cobranca.yml');
+		$remessaLayout = new Layout(__DIR__.'/../../../../../../config/itau/cnab240/cobranca.yml');
 		$remessa = new Remessa($remessaLayout);
 		$this->assertInstanceOf('CnabParser\Model\Remessa', $remessa);
 		
@@ -122,6 +122,6 @@ class ParserItauCobrancaCnab240Test extends \PHPUnit_Framework_TestCase
 		// gera arquivo
 		$remessaFile = new RemessaFile($remessa);
 		$this->assertInstanceOf('CnabParser\Output\RemessaFile', $remessaFile);
-		$remessaFile->generate(__DIR__.'/../../out/itau-cobranca240.rem');
+		$remessaFile->generate(__DIR__.'/../../../../out/itau-cobranca240.rem');
 	}
 }
