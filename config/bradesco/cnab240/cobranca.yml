@@ -238,7 +238,7 @@ remessa:
       picture: '9(6)'
     valor_total_titulos_simples:
       pos: [30,46]
-      picture: '9(15)V9(2)'
+      picture: '9(13)V9(2)'
       default: 0
     quantidade_titulos_vinculada:
       pos: [47,52]
@@ -246,7 +246,7 @@ remessa:
       default: 0
     valor_total_titulos_vinculada:
       pos: [53,69]
-      picture: '9(15)V9(2)'
+      picture: '9(13)V9(2)'
       default: 0
     quantidade_titulos_caucionada:
       pos: [70,75]
@@ -254,7 +254,7 @@ remessa:
       default: 0
     valor_total_titulos_caucionada:
       pos: [76,92]
-      picture: '9(15)V9(2)'
+      picture: '9(13)V9(2)'
       default: 0
     quantidade_titulos_descontada:
       pos: [93,98]
@@ -262,7 +262,7 @@ remessa:
       default: 0
     valor_total_titulos_descontada:
       pos: [99,115]
-      picture: '9(15)V9(2)'
+      picture: '9(13)V9(2)'
       default: 0
     numero_aviso:
       pos: [116,123]
@@ -1063,7 +1063,7 @@ remessa:
         picture: '9(6)'
       valor_total_titulos_simples:
         pos: [30,46]
-        picture: '9(15)V9(2)'
+        picture: '9(13)V9(2)'
         default: 0
       quantidade_titulos_vinculada:
         pos: [47,52]
@@ -1071,7 +1071,7 @@ remessa:
         default: 0
       valor_total_titulos_vinculada:
         pos: [53,69]
-        picture: '9(15)V9(2)'
+        picture: '9(13)V9(2)'
         default: 0
       quantidade_titulos_caucionada:
         pos: [70,75]
@@ -1079,7 +1079,7 @@ remessa:
         default: 0
       valor_total_titulos_caucionada:
         pos: [76,92]
-        picture: '9(15)V9(2)'
+        picture: '9(13)V9(2)'
         default: 0
       quantidade_titulos_descontada:
         pos: [93,98]
@@ -1087,7 +1087,7 @@ remessa:
         default: 0
       valor_total_titulos_descontada:
         pos: [99,115]
-        picture: '9(15)V9(2)'
+        picture: '9(13)V9(2)'
         default: 0
       numero_aviso:
         pos: [116,123]
