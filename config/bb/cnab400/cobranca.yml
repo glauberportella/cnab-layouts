@@ -1,0 +1,1232 @@
+# FORMATO: BANCO DO BRASIL - CNAB400
+# OBJETIVO DO ARQUIVO: COBRANÇA BANCÁRIA
+#
+# TAMANHO DO REGISTRO
+# O Tamanho do Registro é de 400 bytes.
+#
+# ALINHAMENTO DE CAMPOS
+# - Campos Numéricos (9) = Sempre à direita e preenchidos com zeros à esquerda.
+# - Campos Alfanuméricos (X) = Sempre à esquerda e preenchidos com brancos à direita. 
+#
+servico: 'cobranca'
+
+versao: 'cbr641-7digitos'
+
+layout: 'cnab400'
+
+remessa:
+  header_arquivo:
+    codigo_registro:
+      pos: [1,1]
+      picture: '9(1)'
+      default: 0
+    tipo_operacao:
+      pos: [2,2]
+      picture: '9(1)'
+      default: 1
+    tipo_operacao_extenso:
+      pos: [3,9]
+      picture: 'X(7)'
+      default: 'REMESSA'
+    tipo_servico:
+      pos: [10,11]
+      picture: '9(2)'
+      default: '01'
+    tipo_servico_extenso:
+      pos: [12,19]
+      picture: 'X(8)'
+      default: 'COBRANCA'
+    complemento_registro_01:
+      pos: [20,26]
+      picture: 'X(7)'
+      default: ''
+    agencia:
+      pos: [27,30]
+      picture: '9(4)'
+    verificador_agencia:
+      pos: [31,31]
+      picture: 'X(1)'
+    conta:
+      pos: [32,39]
+      picture: '9(8)'
+    verificador_conta:
+      pos: [40,40]
+      picture: 'X(1)'
+    complemento_registro_02:
+      pos: [41,46]
+      picture: '9(6)'
+      default: 0
+    nome_cedente:
+      pos: [47,76]
+      picture: 'X(30)'
+    nome_banco:
+      pos: [77,94]
+      picture: 'X(18)'
+      default: '001BANCODOBRASIL'
+    data_gravacao:
+      pos: [95,100]
+      picture: '9(6)'
+    numero_sequencial:
+      pos: [101,107]
+      picture: '9(7)'
+    complemento_registro_03:
+      pos: [108,129]
+      picture: 'X(22)'
+      default: ''
+    numero_convenio:
+      pos: [130,136]
+      picture: '9(7)'
+    complemento_registro_04:
+      pos: [137,394]
+      picture: 'X(258)'
+      default: ''
+    sequencial_registro:
+      pos: [395,400]
+      picture: '9(6)'
+
+  trailer_arquivo:
+    codigo_registro:
+      pos: [1,1]
+      picture: '9(1)'
+      default: 9
+    complemento_registro_01:
+      pos: [2,394]
+      picture: 'X(393)'
+      default: ''
+    sequencial_registro:
+      pos: [395,400]
+      picture: '9(6)'
+
+  detalhes:
+    # unico detalhe
+    segmento_7:
+      codigo_registro:
+        pos: [1,1]
+        picture: '9(1)'
+        default: 7
+      tipo_inscricao:
+        pos: [2,3]
+        picture: '9(2)'
+      numero_inscricao:
+        pos: [4,17]
+        picture: '9(14)'
+      agencia:
+        pos: [18,21]
+        picture: '9(4)'
+      verificador_agencia:
+        pos: [22,22]
+        picture: 'X(1)'
+      conta:
+        pos: [23,30]
+        picture: '9(8)'
+      verificador_conta:
+        pos: [31,31]
+        picture: 'X(1)'
+      numero_convenio:
+        pos: [32,38]
+        picture: '9(7)'
+      codigo_controle:
+        pos: [39,63]
+        picture: 'X(25)'
+      nosso_numero:
+        pos: [64,80]
+        picture: '9(17)'
+      numero_prestacao:
+        pos: [81,82]
+        picture: '9(2)'
+        default: 0
+      grupo_valor:
+        pos: [83,84]
+        picture: '9(2)'
+        default: 0
+      complemento_registro_01:
+        pos: [85,87]
+        picture: 'X(3)'
+        default: ''
+      indicativo_mensagem:
+        pos: [88,88]
+        picture: 'X(1)'
+      prefixo_titulo:
+        pos: [89,91]
+        picture: 'X(3)'
+        default: ''
+      variacao_carteira:
+        pos: [92,94]
+        picture: '9(3)'
+      conta_caucao:
+        pos: [95,95]
+        picture: '9(1)'
+        default: 0
+      numero_bordero:
+        pos: [96,101]
+        picture: '9(6)'
+        default: 0
+      tipo_cobranca:
+        pos: [102,106]
+        picture: 'X(5)'
+      carteira_cobranca:
+        pos: [107,108]
+        picture: '9(2)'
+      comando:
+        pos: [109,110]
+        picture: '9(2)'
+      numero_documento:
+        pos: [111,120]
+        picture: 'X(10)'
+      vencimento:
+        pos: [121,126]
+        picture: '9(6)'
+      valor:
+        pos: [127,139]
+        picture: '9(11)V9(2)'
+      numero_banco:
+        pos: [140,142]
+        picture: '9(3)'
+        default: '001'
+      agencia_cobradora:
+        pos: [143,146]
+        picture: '9(4)'
+        default: 0
+      verificador_agencia_cobradora:
+        pos: [147,147]
+        picture: 'X(1)'
+        default: ''
+      especie:
+        pos: [148,149]
+        picture: '9(2)'
+      aceite:
+        pos: [150,150]
+        picture: 'X(1)'
+        default: 'N'
+      data_emissao:
+        pos: [151,156]
+        picture: '9(6)'
+      instrucao_codificada_01:
+        pos: [157,158]
+        picture: '9(2)'
+      instrucao_codificada_02:
+        pos: [159,160]
+        picture: '9(2)'
+      juros_mora_dia:
+        pos: [161,173]
+        picture: '9(11)V9(2)'
+      data_limite_desconto_juros:
+        pos: [174,179]
+        picture: '9(6)'
+      valor_desconto:
+        pos: [180,192]
+        picture: '9(11)V9(2)'
+      valor_iof:
+        pos: [193,205]
+        picture: '9(11)V9(2)'
+      valor_abatimento:
+        pos: [206,218]
+        picture: '9(11)V9(2)'
+      tipo_inscricao_sacado:
+        pos: [219,220]
+        picture: '9(2)'
+      numero_inscricao_sacado:
+        pos: [221,234]
+        picture: '9(14)'
+      nome_sacado:
+        pos: [235,271]
+        picture: 'X(37)'
+      complemento_registro_02:
+        pos: [272,274]
+        picture: 'X(3)'
+        default: ''
+      endereco_sacado:
+        pos: [275,314]
+        picture: 'X(40)'
+      bairro_sacado:
+        pos: [315,326]
+        picture: 'X(12)'
+      cep_sacado:
+        pos: [327,334]
+        picture: '9(8)'
+      cidade_sacado:
+        pos: [335,349]
+        picture: 'X(15)'
+      uf_sacado:
+        pos: [350,351]
+        picture: 'X(2)'
+      mensagem:
+        pos: [352,391]
+        picture: 'X(40)'
+      dias_protesto:
+        pos: [392,393]
+        picture: 'X(2)'
+      complemento_registro_03:
+        pos: [394,394]
+        picture: 'X(1)'
+        default: ''
+      sequencial_registro:
+        pos: [395,400]
+        picture: '9(6)'
+
+    # opcional
+    segmento_5_99:
+      codigo_registro:
+        pos: [1,1]
+        picture: '9(1)'
+        default: 5
+      tipo_servico:
+        pos: [2,3]
+        picture: 'X(2)'
+        default: '99'
+      codigo_multa:
+        pos: [4,4]
+        picture: '9(1)'
+      data_inicio_multa:
+        pos: [5,10]
+        picture: '9(6)'
+      valor_multa:
+        pos: [11,22]
+        picture: '9(12)'
+      complemento_registro_01:
+        pos: [23,394]
+        picture: 'X(372)'
+        default: ''
+      sequencial_registro:
+        pos: [395,400]
+        picture: '9(6)'
+
+    # opcional
+    # somente validado se cliente estiver autorizado no sistema de cobrança BB
+    segmento_5_01:
+      codigo_registro:
+        pos: [1,1]
+        picture: '9(1)'
+        default: 5
+      tipo_servico:
+        pos: [2,3]
+        picture: 'X(2)'
+        default: '01'
+      email_sacado:
+        pos: [4,139]
+        picture: 'X(136)'
+      complemento_registro_01:
+        pos: [140,394]
+        picture: 'X(255)'
+        default: ''
+      sequencial_registro:
+        pos: [395,400]
+        picture: '9(6)'
+
+    segmento_5_03:
+      codigo_registro:
+        pos: [1,1]
+        picture: '9(1)'
+        default: 5
+      tipo_servico:
+        pos: [2,3]
+        picture: '9(2)'
+        default: '03'
+      identificacao_titulo:
+        pos: [4,18]
+        picture: 'X(15)'
+      complemento_registro_01:
+        pos: [19,394]
+        picture: 'X(376)'
+        default: ''
+      sequencial_registro:
+        pos: [395,400]
+        picture: '9(6)'
+
+retorno:
+  header_arquivo:
+    codigo_registro:
+      pos: [1,1]
+      picture: '9(1)'
+      default: 0
+    tipo_operacao:
+      pos: [2,2]
+      picture: '9(1)'
+      default: 2
+    tipo_operacao_extenso:
+      pos: [3,9]
+      picture: 'X(7)'
+      default: 'RETORNO'
+    tipo_servico:
+      pos: [10,11]
+      picture: '9(2)'
+      default: '01'
+    tipo_servico_extenso:
+      pos: [12,19]
+      picture: 'X(8)'
+      default: 'COBRANCA'
+    complemento_registro_01:
+      pos: [20,26]
+      picture: 'X(7)'
+      default: ''
+    agencia:
+      pos: [27,30]
+      picture: '9(4)'
+    verificador_agencia:
+      pos: [31,31]
+      picture: 'X(1)'
+    conta:
+      pos: [32,39]
+      picture: '9(8)'
+    verificador_conta:
+      pos: [40,40]
+      picture: 'X(1)'
+    zeros:
+      pos: [41,46]
+      picture: '9(6)'
+      default: 0
+    nome_cedente:
+      pos: [47,76]
+      picture: 'X(30)'
+    nome_banco:
+      pos: [77,94]
+      picture: 'X(18)'
+      default: '001BANCODOBRASIL'
+    data_gravacao:
+      pos: [95,100]
+      picture: '9(6)'
+    numero_sequencial:
+      pos: [101,107]
+      picture: '9(7)'
+    complemento_registro_02:
+      pos: [108,129]
+      picture: 'X(22)'
+      default: ''
+    numero_convenio:
+      pos: [130,136]
+      picture: '9(7)'
+    complemento_registro_03:
+      pos: [137,394]
+      picture: 'X(258)'
+      default: ''
+    sequencial_registro:
+      pos: [395,400]
+      picture: '9(6)'
+
+  trailer_arquivo:
+    codigo_registro:
+      pos: [1,1]
+      picture: '9(1)'
+      default: 9
+    tipo_operacao:
+      pos: [2,2]
+      picture: '9(1)'
+      default: 2
+    tipo_servico:
+      pos: [3,4]
+      picture: '9(2)'
+      default: '01'
+    codigo:
+      pos: [5,7]
+      picture: '9(3)'
+      default: '001'
+    complemento_registro_01:
+      pos: [8,17]
+      picture: 'X(10)'
+      default: ''
+    quantidade_titulos_simples:
+      pos: [18,25]
+      picture: '9(8)'
+    valor_titulos_simples:
+      pos: [26,39]
+      picture: '9(13)V9(2)'
+    numero_aviso_simples:
+      pos: [40,47]
+      picture: '9(8)'
+    brancos_simples:
+      pos: [48,57]
+      picture: 'X(10)'
+      default: ''
+    quantidade_titulos_vinculada:
+      pos: [58,65]
+      picture: '9(8)'
+    valor_titulos_vinculada:
+      pos: [66,79]
+      picture: '9(13)V9(2)'
+    numero_aviso_vinculada:
+      pos: [80,87]
+      picture: '9(8)'
+    brancos_vinculada:
+      pos: [88,97]
+      picture: 'X(10)'
+      default: ''
+    quantidade_titulos_caucionada:
+      pos: [98,105]
+      picture: '9(8)'
+    valor_titulos_caucionada:
+      pos: [106,119]
+      picture: '9(13)V9(2)'
+    numero_aviso_caucionada:
+      pos: [120,127]
+      picture: '9(8)'
+    brancos_caucionada:
+      pos: [128,137]
+      picture: 'X(10)'
+      default: ''
+    quantidade_titulos_descontada:
+      pos: [138,145]
+      picture: '9(8)'
+    valor_titulos_descontada:
+      pos: [146,159]
+      picture: '9(13)V9(2)'
+    numero_aviso_descontada:
+      pos: [160,167]
+      picture: '9(8)'
+    brancos_descontada:
+      pos: [168,217]
+      picture: 'X(50)'
+      default: ''
+    quantidade_titulos_vendor:
+      pos: [218,225]
+      picture: '9(8)'
+    valor_titulos_vendor:
+      pos: [226,239]
+      picture: '9(13)V9(2)'
+    numero_aviso_vendor:
+      pos: [240,247]
+      picture: '9(8)'
+    brancos_vendor:
+      pos: [248,394]
+      picture: 'X(147)'
+      default: ''
+    sequencial_registro:
+      pos: [395,400]
+      picture: '9(6)'
+  
+  detalhes:
+    segmento_7:
+      codigo_registro:
+        pos: [1,1]
+        picture: '9(1)'
+        default: 7
+      zeros_01:
+        pos: [2,3]
+        picture: '9(2)'
+        default: 0
+      zeros_02:
+        pos: [4,17]
+        picture: '9(14)'
+        default: 0
+      agencia:
+        pos: [18,21]
+        picture: '9(4)'
+      verificador_agencia:
+        pos: [22,22]
+        picture: 'X(1)'
+      conta:
+        pos: [23,30]
+        picture: '9(8)'
+      verificador_conta:
+        pos: [31,31]
+        picture: 'X(1)'
+      numero_convenio_cobranca_cedente:
+        pos: [32,38]
+        picture: '9(7)'
+      numero_controle_participante:
+        pos: [39,63]
+        picture: 'X(25)'
+      nosso_numero:
+        pos: [64,80]
+        picture: '9(17)'
+      tipo_cobranca:
+        pos: [81,81]
+        picture: '9(1)'
+      tipo_cobranca_comando72:
+        pos: [82,82]
+        picture: '9(1)'
+      dias_calculo:
+        pos: [83,86]
+        picture: '9(4)'
+      natureza_recebimento:
+        pos: [87,88]
+        picture: '9(2)'
+      prefixo_titulo:
+        pos: [89,91]
+        picture: 'X(3)'
+      variacao_carteira:
+        pos: [92,94]
+        picture: '9(3)'
+      conta_caucao:
+        pos: [95,95]
+        picture: '9(1)'
+      taxa_desconto:
+        pos: [96,100]
+        picture: '9(5)'
+      taxa_iof:
+        pos: [101,105]
+        picture: '9(4)'
+      branco_01:
+        pos: [106,106]
+        picture: '9(1)'
+        default: 0
+      carteira:
+        pos: [107,108]
+        picture: '9(2)'
+      comando:
+        pos: [109,110]
+        picture: '9(2)'
+      data_liquidacao:
+        pos: [111,116]
+        picture: '9(6)'
+      numero_titulo:
+        pos: [117,126]
+        picture: 'X(10)'
+      brancos_02:
+        pos: [127,146]
+        picture: 'X(20)'
+        default: ''
+      vencimento:
+        pos: [147,152]
+        picture: '9(6)'
+      valor:
+        pos: [153,165]
+        picture: '9(11)V9(2)'
+      codigo_banco_recebedor:
+        pos: [166,168]
+        picture: '9(3)'
+      agencia_recebedora:
+        pos: [169,172]
+        picture: '9(4)'
+      verificador_agencia_recebedora:
+        pos: [173,173]
+        picture: 'X(1)'
+      especie:
+        pos: [174,175]
+        picture: '9(2)'
+      data_credito:
+        pos: [176,181]
+        picture: '9(6)'
+      valor_tarifa:
+        pos: [182,188]
+        picture: '9(5)V9(2)'
+      outras_despesas:
+        pos: [189,201]
+        picture: '9(11)V9(2)'
+      juros_desconto:
+        pos: [202,214]
+        picture: '9(11)V9(2)'
+      iof_desconto:
+        pos: [215,227]
+        picture: '9(11)V9(2)'
+      valor_abatimento:
+        pos: [228,240]
+        picture: '9(11)V9(2)'
+      desconto_concedido:
+        pos: [241,253]
+        picture: '9(11)V9(2)'
+      valor_recebido:
+        pos: [254,266]
+        picture: '9(11)V9(2)'
+      juros_mora:
+        pos: [267,279]
+        picture: '9(11)V9(2)'
+      outros_recebimentos:
+        pos: [280,292]
+        picture: '9(11)V9(2)'
+      abatimento_nao_aproveitado:
+        pos: [293,305]
+        picture: '9(11)V9(2)'
+      valor_lancamento:
+        pos: [306,318]
+        picture: '9(11)V9(2)'
+      indicativo_debito_credito:
+        pos: [319,319]
+        picture: '9(1)'
+      indicador_valor:
+        pos: [320,320]
+        picture: '9(1)'
+      valor_ajuste:
+        pos: [321,332]
+        picture: '9(10)V9(2)'
+      brancos_03:
+        pos: [333,333]
+        picture: 'X(1)'
+        default: ''
+      brancos_04:
+        pos: [334,342]
+        picture: '9(9)'
+        default: 0
+      zeros_03:
+        pos: [343,349]
+        picture: '9(7)'
+        default: 0
+      zeros_04:
+        pos: [350,358]
+        picture: '9(9)'
+        default: 0
+      zeros_05:
+        pos: [359,365]
+        picture: '9(7)'
+        default: 0
+      zeros_06:
+        pos: [366,374]
+        picture: '9(9)'
+        default: 0
+      zeros_07:
+        pos: [375,381]
+        picture: '9(7)'
+        default: 0
+      zeros_08:
+        pos: [382,390]
+        picture: '9(9)'
+        default: 0
+      indicativo_autorizacao_liquidacao_parcial:
+        pos: [391,391]
+        picture: '9(1)'
+      brancos_05:
+        pos: [392,392]
+        picture: 'X(1)'
+        default: ''
+      canal_pagamento:
+        pos: [393,394]
+        picture: '9(2)'
+      sequencial_registro:
+        pos: [395,400]
+        picture: '9(6)'
+
+    # detalhe-auxiliar para cobrança partilhada - carteira 17
+    segmento_2:
+      codigo_registro:
+        pos: [1,1]
+        picture: '9(1)'
+        default: 2
+      nosso_numero:
+        pos: [2,18]
+        picture: '9(17)'
+      banco_credito_01:
+        pos: [19,21]
+        picture: '9(3)'
+      camara_compensacao_01:
+        pos: [22,24]
+        picture: '9(3)'
+      agencia_credito_01:
+        pos: [25,28]
+        picture: '9(4)'
+      verificador_agencia_credito_01:
+        pos: [29,29]
+        picture: 'X(1)'
+      conta_credito_01:
+        pos: [30,40]
+        picture: '9(11)'
+      verificador_conta_credito_01:
+        pos: [41,41]
+        picture: 'X(1)'
+      nome_favorecido_01:
+        pos: [42,71]
+        picture: 'X(30)'
+      valor_partilha_01:
+        pos: [72,84]
+        picture: '9(11)V9(2)'
+        default: 0
+      valor_efetivo_partilhado_01:
+        pos: [85,97]
+        picture: '9(11)V9(2)'
+        default: 0
+      banco_credito_02:
+        pos: [98,100]
+        picture: '9(3)'
+        default: 0
+      camara_compensacao_02:
+        pos: [101,103]
+        picture: '9(3)'
+        default: 0
+      agencia_credito_02:
+        pos: [104,107]
+        picture: '9(4)'
+        default: 0
+      verificador_agencia_credito_02:
+        pos: [108,108]
+        picture: 'X(1)'
+        default: ''
+      conta_credito_02:
+        pos: [109,119]
+        picture: '9(11)'
+        default: 0
+      verificador_conta_credito_02:
+        pos: [120,120]
+        picture: 'X(1)'
+        default: ''
+      nome_favorecido_02:
+        pos: [121,150]
+        picture: 'X(30)'
+        default: ''
+      valor_partilha_02:
+        pos: [151,163]
+        picture: '9(11)V9(2)'
+        default: 0
+      valor_efetivo_partilhado_02:
+        pos: [164,176]
+        picture: '9(11)V9(2)'
+        default: 0
+      banco_credito_03:
+        pos: [177,179]
+        picture: '9(3)'
+        default: 0
+      camara_compensacao_03:
+        pos: [180,182]
+        picture: '9(3)'
+        default: 0
+      agencia_credito_03:
+        pos: [183,186]
+        picture: '9(4)'
+        default: 0
+      verificador_agencia_credito_03:
+        pos: [187,187]
+        picture: 'X(1)'
+        default: ''
+      conta_credito_03:
+        pos: [188,198]
+        picture: '9(11)'
+        default: 0
+      verificador_conta_credito_03:
+        pos: [199,199]
+        picture: 'X(1)'
+        default: ''
+      nome_favorecido_03:
+        pos: [200,229]
+        picture: 'X(30)'
+        default: ''
+      valor_partilha_03:
+        pos: [230,242]
+        picture: '9(11)V9(2)'
+        default: 0
+      valor_efetivo_partilhado_03:
+        pos: [243,255]
+        picture: '9(11)V9(2)'
+        default: 0
+      banco_credito_04:
+        pos: [256,258]
+        picture: '9(3)'
+        default: 0
+      camara_compensacao_04:
+        pos: [259,261]
+        picture: '9(3)'
+        default: 0
+      agencia_credito_04:
+        pos: [262,265]
+        picture: '9(4)'
+        default: 0
+      verificador_agencia_credito_04:
+        pos: [266,266]
+        picture: 'X(1)'
+        default: ''
+      conta_credito_04:
+        pos: [267,277]
+        picture: '9(11)'
+        default: 0
+      verificador_conta_credito_04:
+        pos: [278,278]
+        picture: 'X(1)'
+        default: ''
+      nome_favorecido_04:
+        pos: [279,308]
+        picture: 'X(30)'
+        default: ''
+      valor_partilha_04:
+        pos: [309,321]
+        picture: '9(11)V9(2)'
+        default: 0
+      valor_efetivo_partilhado_04:
+        pos: [322,334]
+        picture: '9(11)V9(2)'
+        default: 0
+      tipo_documento_favorecido_01:
+        pos: [335,335]
+        picture: '9(1)'
+      numero_documento_favorecido_01:
+        pos: [336,349]
+        picture: '9(14)'
+      tipo_documento_favorecido_02:
+        pos: [350,350]
+        picture: '9(1)'
+        default: 0
+      numero_documento_favorecido_02:
+        pos: [351,364]
+        picture: '9(14)'
+        default: 0
+      tipo_documento_favorecido_03:
+        pos: [365,365]
+        picture: '9(1)'
+        default: 0
+      numero_documento_favorecido_03:
+        pos: [366,379]
+        picture: '9(14)'
+        default: 0
+      tipo_documento_favorecido_04:
+        pos: [380,380]
+        picture: '9(1)'
+        default: 0
+      numero_documento_favorecido_04:
+        pos: [381,394]
+        picture: '9(14)'
+        default: 0
+      sequencial_registro:
+        pos: [395,400]
+        picture: '9(6)'
+
+    # detalhe-auxiliar para cobrança partilhada - carteira 17 com informação do Código ISPB
+    segmento_5:
+      codigo_registro:
+        pos: [1,1]
+        picture: '9(1)'
+        default: 5
+      tipo_servico:
+        pos: [2,3]
+        picture: '9(2)'
+        default: '04'
+      nosso_numero:
+        pos: [4,20]
+        picture: '9(17)'
+      banco_credito_01:
+        pos: [21,23]
+        picture: '9(3)'
+      camara_compensacao_01:
+        pos: [24,26]
+        picture: '9(3)'
+      codigo_ispb_01:
+        pos: [27,34]
+        picture: '9(8)'
+      agencia_credito_01:
+        pos: [35,39]
+        picture: '9(5)'
+      verificador_agencia_credito_01:
+        pos: [40,40]
+        picture: 'X(1)'
+      conta_credito_01:
+        pos: [41,51]
+        picture: '9(11)'
+      verificador_conta_credito_01:
+        pos: [52,52]
+        picture: 'X(1)'
+      nome_favorecido_01:
+        pos: [53,82]
+        picture: 'X(30)'
+      valor_partilha_01:
+        pos: [83,95]
+        picture: '9(11)V9(2)'
+      brancos_01:
+        pos: [96,108]
+        picture: 'X(13)'
+        default: ''
+      banco_credito_02:
+        pos: [109,111]
+        picture: '9(3)'
+        default: 0
+      camara_compensacao_02:
+        pos: [112,114]
+        picture: '9(3)'
+        default: 0
+      codigo_ispb_02:
+        pos: [115,122]
+        picture: '9(8)'
+        default: 0
+      agencia_credito_02:
+        pos: [123,127]
+        picture: '9(5)'
+        default: 0
+      verificador_agencia_credito_02:
+        pos: [128,128]
+        picture: 'X(1)'
+        default: ''
+      conta_credito_02:
+        pos: [129,139]
+        picture: '9(11)'
+        default: 0
+      verificador_conta_credito_02:
+        pos: [140,140]
+        picture: 'X(1)'
+        default: ''
+      nome_favorecido_02:
+        pos: [141,170]
+        picture: 'X(30)'
+        default: ''
+      valor_partilha_02:
+        pos: [171,183]
+        picture: '9(11)V9(2)'
+        default: 0
+      brancos_02:
+        pos: [184,196]
+        picture: 'X(13)'
+        default: ''
+      banco_credito_03:
+        pos: [197,199]
+        picture: '9(3)'
+        default: ''
+      camara_compensacao_03:
+        pos: [200,202]
+        picture: '9(3)'
+        default: 0
+      codigo_ispb_03:
+        pos: [203,210]
+        picture: '9(8)'
+        default: 0
+      agencia_credito_03:
+        pos: [211,215]
+        picture: '9(5)'
+        default: 0
+      verificador_agencia_credito_03:
+        pos: [216,216]
+        picture: 'X(1)'
+        default: ''
+      conta_credito_03:
+        pos: [217,227]
+        picture: '9(11)'
+        default: 0
+      verificador_conta_credito_03:
+        pos: [228,228]
+        picture: 'X(1)'
+        default: ''
+      nome_favorecido_03:
+        pos: [229,258]
+        picture: 'X(30)'
+        default: ''
+      valor_partilha_03:
+        pos: [259,271]
+        picture: '9(11)V9(2)'
+        default: 0
+      brancos_03:
+        pos: [272,284]
+        picture: 'X(13)'
+        default: ''
+      tipo_documento_favorecido_01:
+        pos: [285,285]
+        picture: '9(1)'
+        default: 0
+      numero_documento_favorecido_01:
+        pos: [286,299]
+        picture: '9(14)'
+        default: 0
+      tipo_documento_favorecido_02:
+        pos: [300,300]
+        picture: '9(1)'
+        default: 0
+      numero_documento_favorecido_02:
+        pos: [301,314]
+        picture: '9(14)'
+        default: 0
+      tipo_documento_favorecido_03:
+        pos: [315,315]
+        picture: '9(1)'
+        default: 0
+      numero_documento_favorecido_03:
+        pos: [316,329]
+        picture: '9(14)'
+        default: 0
+      brancos_04:
+        pos: [330,394]
+        picture: 'X(65)'
+        default: ''
+      sequencial_registro:
+        pos: [395,400]
+        picture: '9(6)'
+
+    # detalhe retorno para vendor
+    segmento_3:
+      codigo_registro:
+        pos: [1,1]
+        picture: '9(1)'
+        default: 3
+      nosso_numero:
+        pos: [2,12]
+        picture: '9(11)'
+      verificador_nosso_numero:
+        pos: [13,13]
+        picture: 'X(1)'
+      numero_operacao:
+        pos: [14,22]
+        picture: '9(9)'
+      data_operacao:
+        pos: [23,30]
+        picture: '9(8)'
+      taxa_juros_vendedor:
+        pos: [31,35]
+        picture: '9(2)V9(2)'
+      taxa_juros_comprador:
+        pos: [36,40]
+        picture: '9(2)V9(2)'
+      valor_titulo_vencimento:
+        pos: [41,55]
+        picture: '9(13)V9(2)'
+      valor_original_venda:
+        pos: [56,70]
+        picture: '9(13)V9(2)'
+      valor_encargos_comprador:
+        pos: [71,85]
+        picture: '9(13)V9(2)'
+      valor_iof_financiado:
+        pos: [86,100]
+        picture: '9(13)V9(2)'
+      valor_acumulado_abatimento_comandos:
+        pos: [101,115]
+        picture: '9(13)V9(2)'
+      indicativo_epoca_equalizacao:
+        pos: [116,116]
+        picture: '9(1)'
+      indicativo_natureza_equalizacao:
+        pos: [117,117]
+        picture: '9(1)'
+      valor_equalizacao:
+        pos: [118,132]
+        picture: '9(13)V9(2)'
+      valor_juros_prorrogacao:
+        pos: [133,147]
+        picture: '9(13)V9(2)'
+      valor_iof_prorrogacao:
+        pos: [148,162]
+        picture: '9(13)V9(2)'
+      valor_iof_periodo_atraso:
+        pos: [163,177]
+        picture: '9(13)V9(2)'
+      nome_comprador:
+        pos: [178,214]
+        picture: 'X(37)'
+      codigo_tipo_documento:
+        pos: [215,215]
+        picture: '9(1)'
+      numero_documento:
+        pos: [216,229]
+        picture: '9(14)'
+      conversao_cnab240:
+        pos: [230,231]
+        picture: '9(2)'
+      nosso_numero_17:
+        pos: [232,248]
+        picture: 'X(17)'
+      novo_valor:
+        pos: [249,263]
+        picture: '9(13)V9(2)'
+      valor_equalizacao_estornada:
+        pos: [264,278]
+        picture: '9(13)V9(2)'
+      valor_nova_equalizacao:
+        pos: [279,293]
+        picture: '9(13)V9(2)'
+      valor_diferenca_equalizacoes:
+        pos: [294,308]
+        picture: '9(13)V9(2)'
+      indicativo_debito_credito:
+        pos: [309,309]
+        picture: '9(1)'
+      indicativo_natureza_equalizacao_02:
+        pos: [310,310]
+        picture: '9(1)'
+      indicativo_natureza_equalizacao_03:
+        pos: [311,311]
+        picture: '9(1)'
+      valor_iof_nao_financiado:
+        pos: [312,326]
+        picture: '9(13)V9(2)'
+      valor_comissao_permanencia:
+        pos: [327,341]
+        picture: '9(13)V9(2)'
+      brancos:
+        pos: [342,400]
+        picture: 'X(59)'
+        default: ''
+
+    segmento_5_01:
+      codigo_registro:
+        pos: [1,1]
+        picture: 'X(1)'
+        default: '5'
+      tipo_servico:
+        pos: [2,3]
+        picture: '9(2)'
+        default: '01'
+      zeros:
+        pos: [4,5]
+        picture: '9(2)'
+        default: 0
+      email:
+        pos: [6,142]
+        picture: 'X(135)'
+      brancos:
+        pos: [143,394]
+        picture: 'X(252)'
+        default: ''
+      sequencial_registro:
+        pos: [395,400]
+        picture: 'X(6)'
+
+    segmento_5_04:
+      codigo_registro:
+        pos: [1,1]
+        picture: 'X(1)'
+        default: '5'
+      tipo_servico:
+        pos: [2,3]
+        picture: '9(2)'
+        default: '04'
+      zeros_01:
+        pos: [4,5]
+        picture: '9(2)'
+        default: 0
+      nosso_numero:
+        pos: [6,22]
+        picture: '9(17)'
+      data_pagamento:
+        pos: [23,30]
+        picture: '9(8)'
+      zeros_02:
+        pos: [31,44]
+        picture: '9(14)'
+        default: 0
+      valor_cheque:
+        pos: [45,59]
+        picture: '9(13)V9(2)'
+      prazo_bloqueio_cheque:
+        pos: [60,62]
+        picture: '9(3)'
+      zeros_03:
+        pos: [63,65]
+        picture: '9(3)'
+        default: 0
+      motivo_devolucao:
+        pos: [66,68]
+        picture: '9(3)'
+      brancos_01:
+        pos: [69,69]
+        picture: 'X(1)'
+        default: ''
+      trilha_cheque:
+        pos: [70,103]
+        picture: 'X(34)'
+      tipo_captura:
+        pos: [104,104]
+        picture: 'X(1)'
+      zeros_04:
+        pos: [105,115]
+        picture: '9(11)'
+        default: 0
+      brancos_02:
+        pos: [116,394]
+        picture: 'X(252)'
+        default: ''
+      sequencial_registro:
+        pos: [395,400]
+        picture: '9(6)'
+
+    # opcional
+    segmento_5_06:
+      codigo_registro:
+        pos: [1,1]
+        picture: '9(1)'
+        default: 5
+      tipo_servico:
+        pos: [2,3]
+        picture: '9(2)'
+        default: '06'
+      zeros:
+        pos: [4,5]
+        picture: '9(2)'
+        default: 0
+      numero_titulo:
+        pos: [6,20]
+        picture: 'X(15)'
+      complemento_registro:
+        pos: [21,394]
+        picture: 'X(374)'
+        default: ''
+      sequencial_registro:
+        pos: [395,400]
+        picture: '9(6)'

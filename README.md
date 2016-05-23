@@ -6,9 +6,11 @@ Layouts de arquivos de intercâmbio bancário em formato YAML.
 
 ## Bancos e tipos de layout já configurados
 
-| Banco                         | Remessa  | Retorno  |
-|:------------------------------|:---------|:---------|
-| 001 - Banco do Brasil         | CNAB 240 | CNAB 240 |
+### Cobrança (boleto)
+
+| Banco                         | Remessa             | Retorno            |
+|:------------------------------|:--------------------|:-------------------|
+| 001 - Banco do Brasil         | CNAB 240 - CNAB 400 | CNAB 240 -CNAB 400 |
 | 237 - Bradesco                | CNAB 240 | CNAB 240 |
 | 104 - Caixa Econômica Federal | CNAB 240 | CNAB 240 |
 | 341 - Itaú                    | CNAB 240 | CNAB 240 |
