@@ -8,10 +8,10 @@ Layouts de arquivos de intercâmbio bancário em formato YAML.
 
 ### Cobrança (boleto)
 
-| Banco                         | Remessa             | Retorno            |
-|:------------------------------|:--------------------|:-------------------|
-| 001 - Banco do Brasil         | CNAB 240 - CNAB 400 | CNAB 240 -CNAB 400 |
-| 237 - Bradesco                | CNAB 240 | CNAB 240 |
+| Banco                         | Remessa             | Retorno             |
+|:------------------------------|:--------------------|:--------------------|
+| 001 - Banco do Brasil         | CNAB 240 - CNAB 400 | CNAB 240 - CNAB 400 |
+| 237 - Bradesco                | CNAB 240 - CNAB 400 | CNAB 240 - CNAB 400 |
 | 104 - Caixa Econômica Federal | CNAB 240 | CNAB 240 |
 | 341 - Itaú                    | CNAB 240 | CNAB 240 |
 | 033 - Santander               | CNAB 240 | CNAB 240 |
