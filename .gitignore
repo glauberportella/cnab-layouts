@@ -4,9 +4,9 @@
 .project
 *.sublime-project
 *.sublime-workspace
-parser/vendor/
-parser/composer.lock
-parser/tests/in/*.rem
-parser/tests/out/*.rem
-parser/tests/in/*.ret
-parser/tests/out/*.ret
+vendor/
+composer.lock
+tests/in/*.rem
+tests/out/*.rem
+tests/in/*.ret
+tests/out/*.ret
