@@ -294,7 +294,7 @@ remessa:
         pos: [8,8]
         picture: '9(1)'
         default: 3
-      nummero_sequencial_registro_lote:
+      numero_sequencial_registro_lote:
         pos: [9,13]
         picture: '9(5)'
       segmento:
@@ -443,7 +443,7 @@ remessa:
         pos: [8,8]
         picture: '9(1)'
         default: 3
-      nummero_sequencial_registro_lote:
+      numero_sequencial_registro_lote:
         pos: [9,13]
         picture: '9(5)'
       segmento:
@@ -533,7 +533,7 @@ remessa:
        pos: [8,8]
        picture: '9(1)'
        defalut: 3
-     nummero_sequencial_registro_lote:
+     numero_sequencial_registro_lote:
        pos: [9,13]
        picture: '9(5)'
      segmento:
@@ -636,7 +636,7 @@ remessa:
        pos: [8,8]
        picture: '9(1)'
        default: 3
-     nummero_sequencial_registro_lote:
+     numero_sequencial_registro_lote:
        pos: [9,13]
        picture: '9(5)'
      segmento:
