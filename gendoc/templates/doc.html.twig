@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Doc: {{layout.servico}} ({{layout.layout}})</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	
+	<header>
+		<div class="container">
+			<div class="page-header">
+			  <h2>Serviço: <small>{{layout.servico}}</small></h2>
+			  <h4 style="margin: 0">Layout: <small>{{layout.layout}}</small></h4>
+			</div>
+		</div>
+	</header>
+
+	<section id="remessa">
+		<div class="container">
+			<h2>Remessa</h2>
+
+			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+			    <div class="panel panel-default">
+			        <div class="panel-heading" role="tab" id="remessaHeadingHeaderArquivo">
+			          <h3 class="panel-title">
+			            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#remessaHeaderArquivo" aria-expanded="true" aria-controls="remessaHeaderArquivo">
+			              HEADER ARQUIVO
+			            </a>
+			          </h3>
+			        </div>
+			        <div id="remessaHeaderArquivo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="remessaHeadingHeaderArquivo">
+			          <table class="table table-striped table-hover">
+			          	<thead>
+			          		<tr>
+			          			<th>Campo</th>
+			          			<th>Formato</th>
+			          		</tr>
+			          	</thead>
+			          	<tbody>
+			          		{% for field, def in layout.remessa.header_arquivo %}
+			          		<tr>
+			          			<td>{{field}}</td>
+			          			<td>{{def.picture}}</td>
+			          		</tr>
+			          		{% endfor %}
+			          	</tbody>
+			          </table>
+			        </div>
+			    </div>
+
+			    <div class="panel panel-default">
+			        <div class="panel-heading" role="tab" id="remessaHeadingHeaderLote">
+			          <h3 class="panel-title">
+			            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#remessaHeaderLote" aria-expanded="true" aria-controls="remessaHeaderLote">
+			              HEADER LOTE
+			            </a>
+			          </h3>
+			        </div>
+			        <div id="remessaHeaderLote" class="panel-collapse collapse" role="tabpanel" aria-labelledby="remessaHeadingHeaderLote">
+			          <table class="table table-striped table-hover">
+			          	<thead>
+			          		<tr>
+			          			<th>Campo</th>
+			          			<th>Formato</th>
+			          		</tr>
+			          	</thead>
+			          	<tbody>
+			          		{% for field, def in layout.remessa.header_lote %}
+			          		<tr>
+			          			<td>{{field}}</td>
+			          			<td>{{def.picture}}</td>
+			          		</tr>
+			          		{% endfor %}
+			          	</tbody>
+			          </table>
+			        </div>
+			    </div>
+
+			    <div class="panel panel-default">
+			        <div class="panel-heading" role="tab" id="remessaHeadingSegmentos">
+			          <h3 class="panel-title">
+			            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#remessaSegmentos" aria-expanded="true" aria-controls="remessaSegmentos">
+			              SEGMENTOS
+			            </a>
+			          </h3>
+			        </div>
+			        <div id="remessaSegmentos" class="panel-collapse collapse" role="tabpanel" aria-labelledby="remessaHeadingSegmentos">
+						{% for segmento, def in layout.remessa.detalhes %}
+							<h3 class="text-center" style="border-bottom: 1px solid #ddd">{{segmento|replace({'_': ' '})|upper}}</h3>
+							<table class="table table-striped table-hover">
+					          	<thead>
+					          		<tr>
+					          			<th>Campo</th>
+					          			<th>Formato</th>
+					          		</tr>
+					          	</thead>
+					          	<tbody>
+					          		{% for field, deff in def %}
+					          		<tr>
+					          			<td>{{field}}</td>
+					          			<td>{{deff.picture}}</td>
+					          		</tr>
+					          		{% endfor %}
+					          	</tbody>
+					        </table>
+						{% endfor %}
+			        </div>
+			    </div>
+
+			    <div class="panel panel-default">
+			        <div class="panel-heading" role="tab" id="remessaHeadingTrailerLote">
+			          <h3 class="panel-title">
+			            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#remessaTrailerLote" aria-expanded="true" aria-controls="remessaTrailerLote">
+			              TRAILER LOTE
+			            </a>
+			          </h3>
+			        </div>
+			        <div id="remessaTrailerLote" class="panel-collapse collapse" role="tabpanel" aria-labelledby="remessaHeadingTrailerLote">
+			          <table class="table table-striped table-hover">
+			          	<thead>
+			          		<tr>
+			          			<th>Campo</th>
+			          			<th>Formato</th>
+			          		</tr>
+			          	</thead>
+			          	<tbody>
+			          		{% for field, def in layout.remessa.trailer_lote %}
+			          		<tr>
+			          			<td>{{field}}</td>
+			          			<td>{{def.picture}}</td>
+			          		</tr>
+			          		{% endfor %}
+			          	</tbody>
+			          </table>
+			        </div>
+			    </div>
+
+			    <div class="panel panel-default">
+			        <div class="panel-heading" role="tab" id="remessaHeadingTrailerArquivo">
+			          <h3 class="panel-title">
+			            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#remessaTrailerArquivo" aria-expanded="true" aria-controls="remessaTrailerArquivo">
+			              TRAILER ARQUIVO
+			            </a>
+			          </h3>
+			        </div>
+			        <div id="remessaTrailerArquivo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="remessaHeadingTrailerArquivo">
+			          <table class="table table-striped table-hover">
+			          	<thead>
+			          		<tr>
+			          			<th>Campo</th>
+			          			<th>Formato</th>
+			          		</tr>
+			          	</thead>
+			          	<tbody>
+			          		{% for field, def in layout.remessa.trailer_arquivo %}
+			          		<tr>
+			          			<td>{{field}}</td>
+			          			<td>{{def.picture}}</td>
+			          		</tr>
+			          		{% endfor %}
+			          	</tbody>
+			          </table>
+			        </div>
+			    </div>
+			</div>
+		</div>
+	</section>
+
+	<section id="retorno">
+		<div class="container">
+			<h2>Retorno</h2>
+
+			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+			    <div class="panel panel-default">
+			        <div class="panel-heading" role="tab" id="retornoHeadingHeaderArquivo">
+			          <h3 class="panel-title">
+			            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#retornoHeaderArquivo" aria-expanded="true" aria-controls="retornoHeaderArquivo">
+			              HEADER ARQUIVO
+			            </a>
+			          </h3>
+			        </div>
+			        <div id="retornoHeaderArquivo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="retornoHeadingHeaderArquivo">
+			          <table class="table table-striped table-hover">
+			          	<thead>
+			          		<tr>
+			          			<th>Campo</th>
+			          			<th>Formato</th>
+			          		</tr>
+			          	</thead>
+			          	<tbody>
+			          		{% for field, def in layout.retorno.header_arquivo %}
+			          		<tr>
+			          			<td>{{field}}</td>
+			          			<td>{{def.picture}}</td>
+			          		</tr>
+			          		{% endfor %}
+			          	</tbody>
+			          </table>
+			        </div>
+			    </div>
+
+			    <div class="panel panel-default">
+			        <div class="panel-heading" role="tab" id="retornoHeadingHeaderLote">
+			          <h3 class="panel-title">
+			            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#retornoHeaderLote" aria-expanded="true" aria-controls="retornoHeaderLote">
+			              HEADER LOTE
+			            </a>
+			          </h3>
+			        </div>
+			        <div id="retornoHeaderLote" class="panel-collapse collapse" role="tabpanel" aria-labelledby="retornoHeadingHeaderLote">
+			          <table class="table table-striped table-hover">
+			          	<thead>
+			          		<tr>
+			          			<th>Campo</th>
+			          			<th>Formato</th>
+			          		</tr>
+			          	</thead>
+			          	<tbody>
+			          		{% for field, def in layout.retorno.header_lote %}
+			          		<tr>
+			          			<td>{{field}}</td>
+			          			<td>{{def.picture}}</td>
+			          		</tr>
+			          		{% endfor %}
+			          	</tbody>
+			          </table>
+			        </div>
+			    </div>
+
+			    <div class="panel panel-default">
+			        <div class="panel-heading" role="tab" id="retornoHeadingSegmentos">
+			          <h3 class="panel-title">
+			            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#retornoSegmentos" aria-expanded="true" aria-controls="retornoSegmentos">
+			              SEGMENTOS
+			            </a>
+			          </h3>
+			        </div>
+			        <div id="retornoSegmentos" class="panel-collapse collapse" role="tabpanel" aria-labelledby="retornoHeadingSegmentos">
+						{% for segmento, def in layout.retorno.detalhes %}
+							<h3 class="text-center" style="border-bottom: 1px solid #ddd">{{segmento|replace({'_': ' '})|upper}}</h3>
+							<table class="table table-striped table-hover">
+					          	<thead>
+					          		<tr>
+					          			<th>Campo</th>
+					          			<th>Formato</th>
+					          		</tr>
+					          	</thead>
+					          	<tbody>
+					          		{% for field, deff in def %}
+					          		<tr>
+					          			<td>{{field}}</td>
+					          			<td>{{deff.picture}}</td>
+					          		</tr>
+					          		{% endfor %}
+					          	</tbody>
+					        </table>
+						{% endfor %}
+			        </div>
+			    </div>
+
+			    <div class="panel panel-default">
+			        <div class="panel-heading" role="tab" id="retornoHeadingTrailerLote">
+			          <h3 class="panel-title">
+			            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#retornoTrailerLote" aria-expanded="true" aria-controls="retornoTrailerLote">
+			              TRAILER LOTE
+			            </a>
+			          </h3>
+			        </div>
+			        <div id="retornoTrailerLote" class="panel-collapse collapse" role="tabpanel" aria-labelledby="retornoHeadingTrailerLote">
+			          <table class="table table-striped table-hover">
+			          	<thead>
+			          		<tr>
+			          			<th>Campo</th>
+			          			<th>Formato</th>
+			          		</tr>
+			          	</thead>
+			          	<tbody>
+			          		{% for field, def in layout.retorno.trailer_lote %}
+			          		<tr>
+			          			<td>{{field}}</td>
+			          			<td>{{def.picture}}</td>
+			          		</tr>
+			          		{% endfor %}
+			          	</tbody>
+			          </table>
+			        </div>
+			    </div>
+
+			    <div class="panel panel-default">
+			        <div class="panel-heading" role="tab" id="retornoHeadingTrailerArquivo">
+			          <h3 class="panel-title">
+			            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#retornoTrailerArquivo" aria-expanded="true" aria-controls="retornoTrailerArquivo">
+			              TRAILER ARQUIVO
+			            </a>
+			          </h3>
+			        </div>
+			        <div id="retornoTrailerArquivo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="retornoHeadingTrailerArquivo">
+			          <table class="table table-striped table-hover">
+			          	<thead>
+			          		<tr>
+			          			<th>Campo</th>
+			          			<th>Formato</th>
+			          		</tr>
+			          	</thead>
+			          	<tbody>
+			          		{% for field, def in layout.retorno.trailer_arquivo %}
+			          		<tr>
+			          			<td>{{field}}</td>
+			          			<td>{{def.picture}}</td>
+			          		</tr>
+			          		{% endfor %}
+			          	</tbody>
+			          </table>
+			        </div>
+			    </div>
+			</div>
+		</div>
+	</section>
+
+	<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -10,3 +10,6 @@ tests/in/*.rem
 tests/out/*.rem
 tests/in/*.ret
 tests/out/*.ret
+gendoc/vendor/
+gendoc/cache/
+gendoc/output/
