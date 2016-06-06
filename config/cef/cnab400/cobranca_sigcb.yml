@@ -1,0 +1,512 @@
+# FORMATO: BANCO CEF - SIGCB CNAB400
+# OBJETIVO DO ARQUIVO: COBRANÇA BANCÁRIA
+#
+# TAMANHO DO REGISTRO
+# O Tamanho do Registro é de 400 bytes.
+#
+# ALINHAMENTO DE CAMPOS
+# - Campos Numéricos (9) = Sempre à direita e preenchidos com zeros à esquerda.
+# - Campos Alfanuméricos (X) = Sempre à esquerda e preenchidos com brancos à direita. 
+#
+servico: 'cobranca_sigcb'
+
+versao: 'sigcb_out2015'
+
+layout: 'cnab400'
+
+remessa:
+  header_arquivo:
+    codigo_registro:
+      pos: [1,1]
+      picture: '9(1)'
+      default: 0
+    codigo_remessa:
+      pos: [2,2]
+      picture: '9(1)'
+      default: 1
+    literal_remessa:
+      pos: [3,9]
+      picture: 'X(7)'
+      default: 'REMESSA'
+    codigo_servico:
+      pos: [10,11]
+      picture: '9(2)'
+      default: '01'
+    literal_servico:
+      pos: [12,26]
+      picture: 'X(15)'
+      default: 'COBRANCA'
+    codigo_agencia:
+      pos: [27,30]
+      picture: '9(4)'
+    codigo_beneficiario:
+      pos: [31,36]
+      picture: '9(6)'
+    uso_exclusivo_01:
+      pos: [37,46]
+      picture: 'X(10)'
+      default: ''
+    nome_empresa:
+      pos: [47,76]
+      picture: 'X(30)'
+    codigo_banco:
+      pos: [77,79]
+      picture: '9(3)'
+      default: 104
+    nome_banco:
+      pos: [80,94]
+      picture: 'X(15)'
+      default: 'C ECON FEDERAL'
+    data_geracao:
+      pos: [95,100]
+      picture: '9(6)'
+    uso_exclusivo_02:
+      pos: [101,389]
+      picture: 'X(289)'
+      default: ''
+    numero_sequencial_remessa:
+      pos: [390,394]
+      picture: '9(5)'
+    numero_sequencial_registro:
+      pos: [395,400]
+      picture: '9(6)'
+      default: '000001'
+
+  trailer_arquivo:
+    codigo_registro:
+      pos: [1,1]
+      picture: '9(1)'
+      default: 9
+    uso_exclusivo_01:
+      pos: [2,394]
+      picture: 'X(393)'
+      default: ''
+    numero_sequencial_registro:
+      pos: [395,400]
+      picture: '9(6)'
+
+  detalhes:
+    segmento_1:
+      codigo_registro:
+        pos: [1,1]
+        picture: '9(1)'
+        default: 1
+      tipo_inscricao:
+        pos: [2,3]
+        picture: '9(2)'
+      numero_inscricao:
+        pos: [4,17]
+        picture: '9(14)'
+      codigo_agencia:
+        pos: [18,21]
+        picture: '9(4)'
+      codigo_beneficiario:
+        pos: [22,27]
+        picture: '9(6)'
+      id_emissao:
+        pos: [28,28]
+        picture: '9(1)'
+      id_postagem:
+        pos: [29,29]
+        picture: '9(1)'
+      taxa_permanencia:
+        pos: [30,31]
+        picture: '9(2)'
+      identificacao_titulo_empresa:
+        pos: [32,56]
+        picture: 'X(25)'
+      nosso_numero:
+        pos: [57,73]
+        picture: '9(17)'
+      brancos_01:
+        pos: [74,76]
+        picture: 'X(3)'
+        default: ''
+      mensagem:
+        pos: [77,106]
+        picture: 'X(30)'
+      carteira:
+        pos: [107,108]
+        picture: '9(2)'
+      codigo_ocorrencia:
+        pos: [109,110]
+        picture: '9(2)'
+      numero_documento_cobranca:
+        pos: [111,120]
+        picture: 'X(10)'
+      vencimento:
+        pos: [121,126]
+        picture: '9(6)'
+      valor:
+        pos: [127,139]
+        picture: '9(11)V9(2)'
+      codigo_banco:
+        pos: [140,142]
+        picture: '9(3)'
+        default: 104
+      agencia_cobradora:
+        pos: [143,147]
+        picture: '9(5)'
+        default: 0
+      especie:
+        pos: [148,149]
+        picture: '9(2)'
+      aceite:
+        pos: [150,150]
+        picture: '9(1)'
+      data_emissao:
+        pos: [151,156]
+        picture: '9(6)'
+      instrucao_1:
+        pos: [157,158]
+        picture: '9(2)'
+      instrucao_2:
+        pos: [159,160]
+        picture: '9(2)'
+        default: 0
+      juros_mora:
+        pos: [161,173]
+        picture: '9(11)V9(2)'
+      data_desconto:
+        pos: [174,179]
+        picture: '9(6)'
+      valor_desconto:
+        pos: [180,192]
+        picture: '9(11)V9(2)'
+      valor_iof:
+        pos: [193,205]
+        picture: '9(11)V9(2)'
+      abatimento:
+        pos: [206,218]
+        picture: '9(11)V9(2)'
+      tipo_inscricao_pagador:
+        pos: [219,220]
+        picture: '9(2)'
+      numero_inscricao_pagador:
+        pos: [221,234]
+        picture: '9(14)'
+      nome_pagador:
+        pos: [235,274]
+        picture: 'X(40)'
+      endereco_pagador:
+        pos: [275,314]
+        picture: 'X(40)'
+      bairro_pagador:
+        pos: [315,326]
+        picture: 'X(12)'
+      cep_pagador:
+        pos: [327,334]
+        picture: '9(8)'
+      cidade_pagador:
+        pos: [335,349]
+        picture: 'X(15)'
+      uf_pagador:
+        pos: [350,351]
+        picture: 'X(2)'
+      data_multa:
+        pos: [352,357]
+        picture: '9(6)'
+      valor_multa:
+        pos: [358,367]
+        picture: '9(8)V9(2)'
+      sacador_avalista:
+        pos: [368,389]
+        picture: 'X(22)'
+      instrucao_3:
+        pos: [390,391]
+        picture: '9(2)'
+      prazo:
+        pos: [392,393]
+        picture: '9(2)'
+      codigo_moeda:
+        pos: [394,394]
+        picture: '9(1)'
+        default: 1
+      numero_sequencial_registro:
+        pos: [395,400]
+        picture: '9(6)'
+    
+    segmento_2:
+      codigo_registro:
+        pos: [1,1]
+        picture: '9(1)'
+        default: 2
+      tipo_inscricao:
+        pos: [2,3]
+        picture: '9(2)'
+      numero_inscricao:
+        pos: [4,17]
+        picture: '9(14)'
+      codigo_agencia:
+        pos: [18,21]
+        picture: '9(4)'
+      codigo_beneficiario:
+        pos: [22,27]
+        picture: '9(6)'
+      uso_exclusivo_01:
+        pos: [28,31]
+        picture: 'X(4)'
+        default: ''
+      brancos_01:
+        pos: [32,56]
+        picture: 'X(25)'
+        default: ''
+      nosso_numero:
+        pos: [57,73]
+        picture: '9(17)'
+      brancos_02:
+        pos: [74,106]
+        picture: 'X(33)'
+        default: ''
+      carteira:
+        pos: [107,108]
+        picture: '9(2)'
+      codigo_ocorrencia:
+        pos: [109,110]
+        picture: '9(2)'
+      uso_exclusivo_02:
+        pos: [111,139]
+        picture: 'X(29)'
+      codigo_banco:
+        pos: [140,142]
+        picture: '9(3)'
+        default: 104
+      mensagem_1:
+        pos: [143,182]
+        picture: 'X(40)'
+      mensagem_2:
+        pos: [183,222]
+        picture: 'X(40)'
+      mensagem_3:
+        pos: [223,262]
+        picture: 'X(40)'
+      mensagem_4:
+        pos: [263,302]
+        picture: 'X(40)'
+      mensagem_5:
+        pos: [303,342]
+        picture: 'X(40)'
+      mensagem_6:
+        pos: [343,382]
+        picture: 'X(40)'
+      uso_exclusivo_03:
+        pos: [383,394]
+        picture: 'X(12)'
+        default: ''
+      numero_sequencial_registro:
+        pos: [395,400]
+        picture: '9(6)'
+
+retorno:
+  header_arquivo:
+    codigo_registro:
+      pos: [1,1]
+      picture: '9(1)'
+      default: 0
+    codigo_retorno:
+      pos: [2,2]
+      picture: '9(1)'
+      default: 2
+    literal_retorno:
+      pos: [3,9]
+      picture: 'X(7)'
+      default: 'RETORNO'
+    codigo_servico:
+      pos: [10,11]
+      picture: '9(2)'
+      default: '01'
+    literal_servico:
+      pos: [12,26]
+      picture: 'X(15)'
+      default: 'COBRANCA'
+    codigo_agencia:
+      pos: [27,30]
+      picture: '9(4)'
+    codigo_beneficiario:
+      pos: [31,36]
+      picture: '9(6)'
+    uso_exclusivo_01:
+      pos: [37,46]
+      picture: 'X(10)'
+      default: ''
+    nome_empresa:
+      pos: [47,76]
+      picture: 'X(30)'
+    codigo_banco:
+      pos: [77,79]
+      picture: '9(3)'
+      default: 104
+    nome_banco:
+      pos: [80,94]
+      picture: 'X(15)'
+      default: 'C ECON FEDERAL'
+    data_geracao:
+      pos: [95,100]
+      picture: '9(6)'
+    mensagem:
+      pos: [101,158]
+      picture: 'X(58)'
+    uso_exclusivo_02:
+      pos: [159,389]
+      picture: 'X(231)'
+      default: ''
+    numero_sequencial_retorno:
+      pos: [390,394]
+      picture: '9(5)'
+    numero_sequencial_registro:
+      pos: [395,400]
+      picture: '9(6)'
+      default: '000001'
+
+  trailer_arquivo:
+    codigo_registro:
+      pos: [1,1]
+      picture: '9(1)'
+      default: 9
+    codigo_retorno:
+      pos: [2,2]
+      picture: '9(1)'
+      default: 2
+    codigo_servico:
+      pos: [3,4]
+      picture: '9(2)'
+      default: '01'
+    codigo_banco:
+      pos: [5,7]
+      picture: '9(3)'
+      default: 104
+    uso_exclusivo_01:
+      pos: [8,394]
+      picture: 'X(387)'
+      default: ''
+    numero_sequencial_registro:
+      pos: [395,400]
+      picture: '9(6)'
+
+  detalhes:
+    segmento_1:
+      codigo_registro:
+        pos: [1,1]
+        picture: '9(1)'
+        default: 1
+      tipo_inscricao:
+        pos: [2,3]
+        picture: '9(2)'
+      numero_inscricao:
+        pos: [4,17]
+        picture: '9(14)'
+      codigo_agencia:
+        pos: [18,21]
+        picture: '9(4)'
+      codigo_beneficiario:
+        pos: [22,27]
+        picture: '9(6)'
+      id_emissao:
+        pos: [28,28]
+        picture: '9(1)'
+      id_postagem:
+        pos: [29,29]
+        picture: '9(1)'
+      uso_exclusivo_01:
+        pos: [30,31]
+        picture: 'X(2)'
+        default: ''
+      identificacao_titulo_empresa:
+        pos: [32,56]
+        picture: 'X(25)'
+      nosso_numero:
+        pos: [57,73]
+        picture: '9(17)'
+      uso_exclusivo_02:
+        pos: [74,79]
+        picture: 'X(6)'
+        default: ''
+      codigo_rejeicao:
+        pos: [80,82]
+        picture: '9(3)'
+      uso_exclusivo_03:
+        pos: [83,106]
+        picture: 'X(25)'
+      carteira:
+        pos: [107,108]
+        picture: '9(2)'
+      codigo_ocorrencia:
+        pos: [109,110]
+        picture: '9(2)'
+      data_ocorrencia:
+        pos: [111,116]
+        picture: '9(6)'
+      numero_documento_cobranca:
+        pos: [117,126]
+        picture: 'X(10)'
+      uso_exclusivo_04:
+        pos: [127,146]
+        picture: 'X(20)'
+        default: ''
+      vencimento:
+        pos: [147,152]
+        picture: '9(6)'
+      valor:
+        pos: [153,165]
+        picture: '9(11)V9(2)'
+      codigo_banco:
+        pos: [166,168]
+        picture: '9(3)'
+        default: 104
+      agencia_cobradora:
+        pos: [169,173]
+        picture: '9(5)'
+        default: 0
+      especie:
+        pos: [174,175]
+        picture: '9(2)'
+      valor_tarifa:
+        pos: [176,188]
+        picture: '9(11)V9(2)'
+      codigo_baixa:
+        pos: [189,191]
+        picture: '9(3)'
+      codigo_forma_pagamento:
+        pos: [192,192]
+        picture: '9(1)'
+      informacao_float_negociado:
+        pos: [193,194]
+        picture: '9(2)'
+      data_debito_tarifa:
+        pos: [195,200]
+        picture: '9(6)'
+      uso_exclusivo_05:
+        pos: [201,214]
+        picture: 'X(14)'
+        default: ''
+      valor_iof:
+        pos: [215,227]
+        picture: '9(11)V9(2)'
+      abatimento:
+        pos: [228,240]
+        picture: '9(11)V9(2)'
+      descontos:
+        pos: [241,253]
+        picture: '9(11)V9(2)'
+      valor_principal:
+        pos: [254,266]
+        picture: '9(11)V9(2)'
+      valor_juros:
+        pos: [267,279]
+        picture: '9(11)V9(2)'
+      valor_multa:
+        pos: [280,292]
+        picture: '9(11)V9(2)'
+      codigo_moeda:
+        pos: [293,293]
+        picture: '9(1)'
+      data_credito:
+        pos: [294,299]
+        picture: '9(6)'
+      uso_exclusivo_06:
+        pos: [300,394]
+        picture: 'X(95)'
+        default: ''
+      numero_sequencial_registro:
+        pos: [395,400]
+        picture: '9(6)'

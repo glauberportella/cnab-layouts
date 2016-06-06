@@ -36,6 +36,11 @@ $src = $argv[1];
 // Diretório onde salvar o HTML gerado
 $dest = $argv[2];
 
+// cria diretorio se nao existir
+if (!file_exists(dirname($dest))) {
+	mkdir(dirname($dest), 0777, true);
+}
+
 $loader = new Twig_Loader_Filesystem(__DIR__.'/templates');
 $twig = new Twig_Environment($loader, array(
     'cache' => __DIR__.'/cache',
