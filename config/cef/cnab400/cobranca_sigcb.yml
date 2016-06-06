@@ -153,7 +153,7 @@ remessa:
         picture: '9(2)'
       aceite:
         pos: [150,150]
-        picture: '9(1)'
+        picture: 'X(1)'
       data_emissao:
         pos: [151,156]
         picture: '9(6)'
