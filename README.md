@@ -11,7 +11,7 @@ Layouts de arquivos de intercâmbio bancário em formato YAML.
 | 001 - Banco do Brasil         | CNAB 240 - CNAB 400 | CNAB 240 - CNAB 400 |
 | 237 - Bradesco                | CNAB 240 - CNAB 400 | CNAB 240 - CNAB 400 |
 | 104 - Caixa Econômica Federal | CNAB 240 (sigcb) - CNAB 400 (sigcb) | CNAB 240 (sigcb) - CNAB 400 (sigcb) |
-| 341 - Itaú                    | CNAB 240 | CNAB 240 |
+| 341 - Itaú                    | CNAB 240 - CNAB400 | CNAB 240 - CNAB400 |
 | 033 - Santander               | CNAB 240 | CNAB 240 |
 
 ## O que eu preciso saber
