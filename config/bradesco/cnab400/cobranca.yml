@@ -525,7 +525,7 @@ retorno:
       default: ''
     data_credito:
       pos: [380,385]
-      picture: '9(6)'
+      picture: 'X(6)'
     brancos_02:
       pos: [386,394]
       picture: 'X(9)'
